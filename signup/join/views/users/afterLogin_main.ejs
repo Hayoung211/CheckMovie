@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Check Movie</title>
+  </head>
+  <body>
+   
+    <!-- Chck Movie 로고, 회원가입,로그인, 메뉴 있는 top 부분 -->
+    <div id="top">
+      <div id="chick1">
+        <img src="./image/char_chick.PNG">
+      </div>
+      <div id="topLocation">
+          <input type="button" class="img-button" onclick="location.reload()">
+            <form action = "/users/logout" method="get">
+          <button id="logout" onclick="location.href='./beforeLogin_main.html'">로그아웃</button>
+            </form>
+          <button id="myList" onclick="location.href='./myList.html'">My 보관함</button>
+        <div>
+          <button id="movieRank" onclick="location.href='./afterLogin_ranking.html'">영화랭킹</button>
+          <button id="naver" onclick="location.href='./afterLogin_naver_genre.html'">네이버</button>
+          <button id="netflix" onclick="location.href='./afterLogin_netflix_genre.html'">넷플릭스</button>
+        </div>
+      </div>
+      
+    </div>
+    <!-- 랭킹 띄워주는 부분 -->
+    <div id="rankPos">
+      <div id="rankTitle">
+        <!-- 문제. 이 부분도 api가 필요한 부분인가? -->
+        <button id="dayRank">일간</button>
+        <button id="weekRank">주간</button>
+        <button id="monthRank">월간</button>
+        <button id="dibsRank">찜 한 영화</button>
+      </div>
+      <hr>
+      <div>
+        <button id="rankMore" onclick="location.href='./afterLogin_ranking.html'">더보기</button>
+      </div>
+    </div>
+    <div id="naverPos">
+      <p id="naverTitle">네이버 장르 </p>
+      <!-- 문제. 아직 api를 받지 못해서 작성 못함 -->
+      <button id="more" onclick="location.href='./afterLogin_naver_genre.html'">더보기</button>
+      <hr id="hr">
+      <div id="naverGenre">
+        <table>
+          <tr>
+            <td>- 드라마</td>
+            <td>- 판타지</td>
+            <td>- 서부</td>
+          </tr>
+          <tr>
+            <td>- 공포</td>
+            <td>- 로맨스</td>
+            <td>- 모험</td>
+          </tr>
+          <tr>
+            <td>- 스릴러</td>
+            <td>- 느와르</td>
+            <td>- 컬트</td>
+          </tr>
+          <tr>
+            <td>- 다큐멘터리</td>
+            <td>- 코미디</td>
+            <td>- 가족</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div id="netflixPos">
+      <p id="netflixTitle">넷플릭스 장르</p>
+      <button id="more" onclick="location.href='./afterLogin_netflix_genre.html'">더보기</button>
+      <hr id="hr">
+      <div id="netflixGenre">
+        <table>
+          <tr>
+            <td><a href="http://www.netflix.com/browse/genre/5685">- 한국 영화</a></td>
+            <td><a href="http://www.netflix.com/browse/genre/6548">- 코미디</a></td>
+            <td><a href="http://www.netflix.com/browse/genre/5475">- 로맨틱 코미디</a></td>
+          </tr>
+          <tr>
+            <td><a href="http://www.netflix.com/browse/genre/8933">- 스릴러</a></td>
+            <td><a href="http://www.netflix.com/browse/genre/7424">- 일본애니메이션</a></td>
+            <td><a href="http://www.netflix.com/browse/genre/10118">- 코믹북 & 슈퍼히어로</a></td>
+          </tr>
+          <tr>
+            <td><a href="http://www.netflix.com/browse/genre/4370">- 스포츠 영화</a></td>
+            <td><a href="http://www.netflix.com/browse/genre/8883">- 로맨스 영화</a></td>
+            <td><a href="http://www.netflix.com/browse/genre/1365">- 액션 & 어드벤쳐</a></td>
+          </tr>
+          <tr>
+            <td><a href="http://www.netflix.com/browse/genre/3327">- 외계인 SF</a></td>
+            <td><a href="http://www.netflix.com/browse/genre/4370">- 스포츠 영화</a></td>
+            <td><a href="http://www.netflix.com/browse/genre/31574">- 클래식 영화</a></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>
+<style type = "text/css">
+body {
+  background-color: #BDECB6;
+  min-width: 750px;
+}
+#chick1 {
+  position: absolute;
+  top: 70px;
+  left: 33.9%;
+}
+#top {
+  height: 220px;
+  border-bottom: 1px solid rgb(95, 136, 101); 
+}
+#topLocation {
+  margin: 30px 0px 30px 0px; 
+}
+input {
+  vertical-align: middle;
+  position: relative;
+  left: 40%;
+}
+.img-button {
+  background: url( "./image/movie_logo.PNG" ) no-repeat;
+  border: none;
+  width: 350px;
+  height: 185px;
+  cursor: pointer;
+}
+img {
+  height: 100px;
+  position: absolute;
+  left: 39%;
+}
+#logout {
+  float: right;
+  margin-right: 100px;
+  cursor: pointer;
+}
+#myList{
+  float: right;
+  cursor: pointer;
+}
+button {
+  margin-right: 10px;
+  background-color: #BDECB6;
+  border: 1px solid rgb(95, 136, 101);
+  color: rgb(95, 136, 101);
+  padding: 3px 6px 3px 6px;
+}
+#left {
+  width: 200px;
+  margin: 30px 0px 40px 40px;
+  text-align: center;
+}
+#leftLocation {
+  border-right: 1px solid rgb(95, 136, 101);
+  border-left: 1px solid rgb(95, 136, 101);
+}
+#movieRank {
+  border: none;
+  font-size: 15px;
+  cursor: pointer;
+  float: left;
+  margin-left: 100px;
+}
+#movieRank:hover {
+  color: #FFFFDD;
+}
+#naver {
+  border: none;
+  font-size: 15px;
+  cursor: pointer;
+  float: left;
+}
+#naver:hover {
+  color: #FFFFDD;
+}
+#netflix {
+  border: none;
+  font-size: 15px;
+  cursor: pointer;
+  float: left;
+}
+#netflix:hover {
+  color: #FFFFDD;
+}
+#rankPos {
+  position: absolute;
+  min-width: 600px;
+  top: 300px;
+  left: 15%;
+  background-color: #FFFFDD;
+  height: 300px;
+  width: 70%;
+}
+#rankTitle {
+  margin: 0px 60px 10px 60px;
+  display: flex;
+  justify-content: space-between;
+}
+#dayRank {
+  border: none;
+  font-size: 23px;
+  cursor: pointer;
+  background-color: #FFFFDD;
+  margin-top: 10px;
+}
+#dayRank:hover {
+  text-decoration: underline;
+}
+#weekRank {
+  border: none;
+  font-size: 23px;
+  cursor: pointer;
+  background-color: #FFFFDD;
+  margin-top: 10px;
+}
+#weekRank:hover {
+  text-decoration: underline;
+}
+#monthRank {
+  border: none;
+  font-size: 23px;
+  cursor: pointer;
+  background-color: #FFFFDD;
+  margin-top: 10px;
+}
+#monthRank:hover {
+  text-decoration: underline;
+}
+#dibsRank {
+  border: none;
+  font-size: 23px;
+  cursor: pointer;
+  background-color: #FFFFDD;
+  margin-top: 10px;
+}
+#dibsRank:hover {
+  text-decoration: underline;
+}
+hr {
+  border: 1px solid #BDECB6;
+}
+#naverPos {
+  position: relative;
+  top: 405px;
+  left: 14.5%;
+  background-color: #FFFFDD;
+  height: 250px;
+  width: 32.5%;
+  min-width: 282px;
+}
+#naverTitle {
+  font-size: 23px;
+  color: rgb(95, 136, 101);
+  margin: 15px 0px 10px 20px;
+  padding: 15px 0px 20px 0px;
+}
+#rankMore {
+  border: none;
+  cursor: pointer;
+  background-color: #FFFFDD;
+  position: relative;
+  float: right;
+  bottom: -200px;
+}
+#more {
+  border: none;
+  cursor: pointer;
+  background-color: #FFFFDD;
+  position: relative;
+  float: right;
+  top: -50px;
+}
+#hr {
+  position: relative;
+  top: -40px;
+  width: 100%;
+}
+#netflixPos {
+  position: relative;
+  min-width: 282px;
+  top: 140px;
+  left: 53%;
+  background-color: #FFFFDD;
+  height: 250px;
+  width: 32.5%;
+  margin-bottom: 40px;
+}
+#netflixTitle {
+  font-size: 23px;
+  color: rgb(95, 136, 101);
+  margin: 15px 0px 10px 20px;
+  padding: 15px 0px 20px 0px;
+}
+table {
+  position: absolute;
+  top: 92px;
+  width: 100%;
+  table-layout:fixed;
+}
+tr {
+  height: 15px;
+}
+td {
+  padding-left: 10px;
+  padding-bottom: 10px;
+  text-align: left;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+a {
+  color: rgb(95, 136, 101);
+  text-decoration: none;
+  font-size: 15px;
+}
+</style>

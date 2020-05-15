@@ -1,0 +1,5 @@
+http://www.netflix.com/browse/genre/11881 성인 애니메이션
+https://www.netflix.com/kr/browse/genre/7687 흑백 영화(필름 누아르)
+https://www.netflix.com/kr/browse/genre/9833 리얼리티 TV
+https://www.netflix.com/kr/browse/genre/783 어린이 & 가족 영화
+https://www.netflix.com/kr/browse/genre/31851 갱스터 영화

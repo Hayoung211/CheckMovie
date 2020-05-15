@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Check Movie</title>
+  </head>
+  <body>
+    <div id="top">
+      <div id="chick1">
+        <img src="./image/char_chick.PNG">
+      </div>
+      <div id="topLocation">
+        <input type="button" class="img-button" onclick="location.href='./afterLogin_main.html'">
+        <button id="login" onclick="location.href='./beforeLogin_main.html'">로그아웃</button>
+        <button id="myList" onclick="location.href=location.reload()">My 보관함</button>
+        <div>
+            <button id="movieRank" onclick="location.href='./afterLogin_ranking.html'">영화랭킹</button>
+            <button id="naver" onclick="location.href='./afterLogin_naver_genre.html'">네이버</button>
+            <button id="netflix" onclick="location.href='./afterLogin_netflix_genre.html'">넷플릭스</button>
+        </div>
+      </div>
+    </div>
+    <div id="myListPos">
+      <div id="myListTitle">
+        <p id="moreMyList">My 보관함</p>
+      </div>
+      <hr>
+      <!-- jsp로 찜 누른것마다 넣어주기 -->
+      <div id="netflixGenre">
+        <table>
+          <tr>
+            <td style="width: 10%; color: red; font-size: 30px;"> ♥ </a></td>
+            <td style="width: 25%; color: rgb(95, 136, 101); font-weight: 400; font-size: 20px;"> 포스터 위치 </a></td>
+            <td style="width: 75%; color: rgb(95, 136, 101); font-weight: 400; font-size: 30px;"> - 영화이름 </a></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>
+<style type = "text/css">
+body {
+  background-color: #BDECB6;
+  min-width: 750px;
+}
+#chick1 {
+  position: absolute;
+  top: 70px;
+  left: 32%;
+}
+#top {
+  height: 220px;
+  border-bottom: 1px solid rgb(95, 136, 101);
+}
+#topLocation {
+  margin: 30px 0px 30px 0px; 
+}
+input {
+  vertical-align: middle;
+  position: relative;
+  left: 40%;
+}
+.img-button {
+  background: url( "./image/movie_logo.PNG" ) no-repeat;
+  border: none;
+  width: 350px;
+  height: 185px;
+  cursor: pointer;
+}
+img {
+  height: 100px;
+  position: relative;
+  left: 39%;
+}
+#login {
+  margin-top: 180px;
+  float: right;
+  margin-right: 100px;
+  cursor: pointer;
+}
+#myList{
+  margin-top: 180px;
+  float: right;
+  cursor: pointer;
+}
+button {
+  margin-right: 10px;
+  background-color: #BDECB6;
+  border: 1px solid rgb(95, 136, 101);
+  color: rgb(95, 136, 101);
+  padding: 3px 6px 3px 6px;
+}
+#left {
+  width: 200px;
+  margin: 30px 0px 40px 40px;
+  text-align: center;
+}
+#leftLocation {
+  border-right: 1px solid #FFFFDD;
+  border-left: 1px solid #FFFFDD;
+}
+#movieRank {
+  border: none;
+  font-size: 15px;
+  cursor: pointer;
+  float: left;
+  margin-left: 100px;
+}
+#movieRank:hover {
+  color: #FFFFDD;
+}
+#naver {
+  border: none;
+  font-size: 15px;
+  cursor: pointer;
+  float: left;
+}
+#naver:hover {
+  color: #FFFFDD;
+}
+#netflix {
+  border: none;
+  font-size: 15px;
+  cursor: pointer;
+  float: left;
+}
+#netflix:hover {
+  color: #FFFFDD;
+}
+#myListPos {
+  position: absolute;
+  min-width: 600px;
+  top: 300px;
+  left: 18%;
+  background-color: #FFFFDD;
+  height: 330px;
+  width: 65%;
+  margin-bottom: 100px;
+}
+#moreNetflix {
+  margin: 10px 0px 10px 20px;
+  font-size: 23px;
+  background-color: #FFFFDD;
+  color: rgb(95, 136, 101);
+}
+hr {
+  border: 1px solid #BDECB6;
+}
+#myListTitle {
+  margin: 0.5px 60px -4px 10px;
+  display: flex;
+  justify-content: space-between;
+}
+table {
+  position: absolute;
+  top: 92px;
+  width: 100%;
+  table-layout:fixed;
+}
+tr {
+  height: 15px;
+}
+td {
+  padding-left: 10px;
+  padding-bottom: 10px;
+  text-align: left;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+a {
+  color: rgb(95, 136, 101);
+  text-decoration: none;
+  font-size: 15px;
+}
+</style>

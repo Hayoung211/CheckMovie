@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Check Movie</title>
+  </head>
+  <body>
+    <!-- Chck Movie 로고, 회원가입,로그인, 메뉴 있는 top 부분 -->
+    <div id="top">
+      <div id="topLocation">
+          <input type="button" class="img-button" onclick="location.reload()">
+          <button id="login" onclick="location.href='./login.html'">로그인</button>
+          <button id="signup" onclick="location.href='./signup.html'">회원가입</button>
+        <div>
+          <button id="movieRank">영화랭킹</button>
+          <button id="naver">네이버</button>
+          <button id="netflix">넷플릭스</button>
+        </div>
+      </div>
+    </div>
+    <!-- 랭킹 띄워주는 부분 -->
+    <div id="rankPos">
+      <div id="rankTitle">
+        <!-- 문제. 이 부분도 api가 필요한 부분인가? -->
+        <button id="dayRank">일간</button>
+        <button id="weekRank">주간</button>
+        <button id="monthRank">월간</button>
+        <button id="dibsRank">찜 한 영화</button>
+      </div>
+      <hr>
+      <div>
+        <button id="rankMore" onclick="location.href='./ranking.html'">더보기</button>
+      </div>
+    </div>
+    <!-- 네이버 장르 보여주는 부분 -->
+    <div id="naverPos">
+      <p id="naverTitle">네이버 장르</p>
+      <!-- 문제. 아직 api를 받지 못해서 작성 못함 -->
+      <button id="more" onclick="location.href='./naver_genre.html'">더보기</button>
+      <hr id="hr">
+      <div id="naverGenre">
+
+      </div>
+    </div>
+    <!-- 넷플릭스 장르 보여주는 부분 -->
+    <div id="netflixPos">
+      <p id="netflixTitle">넷플릭스 장르</p>
+      <button id="more" onclick="location.href='./netflix_genre.html'">더보기</button>
+      <hr id="hr">
+      <div id="netflixGenre">
+        <table> <!-- 문제. 화면을 줄일 시 테이블이 넘어가서 회색부분을 넘어감 된다면 말줄임을 사용하고 싶음-->
+          <tr>
+            <td><a href="http://www.netflix.com/browse/genre/5685">- 한국 영화</a></td>
+            <td><a href="http://www.netflix.com/browse/genre/6548">- 코미디</a></td>
+            <td><a href="http://www.netflix.com/browse/genre/5475">- 로맨틱 코미디</a></td>
+          </tr>
+          <tr>
+            <td><a href="http://www.netflix.com/browse/genre/7018">- 정치 다큐멘터리</a></td>
+            <td><a href="http://www.netflix.com/browse/genre/3278">- 록&팝 콘서트</a></td>
+            <td><a href="http://www.netflix.com/browse/genre/7243">- 스포츠 드라마</a></td>
+          </tr>
+          <tr>
+            <td><a href="http://www.netflix.com/browse/genre/4370">- 스포츠 영화</a></td>
+            <td><a href="http://www.netflix.com/browse/genre/10702">- 스파이 액션</a></td>
+            <td><a href="http://www.netflix.com/browse/genre/9147">- 스파이 스릴러</a></td>
+          </tr>
+          <tr>
+            <td><a href="http://www.netflix.com/browse/genre/3519">- 10대 코미디</a></td>
+            <td><a href="http://www.netflix.com/browse/genre/9299">- 10대 드라마</a></td>
+            <td><a href="http://www.netflix.com/browse/genre/60951">- 10대 TV쇼</a></td>
+          </tr>
+      </table>
+      </div>
+    </div>
+  </body>
+</html>
+<style type = "text/css">
+body {
+  background-color: #BDECB6;
+}
+#top {
+  height: 140px;
+  border-bottom: 1px solid rgb(95, 136, 101);
+}
+#topLocation {
+  margin: 30px 0px 30px 0px; 
+}
+input {
+  vertical-align: middle;
+  position: relative;
+  left: 40%;
+}
+input.img-button {
+  background: url( "../image/main movie_logo.PNG" ) no-repeat;
+  border: none;
+  width: 300px;
+  height: 100px;
+  cursor: pointer;
+}
+img {
+  height: 100px;
+  position: relative;
+  left: 39%;
+}
+#login {
+  margin-top: 100px;
+  float: right;
+  margin-right: 100px;
+}
+#signup{
+  margin-top: 100px;
+  float: right;
+}
+button {
+  margin-right: 10px;
+  background-color: #BDECB6;
+  border: 1px solid rgb(95, 136, 101);
+  color: rgb(95, 136, 101);
+  padding: 3px 6px 3px 6px;
+}
+#left {
+  width: 200px;
+  margin: 30px 0px 40px 40px;
+  text-align: center;
+}
+#leftLocation {
+  border-right: 1px solid rgb(95, 136, 101);
+  border-left: 1px solid rgb(95, 136, 101);
+}
+#movieRank {
+  border: none;
+  font-size: 15px;
+  cursor: pointer;
+  float: left;
+  margin-left: 100px;
+}
+#movieRank:hover {
+  color: #FFFFDD;
+}
+#naver {
+  border: none;
+  font-size: 15px;
+  cursor: pointer;
+  float: left;
+}
+#naver:hover {
+  color: #FFFFDD;
+}
+#netflix {
+  border: none;
+  font-size: 15px;
+  cursor: pointer;
+  float: left;
+}
+#netflix:hover {
+  color: #FFFFDD;
+}
+#rankPos {
+  position: relative;
+  top: 50px;
+  left: 15%;
+  background-color: #FFFFDD;
+  height: 300px;
+  width: 70%;
+}
+#rankTitle {
+  margin: 0px 60px 10px 60px;
+  display: flex;
+  justify-content: space-between;
+}
+#dayRank {
+  border: none;
+  font-size: 23px;
+  cursor: pointer;
+  background-color: #FFFFDD;
+  margin-top: 10px;
+}
+#dayRank:hover {
+  text-decoration: underline;
+}
+#weekRank {
+  border: none;
+  font-size: 23px;
+  cursor: pointer;
+  background-color: #FFFFDD;
+  margin-top: 10px;
+}
+#weekRank:hover {
+  text-decoration: underline;
+}
+#monthRank {
+  border: none;
+  font-size: 23px;
+  cursor: pointer;
+  background-color: #FFFFDD;
+  margin-top: 10px;
+}
+#monthRank:hover {
+  text-decoration: underline;
+}
+#dibsRank {
+  border: none;
+  font-size: 23px;
+  cursor: pointer;
+  background-color: #FFFFDD;
+  margin-top: 10px;
+}
+#dibsRank:hover {
+  text-decoration: underline;
+}
+hr {
+  border: 1px solid #BDECB6;
+}
+#naverPos {
+  position: relative;
+  top: 100px;
+  left: 15%;
+  background-color: #FFFFDD;
+  height: 250px;
+  width: 32%;
+}
+#naverTitle {
+  font-size: 23px;
+  color: rgb(95, 136, 101);
+  padding: 15px 0px 10px 20px;
+}
+#rankMore {
+  border: none;
+  cursor: pointer;
+  background-color: #FFFFDD;
+  position: relative;
+  float: right;
+  bottom: -200px;
+}
+#more {
+  border: none;
+  cursor: pointer;
+  background-color: #FFFFDD;
+  position: relative;
+  float: right;
+  top: -50px;
+}
+#hr {
+  position: relative;
+  top: -40px;
+  width: 100%;
+}
+#netflixPos {
+  position: relative;
+  top: -173px;
+  left: 53%;
+  background-color: #FFFFDD;
+  height: 250px;
+  width: 32%;
+}
+#netflixTitle {
+  font-size: 23px;
+  color: rgb(95, 136, 101);
+  padding: 15px 0px 10px 20px;
+}
+table {
+  position: relative;
+  top: -25px;
+  width: 100%;
+}
+td {
+  padding-left: 10px;
+  padding-bottom: 10px;
+  text-align: left;
+}
+a {
+  color: rgb(95, 136, 101);
+  text-decoration: none;
+}
+</style>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Check Movie</title>
+  </head>
+  <body>
+    <div id="top">
+      <div id="topLocation">
+        <input type="button" class="img-button" onclick="location.href='./beforeLogin_main.html'">
+        <button id="login" onclick="location.href='./login.html'">로그인</button>
+        <button id="signup" onclick="location.href='./signup.html'">회원가입</button>
+        <div>
+          <button id="movieRank" onclick="location.href='./beforeLogin_ranking.html'">영화랭킹</button>
+          <button id="naver" onclick="location.href='./beforeLogin_naver_genre.html'">네이버</button>
+          <button id="netflix" onclick="location.href='./beforeLogin_netflix_genre.html'">넷플릭스</button>
+        </div>
+      </div>
+    </div>
+    <div id="rankPos">
+      <div id="rankTitle">
+        <!-- 문제. 이 부분도 api가 필요한 부분인가? -->
+        <button id="dayRank">일간</button>
+        <button id="weekRank">주간</button>
+        <button id="monthRank">월간</button>
+        <button id="dibsRank">찜 한 영화</button>
+      </div>
+      <hr>
+    </div>
+  </body>
+</html>
+<style type = "text/css">
+body {
+  background-color: #BDECB6;
+  min-width: 750px;
+}
+#top {
+  height: 140px;
+  border-bottom: 1px solid rgb(95, 136, 101);
+}
+#topLocation {
+  margin: 30px 0px 30px 0px; 
+}
+input {
+  vertical-align: middle;
+  position: relative;
+  left: 40%;
+}
+input.img-button {
+  background: url( "../image/main movie_logo.PNG" ) no-repeat;
+  border: none;
+  width: 300px;
+  height: 100px;
+  cursor: pointer;
+}
+img {
+  height: 100px;
+  position: relative;
+  left: 39%;
+}
+#login {
+  margin-top: 100px;
+  float: right;
+  margin-right: 100px;
+}
+#signup{
+  margin-top: 100px;
+  float: right;
+}
+button {
+  margin-right: 10px;
+  background-color: #BDECB6;
+  border: 1px solid rgb(95, 136, 101);
+  color: rgb(95, 136, 101);
+  padding: 3px 6px 3px 6px;
+}
+#left {
+  width: 200px;
+  margin: 30px 0px 40px 40px;
+  text-align: center;
+}
+#leftLocation {
+  border-right: 1px solid rgb(95, 136, 101);
+  border-left: 1px solid rgb(95, 136, 101);
+}
+#movieRank {
+  border: none;
+  font-size: 15px;
+  cursor: pointer;
+  float: left;
+  margin-left: 100px;
+}
+#movieRank:hover {
+  color: #FFFFDD;
+}
+#naver {
+  border: none;
+  font-size: 15px;
+  cursor: pointer;
+  float: left;
+}
+#naver:hover {
+  color: #FFFFDD;
+}
+#netflix {
+  border: none;
+  font-size: 15px;
+  cursor: pointer;
+  float: left;
+}
+#netflix:hover {
+  color: #FFFFDD;
+}
+#rankPos {
+  position: absolute;
+  min-width: 600px;
+  top: 230px;
+  left: 18%;
+  background-color: #FFFFDD;
+  height: 300px;
+  width: 65%;
+}
+#rankTitle {
+  margin: 0px 60px 10px 60px;
+  display: flex;
+  justify-content: space-between;
+}
+#dayRank {
+  border: none;
+  font-size: 23px;
+  cursor: pointer;
+  background-color: #FFFFDD;
+  margin-top: 10px;
+}
+#dayRank:hover {
+  text-decoration: underline;
+}
+#weekRank {
+  border: none;
+  font-size: 23px;
+  cursor: pointer;
+  background-color: #FFFFDD;
+  margin-top: 10px;
+}
+#weekRank:hover {
+  text-decoration: underline;
+}
+#monthRank {
+  border: none;
+  font-size: 23px;
+  cursor: pointer;
+  background-color: #FFFFDD;
+  margin-top: 10px;
+}
+#monthRank:hover {
+  text-decoration: underline;
+}
+#dibsRank {
+  border: none;
+  font-size: 23px;
+  cursor: pointer;
+  background-color: #FFFFDD;
+  margin-top: 10px;
+}
+#dibsRank:hover {
+  text-decoration: underline;
+}
+hr {
+  border: 1px solid #BDECB6;
+}
+</style>
