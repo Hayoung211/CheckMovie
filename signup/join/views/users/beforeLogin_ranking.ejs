@@ -2,6 +2,100 @@
 <html>
   <head>
     <title>Check Movie</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+    crossorigin="anonymous">
+    </script>
+  
+    <script> //일간, 주간, 월간 랭킹 보여주는 script
+    $(document).ready(function() {
+      $('ul.tabs li').click(function() {
+      var tab_id = $(this).attr('data-tab');
+      $('ul.tabs li').removeClass('current');
+      $('.tab-content').removeClass('current');
+      $(this).addClass('current');
+      $("#"+tab_id).addClass('current');
+      })
+    })
+    </script>
+
+    <script>
+    var dt = new Date();
+    var m = dt.getMonth() + 1;
+    if (m < 10) {
+      var month = "0" + m;
+    } else {
+      var month = m + "";
+    }
+
+    var d = dt.getDate() - 1;
+    if (d < 10) {
+      var day = "0" + d;
+    } else {
+      var day = d + "";
+    }
+
+    var y = dt.getFullYear();
+    var year = y + "";
+
+    var result = year + month + day;
+    $.ajax( {
+      method: "GET",
+      url: "http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=0c0a5e530eba657434be85f5e39f5f02&targetDt="+result  
+    })
+    .done(function (msg) {
+      console.log(msg);
+      $( "#tabList" ).append( "<tr><td>"+ msg.boxOfficeResult.dailyBoxOfficeList[0].movieNm+"</td><td>"+
+                                msg.boxOfficeResult.dailyBoxOfficeList[1].movieNm + "</td><td>"+
+                                msg.boxOfficeResult.dailyBoxOfficeList[2].movieNm+"</td><td>"+
+                                msg.boxOfficeResult.dailyBoxOfficeList[3].movieNm+"</td></tr>");
+    });
+    </script>
+
+    <script>
+    var dt = new Date();
+    var m = dt.getMonth() + 1;
+    if (m < 10) {
+      var month = "0" + m;
+    } else {
+      var month = m + "";
+    }
+
+    var d = dt.getDate() - 7;
+    if (d < 10) {
+      var day = "0" + d;
+    } else {
+      var day = d + "";
+    }
+
+    var y = dt.getFullYear();
+    var year = y + "";
+
+    var result2 = year + month + day;
+    $.ajax({ 
+    method: "GET",
+    url: "http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchWeeklyBoxOfficeList.json?key=0c0a5e530eba657434be85f5e39f5f02&weekGb=0&targetDt="+result2
+    })
+    .done(function (msg) {
+      console.log(msg);
+      $( "#tabList2" ).append( "<tr><td>"+ msg.boxOfficeResult.weeklyBoxOfficeList[0].movieNm+"</td><td>"+
+                                msg.boxOfficeResult.weeklyBoxOfficeList[1].movieNm + "</td><td>"+
+                                msg.boxOfficeResult.weeklyBoxOfficeList[2].movieNm+"</td><td>"+
+                                msg.boxOfficeResult.weeklyBoxOfficeList[3].movieNm+"</td></tr>");
+    });
+  
+    $.ajax( {
+      method: "GET",
+      url: "http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchWeeklyBoxOfficeList.json?key=0c0a5e530eba657434be85f5e39f5f02&weekGb=1&targetDt="+result2
+    })
+  
+    .done(function (msg) {
+      console.log(msg);
+      $( "#tabList3" ).append( "<tr><td>"+ msg.boxOfficeResult.weeklyBoxOfficeList[0].movieNm+"</td><td>"+
+                                msg.boxOfficeResult.weeklyBoxOfficeList[1].movieNm + "</td><td>"+
+                                msg.boxOfficeResult.weeklyBoxOfficeList[2].movieNm+"</td><td>"+
+                                msg.boxOfficeResult.weeklyBoxOfficeList[3].movieNm+"</td></tr>");
+    });
+    </script>
   </head>
   <body>
     <div id="top">
@@ -19,15 +113,32 @@
         </div>
       </div>
     </div>
-    <div id="rankPos">
-      <div id="rankTitle">
-        <!-- 문제. 이 부분도 api가 필요한 부분인가? -->
-        <button id="dayRank">일간</button>
-        <button id="weekRank">주간</button>
-        <button id="monthRank">월간</button>
-        <button id="dibsRank">찜 한 영화</button>
+    <div class="container">
+
+      <ul class="tabs">
+        <li class="tab-link current" data-tab="tab-1">일간</li>
+        <li class="tab-link" data-tab="tab-2">주간</li>
+        <li class="tab-link" data-tab="tab-3">주말</li>
+        <li class="tab-link" data-tab="tab-4">찜 한 영화</li>
+      </ul>
+      <hr id="ar">
+     
+
+      <div id="tab-1" class="tab-content current">
+         
       </div>
-      <hr>
+      <div id="tab-2" class="tab-content">
+        
+      </div>
+      <div id="tab-3" class="tab-content">
+       
+      </div>
+      <div id="tab-4" class="tab-content">
+    
+      </div>
+      
+     
+    
     </div>
   </body>
 </html>
@@ -71,7 +182,7 @@ img {
   margin-right: 100px;
   cursor: pointer;
 }
-#signup{
+#signup {
   margin-top: 180px;
   float: right;
   cursor: pointer;
@@ -120,6 +231,44 @@ button {
 #netflix:hover {
   color: #FFFFDD;
 }
+.container {
+ position: absolute;
+  min-width: 600px;
+  top: 300px;
+  left: 15%;
+  background-color: #FFFFDD;
+  height: 300px;
+  width: 70%;
+}
+ul.tabs {
+  margin:0px 60px 10px 60px;
+  padding: 0px;
+  list-style : none;
+  display: flex;
+  justify-content: space-between;
+}
+ul.tabs li {
+  background: none;
+  color: rgb(95, 136, 101); ;
+  display: inline-block;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 23px;
+}
+ul.tabs li.current {
+  background-image: url("./image/click_effect.png");
+  background-repeat : no-repeat;
+  background-size : cover;
+  background-position: left center;
+  color: rgb(55, 80, 59); ;
+}
+.tab-content {
+  display: none;
+  padding: 130px;
+}
+.tab-content.current {
+  display: inherit;
+}
 #rankPos {
   position: absolute;
   min-width: 600px;
@@ -128,6 +277,7 @@ button {
   background-color: #FFFFDD;
   height: 300px;
   width: 65%;
+  margin-bottom: 100px;
 }
 #rankTitle {
   margin: 0px 60px 10px 60px;
@@ -176,5 +326,49 @@ button {
 }
 hr {
   border: 1px solid #BDECB6;
+}
+#ar {
+  position: relative;
+  top: -11px;
+  width: 100%;
+}
+#tabList {
+  position: absolute;
+  top: 245px;
+  right : 0.5px;
+  table-layout:fixed;
+}
+#tabList td {
+  text-align: center;
+  width:100%;
+  overflow : hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+#tabList2 {
+  position: absolute;
+  top: 245px;
+  right : 0.5px;
+  table-layout:fixed;
+}
+#tabList2 td {
+  text-align: center;
+  width:100%;
+  overflow : hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+#tabList3 {
+  position: absolute;
+  top: 245px;
+  right : 0.5px;
+  table-layout:fixed;
+}
+#tabList3 td {
+  text-align: center;
+  width:100%;
+  overflow : hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 </style>
