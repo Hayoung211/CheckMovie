@@ -115,7 +115,7 @@
       </div>
     </div>
     <!-- 랭킹 띄워주는 부분 -->
-    <div class="container">
+    <div id="rankPos">
 
       <ul class="tabs">
         <li class="tab-link current" data-tab="tab-1">일간</li>
@@ -159,24 +159,24 @@
       <div id="naverGenre">
         <table>
           <tr>
-            <td>- 드라마</td>
-            <td>- 판타지</td>
-            <td>- 서부</td>
+            <td id="naverGenre" onclick="location.href='./afterLogin_naver_genre_show.html'">- 드라마</td>
+            <td id="naverGenre" onclick="location.href='./afterLogin_naver_genre_show.html'">- 판타지</td>
+            <td id="naverGenre" onclick="location.href='./afterLogin_naver_genre_show.html'">- 서부</td>
           </tr>
           <tr>
-            <td>- 공포</td>
-            <td>- 로맨스</td>
-            <td>- 모험</td>
+            <td id="naverGenre" onclick="location.href='./afterLogin_naver_genre_show.html'">- 공포</td>
+            <td id="naverGenre" onclick="location.href='./afterLogin_naver_genre_show.html'">- 로맨스</td>
+            <td id="naverGenre" onclick="location.href='./afterLogin_naver_genre_show.html'">- 모험</td>
           </tr>
           <tr>
-            <td>- 스릴러</td>
-            <td>- 느와르</td>
-            <td>- 컬트</td>
+            <td id="naverGenre" onclick="location.href='./afterLogin_naver_genre_show.html'">- 스릴러</td>
+            <td id="naverGenre" onclick="location.href='./afterLogin_naver_genre_show.html'">- 느와르</td>
+            <td id="naverGenre" onclick="location.href='./afterLogin_naver_genre_show.html'">- 컬트</td>
           </tr>
           <tr>
-            <td>- 다큐멘터리</td>
-            <td>- 코미디</td>
-            <td>- 가족</td>
+            <td id="naverGenre" onclick="location.href='./afterLogin_naver_genre_show.html'">- 다큐멘터리</td>
+            <td id="naverGenre" onclick="location.href='./afterLogin_naver_genre_show.html'">- 코미디</td>
+            <td id="naverGenre" onclick="location.href='./afterLogin_naver_genre_show.html'">- 가족</td>
           </tr>
         </table>
       </div>
@@ -302,7 +302,7 @@ button {
 #netflix:hover {
   color: #FFFFDD;
 }
-.container {
+#rankPos {
   position: absolute;
   min-width: 600px;
   top: 300px;
@@ -339,15 +339,6 @@ ul.tabs li.current {
 }
 .tab-content.current {
    display: inherit;
-}
-#rankPos {
-  position: absolute;
-  min-width: 600px;
-  top: 300px;
-  left: 15%;
-  background-color: #FFFFDD;
-  height: 300px;
-  width: 70%;
 }
 #rankTitle {
   margin: 0px 60px 10px 60px;
@@ -466,6 +457,9 @@ td {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  color: rgb(95, 136, 101);
+  text-decoration: none;
+  font-size: 15px;
 }
 a {
   color: rgb(95, 136, 101);
@@ -473,7 +467,11 @@ a {
   font-size: 15px;
 }
 a:hover {
+  color: rgb(55, 80, 59);
+}
+#naverGenre:hover {
   color:rgb(55, 80, 59);
+  cursor: pointer;
 }
 #ar {
   position: relative;

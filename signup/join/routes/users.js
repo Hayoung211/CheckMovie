@@ -27,6 +27,10 @@ router.get('/afterLogin_main.html', function(req, res, next) {
 router.get('/afterLogin_naver_genre.html', function(req, res, next) {
   res.render("users/afterLogin_naver_genre");
 });
+//로그인후 네이버장르페이지리스트 불러오기
+router.get('/afterLogin_naver_genre_show.html', function(req, res, next) {
+  res.render("users/afterLogin_naver_genre_show");
+});
 //로그인후 넷플릭스장르페이지 불러오기
 router.get('/afterLogin_netflix_genre.html', function(req, res, next) {
   res.render("users/afterLogin_netflix_genre");
@@ -106,7 +110,7 @@ router.get("/logout", function(req,res,next){
 var client_id = 'BlpJyqmTUhWR1YI1iMTB';
 var client_secret ='SWKEJ1aW1Z';
 router.get('/search/movie', function (req, res) {
-  var api_url = 'https://openapi.naver.com/v1/search/movie?query=' + encodeURI(req.query.query) + '&genre=1';
+  var api_url = 'https://openapi.naver.com/v1/search/movie?query=' + encodeURI(req.query.query) + '&display=' + encodeURI(req.query.genre);
   var request = require('request');
   var options = {
       url: api_url,

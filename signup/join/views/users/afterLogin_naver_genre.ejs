@@ -10,7 +10,7 @@
       </div>
       <div id="topLocation">
         <input type="button" class="img-button" onclick="location.href='./afterLogin_main.html'">
-        <button id="login" onclick="location.href='./beforeLogin_main.html'">로그아웃</button>
+        <button id="logout" onclick="location.href='./beforeLogin_main.html'">로그아웃</button>
           <button id="myList" onclick="location.href='./myList.html'">My 보관함</button>
         <div>
           <button id="movieRank" onclick="location.href='./afterLogin_ranking.html'">영화랭킹</button>
@@ -27,52 +27,52 @@
       <div id="naverGenre">
         <table>
           <tr>
-            <td>- 드라마</td>
-            <td>- 판타지</td>
-            <td>- 서부</td>
+            <td onclick="location.href='./afterLogin_naver_genre_show.html'">- 드라마</td>
+            <td onclick="location.href='./afterLogin_naver_genre_show.html'">- 판타지</td>
+            <td onclick="location.href='./afterLogin_naver_genre_show.html'">- 서부</td>
           </tr>
           <tr>
-            <td>- 공포</td>
-            <td>- 로맨스</td>
-            <td>- 모험</td>
+            <td onclick="location.href='./afterLogin_naver_genre_show.html'">- 공포</td>
+            <td onclick="location.href='./afterLogin_naver_genre_show.html'">- 로맨스</td>
+            <td onclick="location.href='./afterLogin_naver_genre_show.html'">- 모험</td>
           </tr>
           <tr>
-            <td>- 스릴러</td>
-            <td>- 느와르</td>
-            <td>- 컬트</td>
+            <td onclick="location.href='./afterLogin_naver_genre_show.html'">- 스릴러</td>
+            <td onclick="location.href='./afterLogin_naver_genre_show.html'">- 느와르</td>
+            <td onclick="location.href='./afterLogin_naver_genre_show.html'">- 컬트</td>
           </tr>
           <tr>
-            <td>- 다큐멘터리</td>
-            <td>- 코미디</td>
-            <td>- 가족</td>
+            <td onclick="location.href='./afterLogin_naver_genre_show.html'">- 다큐멘터리</td>
+            <td onclick="location.href='./afterLogin_naver_genre_show.html'">- 코미디</td>
+            <td onclick="location.href='./afterLogin_naver_genre_show.html'">- 가족</td>
           </tr>
           <tr>
-            <td>- 미스터리</td>
-            <td>- 전쟁</td>
-            <td>- 애니메이션</td>
+            <td onclick="location.href='./afterLogin_naver_genre_show.html'">- 미스터리</td>
+            <td onclick="location.href='./afterLogin_naver_genre_show.html'">- 전쟁</td>
+            <td onclick="location.href='./afterLogin_naver_genre_show.html'">- 애니메이션</td>
           </tr>
           <tr>
-            <td>- 범죄</td>
-            <td>- 뮤지컬</td>
-            <td>- SF</td>
+            <td onclick="location.href='./afterLogin_naver_genre_show.html'">- 범죄</td>
+            <td onclick="location.href='./afterLogin_naver_genre_show.html'">- 뮤지컬</td>
+            <td onclick="location.href='./afterLogin_naver_genre_show.html'">- SF</td>
           </tr>
           <tr>
-            <td>- 액션</td>
-            <td>- 무협</td>
-            <td>- 에로</td>
+            <td onclick="location.href='./afterLogin_naver_genre_show.html'">- 액션</td>
+            <td onclick="location.href='./afterLogin_naver_genre_show.html'">- 무협</td>
+            <td onclick="location.href='./afterLogin_naver_genre_show.html'">- 에로</td>
           </tr>
           <tr>
-            <td>- 서스펜스</td>
-            <td>- 서사</td>
-            <td>- 블랙코미디</td>
+            <td onclick="location.href='./afterLogin_naver_genre_show.html'">- 서스펜스</td>
+            <td onclick="location.href='./afterLogin_naver_genre_show.html'">- 서사</td>
+            <td onclick="location.href='./afterLogin_naver_genre_show.html'">- 블랙코미디</td>
           </tr>
           <tr>
-            <td>- 실험</td>
-            <td>- 영화카툰</td>
-            <td>- 영화음악</td>
+            <td onclick="location.href='./afterLogin_naver_genre_show.html'">- 실험</td>
+            <td onclick="location.href='./afterLogin_naver_genre_show.html'">- 영화카툰</td>
+            <td onclick="location.href='./afterLogin_naver_genre_show.html'">- 영화음악</td>
           </tr>
           <tr>
-            <td>- 영화패러디포스터</td>
+            <td onclick="location.href='./afterLogin_naver_genre_show.html'">- 영화패러디포스터</td>
           </tr>
         </table>
       </div>
@@ -113,7 +113,7 @@ img {
   position: relative;
   left: 39%;
 }
-#login {
+#logout {
   margin-top: 180px;
   float: right;
   margin-right: 100px;
@@ -174,7 +174,7 @@ button {
   top: 300px;
   left: 18%;
   background-color: #FFFFDD;
-  height: 330px;
+  height: 450px;
   width: 65%;
   margin-bottom: 100px;
 }
@@ -209,10 +209,12 @@ td {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-}
-a {
   color: rgb(95, 136, 101);
   text-decoration: none;
   font-size: 15px;
+}
+td:hover {
+  color:rgb(55, 80, 59);
+  cursor: pointer;
 }
 </style>

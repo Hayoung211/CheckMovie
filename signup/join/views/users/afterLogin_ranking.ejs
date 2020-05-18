@@ -104,7 +104,7 @@
       </div>
       <div id="topLocation">
         <input type="button" class="img-button" onclick="location.href='./afterLogin_main.html'">
-        <button id="login" onclick="location.href='./beforeLogin_main.html'">로그아웃</button>
+        <button id="logout" onclick="location.href='./beforeLogin_main.html'">로그아웃</button>
         <button id="myList" onclick="location.href='./myList.html'">My 보관함</button>
         <div>
           <button id="movieRank" onclick="location.href='./afterLogin_ranking.html'">영화랭킹</button>
@@ -113,8 +113,7 @@
         </div>
       </div>
     </div>
-    <div class="container">
-
+    <div id="rankPos">
       <ul class="tabs">
         <li class="tab-link current" data-tab="tab-1">일간</li>
         <li class="tab-link" data-tab="tab-2">주간</li>
@@ -176,7 +175,7 @@ img {
   position: relative;
   left: 39%;
 }
-#login {
+#logout {
   margin-top: 180px;
   float: right;
   margin-right: 100px;
@@ -231,14 +230,15 @@ button {
 #netflix:hover {
   color: #FFFFDD;
 }
-.container {
+#rankPos {
   position: absolute;
   min-width: 600px;
   top: 300px;
-  left: 15%;
+  left: 18%;
   background-color: #FFFFDD;
   height: 300px;
-  width: 70%;
+  width: 65%;
+  margin-bottom: 100px;
 }
 ul.tabs {
   margin:0px 60px 10px 60px;
@@ -268,16 +268,6 @@ ul.tabs li.current {
 }
 .tab-content.current {
   display: inherit;
-}
-#rankPos {
-  position: absolute;
-  min-width: 600px;
-  top: 300px;
-  left: 18%;
-  background-color: #FFFFDD;
-  height: 300px;
-  width: 65%;
-  margin-bottom: 100px;
 }
 #rankTitle {
   margin: 0px 60px 10px 60px;
