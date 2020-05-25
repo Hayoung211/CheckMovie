@@ -44,10 +44,17 @@
     })
     .done(function (msg) {
       console.log(msg);
-      $( "#tabList" ).append( "<tr><td>"+ msg.boxOfficeResult.dailyBoxOfficeList[0].movieNm+"</td><td>"+
-                                msg.boxOfficeResult.dailyBoxOfficeList[1].movieNm + "</td><td>"+
-                                msg.boxOfficeResult.dailyBoxOfficeList[2].movieNm+"</td><td>"+
-                                msg.boxOfficeResult.dailyBoxOfficeList[3].movieNm+"</td></tr>");
+      $( "#tabList1" ).append( "<tr class = 'line'><td align = center width = 93 >순위</td><td width = 624 >영화 제목</td></tr>"+
+                               "<tr><td align = center>"+ 1 + "</td><td>"+ msg.boxOfficeResult.dailyBoxOfficeList[0].movieNm+"</td></tr>"+
+                               "<tr><td align = center>"+ 2 + "</td><td>"+ msg.boxOfficeResult.dailyBoxOfficeList[1].movieNm+"</td></tr>"+
+                               "<tr><td align = center>"+ 3 + "</td><td>"+ msg.boxOfficeResult.dailyBoxOfficeList[2].movieNm+"</td></tr>"+
+                               "<tr><td align = center>"+ 4 + "</td><td>"+ msg.boxOfficeResult.dailyBoxOfficeList[3].movieNm+"</td></tr>"+
+                               "<tr><td align = center>"+ 5 + "</td><td>"+ msg.boxOfficeResult.dailyBoxOfficeList[4].movieNm+"</td></tr>"+
+                               "<tr><td align = center>"+ 6 + "</td><td>"+ msg.boxOfficeResult.dailyBoxOfficeList[5].movieNm+"</td></tr>"+
+                               "<tr><td align = center>"+ 7 + "</td><td>"+ msg.boxOfficeResult.dailyBoxOfficeList[6].movieNm+"</td></tr>"+
+                               "<tr><td align = center>"+ 8 + "</td><td>"+ msg.boxOfficeResult.dailyBoxOfficeList[7].movieNm+"</td></tr>"+
+                               "<tr><td align = center>"+ 9 + "</td><td>"+ msg.boxOfficeResult.dailyBoxOfficeList[8].movieNm+"</td></tr>"+
+                               "<tr><td align = center>"+ 10 + "</td><td>"+ msg.boxOfficeResult.dailyBoxOfficeList[9].movieNm+"</td></tr>");
     });
     </script>
 
@@ -77,10 +84,17 @@
     })
     .done(function (msg) {
       console.log(msg);
-      $( "#tabList2" ).append( "<tr><td>"+ msg.boxOfficeResult.weeklyBoxOfficeList[0].movieNm+"</td><td>"+
-                                msg.boxOfficeResult.weeklyBoxOfficeList[1].movieNm + "</td><td>"+
-                                msg.boxOfficeResult.weeklyBoxOfficeList[2].movieNm+"</td><td>"+
-                                msg.boxOfficeResult.weeklyBoxOfficeList[3].movieNm+"</td></tr>");
+      $( "#tabList2" ).append( "<tr><td align = center width = 93>순위</td><td width = 624>영화 제목</td></tr>"+
+                               "<tr><td align = center>"+ 1 + "</td><td>"+ msg.boxOfficeResult.weeklyBoxOfficeList[0].movieNm+"</td></tr>"+
+                               "<tr><td align = center>"+ 2 + "</td><td>"+ msg.boxOfficeResult.weeklyBoxOfficeList[1].movieNm+"</td></tr>"+
+                               "<tr><td align = center>"+ 3 + "</td><td>"+ msg.boxOfficeResult.weeklyBoxOfficeList[2].movieNm+"</td></tr>"+
+                               "<tr><td align = center>"+ 4 + "</td><td>"+ msg.boxOfficeResult.weeklyBoxOfficeList[3].movieNm+"</td></tr>"+
+                               "<tr><td align = center>"+ 5 + "</td><td>"+ msg.boxOfficeResult.weeklyBoxOfficeList[4].movieNm+"</td></tr>"+
+                               "<tr><td align = center>"+ 6 + "</td><td>"+ msg.boxOfficeResult.weeklyBoxOfficeList[5].movieNm+"</td></tr>"+
+                               "<tr><td align = center>"+ 7 + "</td><td>"+ msg.boxOfficeResult.weeklyBoxOfficeList[6].movieNm+"</td></tr>"+
+                               "<tr><td align = center>"+ 8 + "</td><td>"+ msg.boxOfficeResult.weeklyBoxOfficeList[7].movieNm+"</td></tr>"+
+                               "<tr><td align = center>"+ 9 + "</td><td>"+ msg.boxOfficeResult.weeklyBoxOfficeList[8].movieNm+"</td></tr>"+
+                               "<tr><td align = center>"+ 10 + "</td><td>"+ msg.boxOfficeResult.weeklyBoxOfficeList[9].movieNm+"</td></tr>");
     });
   
     $.ajax( {
@@ -90,18 +104,23 @@
   
     .done(function (msg) {
       console.log(msg);
-      $( "#tabList3" ).append( "<tr><td>"+ msg.boxOfficeResult.weeklyBoxOfficeList[0].movieNm+"</td><td>"+
-                                msg.boxOfficeResult.weeklyBoxOfficeList[1].movieNm + "</td><td>"+
-                                msg.boxOfficeResult.weeklyBoxOfficeList[2].movieNm+"</td><td>"+
-                                msg.boxOfficeResult.weeklyBoxOfficeList[3].movieNm+"</td></tr>");
+      $( "#tabList3" ).append("<tr><td align = center width = 93>순위</td><td width = 624>영화 제목</td></tr>"+
+                               "<tr><td align = center>"+ 1 + "</td><td>"+ msg.boxOfficeResult.weeklyBoxOfficeList[0].movieNm+"</td></tr>"+
+                               "<tr><td align = center>"+ 2 + "</td><td>"+ msg.boxOfficeResult.weeklyBoxOfficeList[1].movieNm+"</td></tr>"+
+                               "<tr><td align = center>"+ 3 + "</td><td>"+ msg.boxOfficeResult.weeklyBoxOfficeList[2].movieNm+"</td></tr>"+
+                               "<tr><td align = center>"+ 4 + "</td><td>"+ msg.boxOfficeResult.weeklyBoxOfficeList[3].movieNm+"</td></tr>"+
+                               "<tr><td align = center>"+ 5 + "</td><td>"+ msg.boxOfficeResult.weeklyBoxOfficeList[4].movieNm+"</td></tr>"+
+                               "<tr><td align = center>"+ 6 + "</td><td>"+ msg.boxOfficeResult.weeklyBoxOfficeList[5].movieNm+"</td></tr>"+
+                               "<tr><td align = center>"+ 7 + "</td><td>"+ msg.boxOfficeResult.weeklyBoxOfficeList[6].movieNm+"</td></tr>"+
+                               "<tr><td align = center>"+ 8 + "</td><td>"+ msg.boxOfficeResult.weeklyBoxOfficeList[7].movieNm+"</td></tr>"+
+                               "<tr><td align = center>"+ 9 + "</td><td>"+ msg.boxOfficeResult.weeklyBoxOfficeList[8].movieNm+"</td></tr>"+
+                               "<tr><td align = center>"+ 10 + "</td><td>"+ msg.boxOfficeResult.weeklyBoxOfficeList[9].movieNm+"</td></tr>"
+                               );
     });
     </script>
   </head>
   <body>
     <div id="top">
-      <div id="chick1">
-        <img src="./image/char_chick.PNG">
-      </div>
       <div id="topLocation">
         <input type="button" class="img-button" onclick="location.href='./afterLogin_main.html'">
         <button id="logout" onclick="location.href='./beforeLogin_main.html'">로그아웃</button>
@@ -113,6 +132,7 @@
         </div>
       </div>
     </div>
+    <div id="container">
     <div id="rankPos">
       <ul class="tabs">
         <li class="tab-link current" data-tab="tab-1">일간</li>
@@ -124,39 +144,44 @@
      
 
       <div id="tab-1" class="tab-content current">
-          
+        <table id = tabList1>
+        </table>
       </div>
       <div id="tab-2" class="tab-content">
-        
+        <table id = tabList2>
+        </table>
       </div>
       <div id="tab-3" class="tab-content">
-       
+        <table id = tabList3>
+        </table>
       </div>
       <div id="tab-4" class="tab-content">
-    
+
       </div>
       
      
     
     </div>
+  </div>
   </body>
 </html>
 <style type = "text/css">
+@import url(//fonts.googleapis.com/earlyaccess/jejuhallasan.css);
+* {font-family: 'Jeju Hallasan', cursive;}
 body {
-  background-color: #BDECB6;
-  min-width: 750px;
-}
-#chick1 {
-  position: absolute;
-  top: 70px;
-  left: 32%;
+  min-width: 1000px;
+  margin: -9px 0px -9px 0px;
+  /* overflow-x: hidden; */
 }
 #top {
-  height: 220px;
-  border-bottom: 1px solid rgb(95, 136, 101);
+  margin-top: -30px;
+  background-image: url("./image/Logo_background.png");
+  background-repeat: repeat;
+  background-size:cover;
+  height: 240px;
 }
 #topLocation {
-  margin: 30px 0px 30px 0px; 
+  margin: 15px 0px 30px 0px; 
 }
 input {
   vertical-align: middle;
@@ -166,13 +191,14 @@ input {
 .img-button {
   background: url( "./image/movie_logo.PNG" ) no-repeat;
   border: none;
-  width: 350px;
-  height: 185px;
+  width: 450px;
+  height: 200px;
+  margin-left: -100px;
   cursor: pointer;
 }
 img {
   height: 100px;
-  position: relative;
+  position: absolute;
   left: 39%;
 }
 #logout {
@@ -180,27 +206,25 @@ img {
   float: right;
   margin-right: 100px;
   cursor: pointer;
+  background-color: transparent !important;
 }
 #myList {
   margin-top: 180px;
   float: right;
   cursor: pointer;
+  background-color: transparent !important;
 }
 button {
   margin-right: 10px;
-  background-color: #BDECB6;
-  border: 1px solid rgb(95, 136, 101);
-  color: rgb(95, 136, 101);
+  border: none;
+  color: black;
   padding: 3px 6px 3px 6px;
+  background-color: transparent !important;
 }
 #left {
   width: 200px;
   margin: 30px 0px 40px 40px;
   text-align: center;
-}
-#leftLocation {
-  border-right: 1px solid rgb(95, 136, 101);
-  border-left: 1px solid rgb(95, 136, 101);
 }
 #movieRank {
   border: none;
@@ -210,7 +234,8 @@ button {
   margin-left: 100px;
 }
 #movieRank:hover {
-  color: #FFFFDD;
+  color: rgb(163, 136, 114);;
+  font-size: 16px;
 }
 #naver {
   border: none;
@@ -219,7 +244,8 @@ button {
   float: left;
 }
 #naver:hover {
-  color: #FFFFDD;
+  color: rgb(163, 136, 114);;
+  font-size: 16px;
 }
 #netflix {
   border: none;
@@ -228,17 +254,13 @@ button {
   float: left;
 }
 #netflix:hover {
-  color: #FFFFDD;
+  color: rgb(163, 136, 114);;
+  font-size: 16px;
 }
-#rankPos {
-  position: absolute;
-  min-width: 600px;
-  top: 300px;
-  left: 18%;
-  background-color: #FFFFDD;
-  height: 300px;
-  width: 65%;
-  margin-bottom: 100px;
+#container {
+  background-image: url("./image/main_div_background.png");
+  height: 1200px;
+  background-size: cover;
 }
 ul.tabs {
   margin:0px 60px 10px 60px;
@@ -249,18 +271,18 @@ ul.tabs {
 }
 ul.tabs li {
   background: none;
-  color: rgb(95, 136, 101); ;
+  color: black ;
   display: inline-block;
   padding: 10px 20px;
   cursor: pointer;
   font-size: 23px;
 }
 ul.tabs li.current {
-  background-image: url("./image/click_effect.png");
+  background-image: url("./image/popcon.png");
   background-repeat : no-repeat;
-  background-size : cover;
-  background-position: left center;
-  color: rgb(55, 80, 59); ;
+  background-size : contain;
+  background-position: center center;
+  color: black ;
 }
 .tab-content {
   display: none;
@@ -269,96 +291,80 @@ ul.tabs li.current {
 .tab-content.current {
   display: inherit;
 }
+#rankPos {
+  position: absolute;
+  min-width: 600px;
+  top: 300px;
+  left: 18%;
+  height: 1000px;
+  width: 65%;
+  margin-bottom: 100px;
+}
 #rankTitle {
   margin: 0px 60px 10px 60px;
   display: flex;
   justify-content: space-between;
 }
-#dayRank {
-  border: none;
-  font-size: 23px;
-  cursor: pointer;
-  background-color: #FFFFDD;
-  margin-top: 10px;
-}
-#dayRank:hover {
-  text-decoration: underline;
-}
-#weekRank {
-  border: none;
-  font-size: 23px;
-  cursor: pointer;
-  background-color: #FFFFDD;
-  margin-top: 10px;
-}
-#weekRank:hover {
-  text-decoration: underline;
-}
-#monthRank {
-  border: none;
-  font-size: 23px;
-  cursor: pointer;
-  background-color: #FFFFDD;
-  margin-top: 10px;
-}
-#monthRank:hover {
-  text-decoration: underline;
-}
-#dibsRank {
-  border: none;
-  font-size: 23px;
-  cursor: pointer;
-  background-color: #FFFFDD;
-  margin-top: 10px;
-}
-#dibsRank:hover {
-  text-decoration: underline;
-}
-hr {
-  border: 1px solid #BDECB6;
-}
-#ar {
-  position: relative;
-  top: -11px;
-  width: 100%;
-}
-#tabList {
+#tabList1{
   position: absolute;
-  top: 245px;
-  right : 0.5px;
+  top: 65px;
+  left : 53px;
+  height: 92%;
   table-layout:fixed;
+  border-collapse: collapse; 
+
 }
-#tabList td {
-  text-align: center;
-  width:100%;
+#tabList1 td{
   overflow : hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  font-size: 20px;
+  color: black ;
+  padding-right: 70px;
+  padding-left: 10px;
+  
 }
-#tabList2 {
+#tabList1 tr:first-child{
+}
+
+#tabList2{
   position: absolute;
-  top: 245px;
-  right : 0.5px;
+  top: 65px;
+  left : 53px;
+  height: 92%;
   table-layout:fixed;
+  border-collapse: collapse; 
+
 }
-#tabList2 td {
-  text-align: center;
-  width:100%;
+#tabList2 td{
   overflow : hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  font-size: 20px;
+  color: black ;
+  padding-right: 70px;
+  padding-left: 10px;
 }
-#tabList3 {
+#tabList2 tr:first-child{
+}
+#tabList3{
   position: absolute;
-  top: 245px;
-  right : 0.5px;
+  top: 65px;
+  left : 53px;
+  height: 92%;
   table-layout:fixed;
+  border-collapse: collapse; 
+
 }
-#tabList3 td {
-  text-align: center;
-  width:100%;
+#tabList3 td{
   overflow : hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  font-size: 20px;
+  color: black ;
+  padding-right: 70px;
+  padding-left: 10px;
+}
+#tabList3 tr:first-child{
 }
 </style>

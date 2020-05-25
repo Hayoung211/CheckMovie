@@ -11,6 +11,10 @@ router.get('/beforeLogin_main.html', function(req, res, next) {
 router.get('/beforeLogin_naver_genre.html', function(req, res, next) {
   res.render("users/beforeLogin_naver_genre");
 });
+//로그인전 네이버장르페이지리스트 불러오기
+router.get('/beforeLogin_naver_genre_show.html', function(req, res, next) {
+  res.render("users/beforeLogin_naver_genre_show");
+});
 //로그인전 넷플릭스페이지 불러오기
 router.get('/beforeLogin_netflix_genre.html', function(req, res, next) {
   res.render("users/beforeLogin_netflix_genre");

@@ -100,9 +100,6 @@
   <body>
     <!-- Chck Movie 로고, 회원가입,로그인, 메뉴 있는 top 부분 -->
     <div id="top">
-      <div id="chick1">
-        <img src="./image/char_chick.PNG">
-      </div>
       <div id="topLocation">
           <input type="button" class="img-button" onclick="location.reload()">
           <button id="login" onclick="location.href='./login.html'">로그인</button>
@@ -114,21 +111,31 @@
         </div>
       </div>
     </div>
+    <div id="container">
     <!-- 랭킹 띄워주는 부분 -->
     <div id="rankPos">
 
       <ul class="tabs">
-        <li class="tab-link current" data-tab="tab-1">일간</li>
-        <li class="tab-link" data-tab="tab-2">주간</li>
-        <li class="tab-link" data-tab="tab-3">주말</li>
-        <li class="tab-link" data-tab="tab-4">찜 한 영화</li>
+        <li class="tab-link current" data-tab="tab-1" style="margin-left:50px">일간</li>
+        <li class="tab-link" data-tab="tab-2" style="margin-left:91px">주간</li>
+        <li class="tab-link" data-tab="tab-3" style="margin-left:95px">주말</li>
+        <li class="tab-link" data-tab="tab-4" style="margin-left:70px">찜 한 영화</li>
       </ul>
-      <hr id="ar">
       <div>
         <button id="rankMore" onclick="location.href='./beforeLogin_ranking.html'">더보기</button>
       </div>
 
+      <table id="poster">
+        <tr>
+          <td id="posterPos1"></td>
+          <td id="posterPos2"></td>
+          <td id="posterPos3"></td>
+          <td id="posterPos4"></td>
+        </tr>
+      </table>
+
       <div id="tab-1" class="tab-content current">
+        
           <table id = "tabList">
             
           </table>
@@ -155,9 +162,8 @@
       <p id="naverTitle">네이버 장르</p>
       <!-- 문제. 아직 api를 받지 못해서 작성 못함 -->
       <button id="more" onclick="location.href='./beforeLogin_naver_genre.html'">더보기</button>
-      <hr id="hr">
       <div id="naverGenre">
-        <table>
+        <table id="naverGenreTable">
           <tr>
             <td id="naverGenre" onclick="location.href='./afterLogin_naver_genre_show.html'">- 드라마</td>
             <td id="naverGenre" onclick="location.href='./afterLogin_naver_genre_show.html'">- 판타지</td>
@@ -180,14 +186,16 @@
           </tr>
         </table>
       </div>
+      <div id="beam1">
+        <img src="./image/beam_project.png">
+      </div>
     </div>
     <!-- 넷플릭스 장르 보여주는 부분 -->
     <div id="netflixPos">
       <p id="netflixTitle">넷플릭스 장르</p>
       <button id="more" onclick="location.href='./beforeLogin_netflix_genre.html'">더보기</button>
-      <hr id="hr">
       <div id="netflixGenre">
-        <table>
+        <table id="netflixGenreTable">
           <tr>
             <td><a href="http://www.netflix.com/browse/genre/5685">- 한국 영화</a></td>
             <td><a href="http://www.netflix.com/browse/genre/6548">- 코미디</a></td>
@@ -210,25 +218,33 @@
           </tr>
         </table>
       </div>
+      
+      <div id="beam2">
+        <img src="./image/beam_project.png">
+      </div>
+    </div>
+    
     </div>
   </body>
 </html>
 <style type = "text/css">
+@import url(//fonts.googleapis.com/earlyaccess/jejuhallasan.css);
+* {font-family: 'Jeju Hallasan', cursive}
+* {font-weight: lighter;}
 body {
-  background-color: #BDECB6;
-  min-width: 750px;
-}
-#chick1 {
-  position: absolute;
-  top: 70px;
-  left: 33.9%;
+  min-width: 1000px;
+  margin: -9px 0px -9px 0px;
+  /* overflow-x: hidden; */
 }
 #top {
-  height: 220px;
-  border-bottom: 1px solid rgb(95, 136, 101); 
+  margin-top: -30px;
+  background-image: url("./image/Logo_background.png");
+  background-repeat: repeat;
+  background-size:cover;
+  height: 240px;
 }
 #topLocation {
-  margin: 30px 0px 30px 0px; 
+  margin: 15px 0px 30px 0px; 
 }
 input {
   vertical-align: middle;
@@ -238,8 +254,9 @@ input {
 .img-button {
   background: url( "./image/movie_logo.PNG" ) no-repeat;
   border: none;
-  width: 350px;
-  height: 185px;
+  width: 450px;
+  height: 200px;
+  margin-left: -100px;
   cursor: pointer;
 }
 img {
@@ -248,31 +265,29 @@ img {
   left: 39%;
 }
 #login {
-  margin-top: 180px;
+  margin-top: 200px;
   float: right;
   margin-right: 100px;
   cursor: pointer;
+  background-color: transparent !important;
 }
 #signup {
-  margin-top: 180px;
+  margin-top: 200px;
   float: right;
   cursor: pointer;
+  background-color: transparent !important;
 }
 button {
   margin-right: 10px;
-  background-color: #BDECB6;
-  border: 1px solid rgb(95, 136, 101);
-  color: rgb(95, 136, 101);
+  border: none;
+  color: black;
   padding: 3px 6px 3px 6px;
+  background-color: transparent !important;
 }
 #left {
   width: 200px;
   margin: 30px 0px 40px 40px;
   text-align: center;
-}
-#leftLocation {
-  border-right: 1px solid rgb(95, 136, 101);
-  border-left: 1px solid rgb(95, 136, 101);
 }
 #movieRank {
   border: none;
@@ -282,7 +297,8 @@ button {
   margin-left: 100px;
 }
 #movieRank:hover {
-  color: #FFFFDD;
+  color: rgb(163, 136, 114);
+  font-size: 16px;
 }
 #naver {
   border: none;
@@ -291,7 +307,8 @@ button {
   float: left;
 }
 #naver:hover {
-  color: #FFFFDD;
+  color: rgb(163, 136, 114);
+  font-size: 16px;
 }
 #netflix {
   border: none;
@@ -300,38 +317,62 @@ button {
   float: left;
 }
 #netflix:hover {
-  color: #FFFFDD;
+  color: rgb(163, 136, 114);
+  font-size: 16px;
+}
+#container {
+  background-image: url("./image/main_div_background.png");
+  height: 900px;
+  background-size: cover;
 }
 #rankPos {
   position: absolute;
-  min-width: 600px;
+  min-width: 800px;
   top: 300px;
   left: 15%;
-  background-color: #FFFFDD;
-  height: 300px;
+  height: 350px;
   width: 70%;
 }
+#poster {
+  margin-left: 3.9%;
+  margin-top: -20px; 
+  height: 170px;
+}
+#posterPos1 {
+  background-image: url("./image/test.jpg");
+  background-repeat: no-repeat;
+}
+#posterPos2 {
+  background-image: url("./image/test.jpg");
+  background-repeat: no-repeat;
+}
+#posterPos3 {
+  background-image: url("./image/test.jpg");
+  background-repeat: no-repeat;
+}
+#posterPos4 {
+  background-image: url("./image/test.jpg");
+  background-repeat: no-repeat;
+}
 ul.tabs {
-  margin:0px 60px 10px 60px;
+  /* margin:0px 80px 10px 90px; */
   padding: 0px;
   list-style : none;
-  display: flex;
-  justify-content: space-between;
 }
 ul.tabs li {
   background: none;
-  color: rgb(95, 136, 101); ;
+  color: black ;
   display: inline-block;
-  padding: 10px 20px;
+  padding: 10px 40px;
   cursor: pointer;
   font-size: 23px;
 }
 ul.tabs li.current {
-  background-image: url("./image/click_effect.png");
+  background-image: url("./image/popcon.png");
   background-repeat : no-repeat;
-  background-size : cover;
-  background-position: left center;
-  color: rgb(55, 80, 59); ;
+  background-size : contain;
+  background-position: center center;
+  color: black ;
 }
 .tab-content {
    display: none;
@@ -345,63 +386,22 @@ ul.tabs li.current {
   display: flex;
   justify-content: space-between;
 }
-#dayRank {
-  border: none;
-  font-size: 23px;
-  cursor: pointer;
-  background-color: #FFFFDD;
-  margin-top: 10px;
-}
-#dayRank:hover {
-  text-decoration: underline;
-}
-#weekRank {
-  border: none;
-  font-size: 23px;
-  cursor: pointer;
-  background-color: #FFFFDD;
-  margin-top: 10px;
-}
-#weekRank:hover {
-  text-decoration: underline;
-}
-#monthRank {
-  border: none;
-  font-size: 23px;
-  cursor: pointer;
-  background-color: #FFFFDD;
-  margin-top: 10px;
-}
-#monthRank:hover {
-  text-decoration: underline;
-}
-#dibsRank {
-  border: none;
-  font-size: 23px;
-  cursor: pointer;
-  background-color: #FFFFDD;
-  margin-top: 10px;
-}
-#dibsRank:hover {
-  text-decoration: underline;
-}
-hr {
-  border: 1px solid #BDECB6;
-}
 #naverPos {
   position: relative;
-  top: 405px;
-  left: 14.5%;
-  background-color: #FFFFDD;
-  height: 250px;
-  width: 32.5%;
+  top: 380px;
+  left: 15%;
+  background-image: url("./image/board.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 285px;
+  width: 400px;
   min-width: 282px;
 }
 #naverTitle {
   font-size: 23px;
-  color: rgb(95, 136, 101);
+  color: #FE9B86;
   margin: 15px 0px 10px 20px;
-  padding: 15px 0px 20px 0px;
+  padding: 80px 0px 20px 50px;
 }
 #rankMore {
   border: none;
@@ -417,7 +417,7 @@ hr {
   background-color: #FFFFDD;
   position: relative;
   float: right;
-  top: -50px;
+  margin: 110px 50px 0px 0px;
 }
 #hr {
   position: relative;
@@ -426,19 +426,20 @@ hr {
 }
 #netflixPos {
   position: relative;
+  top: 80px;
+  left: 55%;
+  background-image: url("./image/board.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 285px;
+  width: 400px;
   min-width: 282px;
-  top: 140px;
-  left: 53%;
-  background-color: #FFFFDD;
-  height: 250px;
-  width: 32.5%;
-  margin-bottom: 40px;
 }
 #netflixTitle {
   font-size: 23px;
-  color: rgb(95, 136, 101);
+  color: #FDC263;
   margin: 15px 0px 10px 20px;
-  padding: 15px 0px 20px 0px;
+  padding: 80px 0px 20px 50px;
 }
 table {
   position: absolute;
@@ -457,26 +458,31 @@ td {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  color: rgb(95, 136, 101);
+  color: black;
   text-decoration: none;
   font-size: 15px;
 }
 a {
-  color: rgb(95, 136, 101);
+  color: black;
   text-decoration: none;
   font-size: 15px;
 }
 a:hover {
-  color: rgb(55, 80, 59);
+  color: rgb(252, 162, 17);
 }
 #naverGenre:hover {
-  color:rgb(55, 80, 59);
+  color: rgb(255, 100, 149);
   cursor: pointer;
 }
-#ar {
-  position: relative;
-  top: -11px;
-  width: 100%;
+#naverGenreTable {
+  margin-top: 30px;
+  margin-left: 50px;
+  width: 300px;
+}
+#netflixGenreTable {
+  margin-top: 30px;
+  margin-left: 50px;
+  width: 300px;
 }
 #tabList {
   position: absolute;
@@ -517,5 +523,14 @@ a:hover {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-
+#beam1 {
+  position: relative;
+  top: 180px;
+  left: -22px;
+}
+#beam2 {
+  position: relative;
+  top: 180px;
+  left: -17px;
+}
 </style>

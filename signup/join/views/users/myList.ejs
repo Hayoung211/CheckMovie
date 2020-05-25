@@ -5,13 +5,10 @@
   </head>
   <body>
     <div id="top">
-      <div id="chick1">
-        <img src="./image/char_chick.PNG">
-      </div>
       <div id="topLocation">
         <input type="button" class="img-button" onclick="location.href='./afterLogin_main.html'">
         <button id="logout" onclick="location.href='./beforeLogin_main.html'">로그아웃</button>
-        <button id="myList" onclick="location.href=location.reload()">My 보관함</button>
+        <button id="myList" onclick="location.reload()">My 보관함</button>
         <div>
             <button id="movieRank" onclick="location.href='./afterLogin_ranking.html'">영화랭킹</button>
             <button id="naver" onclick="location.href='./afterLogin_naver_genre.html'">네이버</button>
@@ -19,6 +16,7 @@
         </div>
       </div>
     </div>
+    <div id="container">
     <div id="myListPos">
       <div id="myListTitle">
         <p id="moreMyList">My 보관함</p>
@@ -35,24 +33,27 @@
         </table>
       </div>
     </div>
+  </div>
   </body>
 </html>
 <style type = "text/css">
+@import url(//fonts.googleapis.com/earlyaccess/jejuhallasan.css);
+* {font-family: 'Jeju Hallasan', cursive}
+* {font-weight: lighter;}
 body {
-  background-color: #BDECB6;
-  min-width: 750px;
-}
-#chick1 {
-  position: absolute;
-  top: 70px;
-  left: 32%;
+  min-width: 1000px;
+  margin: -9px 0px -9px 0px;
+  /* overflow-x: hidden; */
 }
 #top {
-  height: 220px;
-  border-bottom: 1px solid rgb(95, 136, 101);
+  margin-top: -30px;
+  background-image: url("./image/Logo_background.png");
+  background-repeat: repeat;
+  background-size:cover;
+  height: 240px;
 }
 #topLocation {
-  margin: 30px 0px 30px 0px; 
+  margin: 15px 0px 30px 0px; 
 }
 input {
   vertical-align: middle;
@@ -62,13 +63,14 @@ input {
 .img-button {
   background: url( "./image/movie_logo.PNG" ) no-repeat;
   border: none;
-  width: 350px;
-  height: 185px;
+  width: 450px;
+  height: 200px;
+  margin-left: -100px;
   cursor: pointer;
 }
 img {
   height: 100px;
-  position: relative;
+  position: absolute;
   left: 39%;
 }
 #logout {
@@ -76,27 +78,25 @@ img {
   float: right;
   margin-right: 100px;
   cursor: pointer;
+  background-color: transparent !important;
 }
 #myList {
   margin-top: 180px;
   float: right;
   cursor: pointer;
+  background-color: transparent !important;
 }
 button {
   margin-right: 10px;
-  background-color: #BDECB6;
-  border: 1px solid rgb(95, 136, 101);
-  color: rgb(95, 136, 101);
+  border: none;
+  color: black;
   padding: 3px 6px 3px 6px;
+  background-color: transparent !important;
 }
 #left {
   width: 200px;
   margin: 30px 0px 40px 40px;
   text-align: center;
-}
-#leftLocation {
-  border-right: 1px solid #FFFFDD;
-  border-left: 1px solid #FFFFDD;
 }
 #movieRank {
   border: none;
@@ -106,7 +106,8 @@ button {
   margin-left: 100px;
 }
 #movieRank:hover {
-  color: #FFFFDD;
+  color: rgb(163, 136, 114);
+  font-size: 16px;
 }
 #naver {
   border: none;
@@ -115,7 +116,8 @@ button {
   float: left;
 }
 #naver:hover {
-  color: #FFFFDD;
+  color: rgb(163, 136, 114);
+  font-size: 16px;
 }
 #netflix {
   border: none;
@@ -124,7 +126,13 @@ button {
   float: left;
 }
 #netflix:hover {
-  color: #FFFFDD;
+  color: rgb(163, 136, 114);
+  font-size: 16px;
+}
+#container {
+  background-image: url("./image/main_div_background.png");
+  height: 830px;
+  background-size: cover;
 }
 #myListPos {
   position: absolute;
