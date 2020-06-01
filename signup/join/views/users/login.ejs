@@ -18,6 +18,9 @@
     </div>
     <div id="container">
     <div id="loginPos">
+      <div style="margin: -10px 0px 20px 0px;">
+        <p id="mini">CheckMovie 회원 이용가</p>
+      </div>
       <p id="loginTitle">로그인</p>
       <hr id="hr">
       <div>
@@ -49,6 +52,16 @@
 @import url(//fonts.googleapis.com/earlyaccess/jejuhallasan.css);
 * {font-family: 'Jeju Hallasan', cursive}
 * {font-weight: lighter;}
+input[type=password] {
+  font-family:cursive;
+  width: 170px;
+}
+button:focus {
+  outline: 0 !important;
+}
+input:focus {
+  outline: 0 !important;
+}
 body {
   min-width: 1000px;
   margin: -9px 0px -9px 0px;
@@ -138,6 +151,9 @@ button {
   color: rgb(163, 136, 114);
   font-size: 16px;
 }
+#mini {
+  float: right;
+}
 #container {
   background-image: url("./image/main_div_background.png");
   height: 670px;
@@ -147,27 +163,28 @@ button {
   position: relative;
   top: 80px;
   left: 35%;
-  background-color: #FFFFDD;
-  height: 400px;
+  background-color: white;
+  border: 4px solid black;
+  height: 500px;
   width: 35%;
   margin-bottom: 50px;
 }
 #loginTitle {
   font-size: 23px;
-  color: rgb(95, 136, 101);
-  padding: 12px 0px 0px 20px;
-}
-#hr {
-  border: 1px solid #BDECB6;
+  color: black;
+  padding: 10px 0px 10px 20px;
+  margin-top: -5px;
 }
 #hr {
   position: relative;
   top: -10px;
   width: 100%;
+  border: 1px dashed black;
+  margin-bottom: 30px;
 }
 #idPw {
   font-size: 23px;
-  color: rgb(95, 136, 101);
+  color: black;
   padding-left: 15px;
 }
 #userid {
@@ -177,7 +194,6 @@ button {
 #pwd {
   margin-left: -120px;
   height: 30px;
-  color:black;
 }
 table {
   position: relative;
@@ -185,22 +201,26 @@ table {
   width: 100%;
 }
 td {
+  padding-top: 10px;
   padding-left: 10px;
   padding-bottom: 10px;
   text-align: left;
 }
 .doLogin {
-  background-color: #FFFFDD;
+  background-color: white;
   border: none;
-  color: rgb(95, 136, 101);
+  color: black;
   font-size: 20px;
+  width: 300px;
+  height: 60px;
   cursor: pointer;
-  border: 1px solid rgb(95, 136, 101);
   text-align: center;
   margin-top: 10px;
+  margin-left: -120px;
 }
 .doLogin:hover {
-  color: #BDECB6;
-  font-weight: 700;
+  background-image: url("./image/barcode.PNG");
+  font-size: 0px;
+  background-size: 300px 60px;
 }
 </style>

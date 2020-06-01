@@ -27,7 +27,7 @@
       var month = m + "";
     }
 
-    var d = dt.getDate() - 1;
+    var d = dt.getDate()-1;
     if (d < 10) {
       var day = "0" + d;
     } else {
@@ -48,29 +48,78 @@
                                 msg.boxOfficeResult.dailyBoxOfficeList[1].movieNm + "</td><td>"+
                                 msg.boxOfficeResult.dailyBoxOfficeList[2].movieNm+"</td><td>"+
                                 msg.boxOfficeResult.dailyBoxOfficeList[3].movieNm+"</td></tr>");
+      $.ajax({
+        method: "GET",
+        url:"http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_xml2.jsp?collection=kmdb_new2&ServiceKey=BP9D99782743Q1LL8A07&title="+msg.boxOfficeResult.dailyBoxOfficeList[0].movieNm
+      
+      })
+      .done(function (msg2){
+        console.log(msg2);
+        var post = $(msg2).find('posters').text();
+        if(post) {
+          var list1 = post.split("|");
+        }
+       $("#post").append('<img src="'+list1[6]+'"/>');
+        
+      });
+      $.ajax({
+        method: "GET",
+        url:"http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_xml2.jsp?collection=kmdb_new2&ServiceKey=BP9D99782743Q1LL8A07&title="+msg.boxOfficeResult.dailyBoxOfficeList[1].movieNm
+      
+      })
+      .done(function (msg3){
+        console.log(msg3);
+        var post2 = $(msg3).find('posters').text();
+        if(post2) {
+          var list2 = post2.split("|");
+        }
+        $("#post2").append('<img src="'+list2[0]+'"/>');
+        
+      });
+      $.ajax({
+        method: "GET",
+        url:"http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_xml2.jsp?collection=kmdb_new2&ServiceKey=BP9D99782743Q1LL8A07&title="+msg.boxOfficeResult.dailyBoxOfficeList[2].movieNm
+      
+      })
+      .done(function (msg4){
+        console.log(msg4);
+        var post3 = $(msg4).find('posters').text();
+        if(post3) {
+          var list3 = post3.split("|");
+        }
+        $("#post3").append('<img src="'+list3[0]+'"/>');
+        
+      });
+      $.ajax({
+        method: "GET",
+        url:"http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_xml2.jsp?collection=kmdb_new2&ServiceKey=BP9D99782743Q1LL8A07&title="+msg.boxOfficeResult.dailyBoxOfficeList[3].movieNm
+      
+      })
+      .done(function (msg5){
+        console.log(msg5);
+        var post4 = $(msg5).find('posters').text();
+        if(post4) {
+          var list4 = post4.split("|");
+        }
+        $("#post4").append('<img src="'+list4[0]+'"/>');
+        
+      });
     });
     </script>
 
     <script>
-    var dt = new Date();
-    var m = dt.getMonth() + 1;
-    if (m < 10) {
-      var month = "0" + m;
-    } else {
-      var month = m + "";
-    }
+    var nowDate = new Date();
+    var weekDate = nowDate.getTime() - (7*24*60*60*1000);
+    nowDate.setTime(weekDate);
 
-    var d = dt.getDate() - 7;
-    if (d < 10) {
-      var day = "0" + d;
-    } else {
-      var day = d + "";
-    }
+    var weekYear = nowDate.getFullYear();
+    var weekMonth = nowDate.getMonth() + 1;
+    var weekDay = nowDate.getDate();
 
-    var y = dt.getFullYear();
-    var year = y + "";
+    if(weekMonth < 10) { weekMonth = "0" + weekMonth; }
+    if(weekDay < 10) { weekDay = "0" + weekDay; }
 
-    var result2 = year + month + day;
+    var result2 = weekYear + weekMonth + weekDay;
     $.ajax({ 
     method: "GET",
     url: "http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchWeeklyBoxOfficeList.json?key=0c0a5e530eba657434be85f5e39f5f02&weekGb=0&targetDt="+result2
@@ -81,6 +130,63 @@
                                 msg.boxOfficeResult.weeklyBoxOfficeList[1].movieNm + "</td><td>"+
                                 msg.boxOfficeResult.weeklyBoxOfficeList[2].movieNm+"</td><td>"+
                                 msg.boxOfficeResult.weeklyBoxOfficeList[3].movieNm+"</td></tr>");
+
+      $.ajax({
+        method: "GET",
+        url:"http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_xml2.jsp?collection=kmdb_new2&ServiceKey=BP9D99782743Q1LL8A07&title="+msg.boxOfficeResult.weeklyBoxOfficeList[0].movieNm
+      
+      })
+      .done(function (msg2){
+        console.log(msg2);
+        var post = $(msg2).find('posters').text();
+        if(post) {
+          var list1 = post.split("|");
+        }
+       $("#post_week").append('<img src="'+list1[0]+'"/>');
+        
+      });
+      $.ajax({
+        method: "GET",
+        url:"http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_xml2.jsp?collection=kmdb_new2&ServiceKey=BP9D99782743Q1LL8A07&title="+msg.boxOfficeResult.weeklyBoxOfficeList[01].movieNm
+      
+      })
+      .done(function (msg3){
+        console.log(msg3);
+        var post2 = $(msg3).find('posters').text();
+        if(post) {
+          var list2 = post2.split("|");
+        }
+       $("#post_week2").append('<img src="'+list2[0]+'"/>');
+        
+      });
+      $.ajax({
+        method: "GET",
+        url:"http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_xml2.jsp?collection=kmdb_new2&ServiceKey=BP9D99782743Q1LL8A07&title="+msg.boxOfficeResult.weeklyBoxOfficeList[2].movieNm
+      
+      })
+      .done(function (msg4){
+        console.log(msg4);
+        var post3 = $(msg4).find('posters').text();
+        if(post3) {
+          var list3 = post3.split("|");
+        }
+       $("#post_week3").append('<img src="'+list3[0]+'"/>');
+        
+      });
+      $.ajax({
+        method: "GET",
+        url:"http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_xml2.jsp?collection=kmdb_new2&ServiceKey=BP9D99782743Q1LL8A07&title="+msg.boxOfficeResult.weeklyBoxOfficeList[3].movieNm
+      
+      })
+      .done(function (msg5){
+        console.log(msg5);
+        var post4 = $(msg5).find('posters').text();
+        if(post4) {
+          var list4 = post4.split("|");
+        }
+       $("#post_week4").append('<img src="'+list4[0]+'"/>');
+        
+      });
     });
   
     $.ajax( {
@@ -94,6 +200,63 @@
                                 msg.boxOfficeResult.weeklyBoxOfficeList[1].movieNm + "</td><td>"+
                                 msg.boxOfficeResult.weeklyBoxOfficeList[2].movieNm+"</td><td>"+
                                 msg.boxOfficeResult.weeklyBoxOfficeList[3].movieNm+"</td></tr>");
+
+      $.ajax({
+        method: "GET",
+        url:"http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_xml2.jsp?collection=kmdb_new2&ServiceKey=BP9D99782743Q1LL8A07&title="+msg.boxOfficeResult.weeklyBoxOfficeList[0].movieNm
+      
+      })
+      .done(function (msg2){
+        console.log(msg2);
+        var post = $(msg2).find('posters').text();
+        if(post) {
+          var list1 = post.split("|");
+        }
+       $("#post_week_week").append('<img src="'+list1[0]+'"/>');
+        
+      });
+      $.ajax({
+        method: "GET",
+        url:"http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_xml2.jsp?collection=kmdb_new2&ServiceKey=BP9D99782743Q1LL8A07&title="+msg.boxOfficeResult.weeklyBoxOfficeList[1].movieNm
+      
+      })
+      .done(function (msg3){
+        console.log(msg3);
+        var post2 = $(msg3).find('posters').text();
+        if(post2) {
+          var list2 = post2.split("|");
+        }
+       $("#post_week_week2").append('<img src="'+list2[0]+'"/>');
+        
+      });
+      $.ajax({
+        method: "GET",
+        url:"http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_xml2.jsp?collection=kmdb_new2&ServiceKey=BP9D99782743Q1LL8A07&title="+msg.boxOfficeResult.weeklyBoxOfficeList[2].movieNm
+      
+      })
+      .done(function (msg4){
+        console.log(msg4);
+        var post3 = $(msg4).find('posters').text();
+        if(post3) {
+          var list3 = post3.split("|");
+        }
+       $("#post_week_week3").append('<img src="'+list3[0]+'"/>');
+        
+      });
+      $.ajax({
+        method: "GET",
+        url:"http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_xml2.jsp?collection=kmdb_new2&ServiceKey=BP9D99782743Q1LL8A07&title="+msg.boxOfficeResult.weeklyBoxOfficeList[3].movieNm
+      
+      })
+      .done(function (msg5){
+        console.log(msg5);
+        var post4 = $(msg5).find('posters').text();
+        if(post4) {
+          var list4 = post4.split("|");
+        }
+       $("#post_week_week4").append('<img src="'+list4[0]+'"/>');
+        
+      });
     });
     </script>
   </head>
@@ -135,27 +298,51 @@
       </table>
 
       <div id="tab-1" class="tab-content current">
+        <table id = "poster_image1">
+          <tr>
+            <td id = "post"></td>
+            <td id = "post2"></td>
+            <td id = "post3"></td>
+            <td id = "post4"></td>
+          </tr>
+        </table>
+        <table id = "tabList">
         
-          <table id = "tabList">
-            
-          </table>
+        </table>
       </div>
+      
       <div id="tab-2" class="tab-content">
+        <table id = "poster_image2">
+          <tr>
+            <td id ="post_week"></td>
+            <td id ="post_week2"></td>
+            <td id ="post_week3"></td>
+            <td id ="post_week4"></td>
+          </tr>
+        </table>
         <table id = "tabList2">
 
         </table>
       </div>
+
       <div id="tab-3" class="tab-content">
+        <table id = "poster_image3">
+          <tr>
+            <td id ="post_week_week"></td>
+            <td id ="post_week_week2"></td>
+            <td id ="post_week_week3"></td>
+            <td id ="post_week_week4"></td>
+          </tr>
+        </table>
         <table id = "tabList3">
 
         </table>
       </div>
+
+
       <div id="tab-4" class="tab-content">
     
-      </div>
-      
-     
-    
+      </div>  
     </div>
     <!-- 네이버 장르 보여주는 부분 -->
     <div id="naverPos">
@@ -234,7 +421,12 @@
 body {
   min-width: 1000px;
   margin: -9px 0px -9px 0px;
-  /* overflow-x: hidden; */
+}
+button:focus {
+  outline: 0 !important;
+}
+input:focus {
+  outline: 0 !important;
 }
 #top {
   margin-top: -30px;
@@ -335,8 +527,8 @@ button {
 }
 #poster {
   margin-left: 3.9%;
-  margin-top: -20px; 
-  height: 170px;
+  margin-top: 21px; 
+  height: 180px;
 }
 #posterPos1 {
   background-image: url("./image/test.jpg");
@@ -353,6 +545,66 @@ button {
 #posterPos4 {
   background-image: url("./image/test.jpg");
   background-repeat: no-repeat;
+}
+#poster_image1 {
+  position: absolute;
+  top: 60px;
+  left : -10px;
+  height: 190px;
+  width : 100%;
+  table-layout:fixed;
+}
+#poster_image2 {
+  position: absolute;
+  top: 60px;
+  left : -10px;
+  height: 190px;
+  width : 100%;
+  table-layout:fixed;
+}
+#poster_image3 {
+  position: absolute;
+  top: 60px;
+  left : -10px;
+  height: 190px;
+  width : 100%;
+  table-layout:fixed;
+}
+#post{
+  position: relative;
+}
+#post2{
+  position: relative;
+}
+#post3{
+  position: relative;
+}
+#post4{
+  position: relative;
+}
+#post_week{
+  position: relative;
+}
+#post_week2{
+  position: relative;
+}
+#post_week3{
+  position: relative;
+}
+#post_week4{
+  position: relative;
+}
+#post_week_week{
+  position: relative;
+}
+#post_week_week2{
+  position: relative;
+}
+#post_week_week3{
+  position: relative;
+}
+#post_week_week4{
+  position: relative;
 }
 ul.tabs {
   /* margin:0px 80px 10px 90px; */
@@ -388,7 +640,7 @@ ul.tabs li.current {
 }
 #naverPos {
   position: relative;
-  top: 380px;
+  top: 450px;
   left: 15%;
   background-image: url("./image/board.png");
   background-repeat: no-repeat;
@@ -409,7 +661,7 @@ ul.tabs li.current {
   background-color: #FFFFDD;
   position: relative;
   float: right;
-  bottom: -200px;
+  bottom: -250px;
 }
 #more {
   border: none;
@@ -426,7 +678,7 @@ ul.tabs li.current {
 }
 #netflixPos {
   position: relative;
-  top: 80px;
+  top: 152px;
   left: 55%;
   background-image: url("./image/board.png");
   background-repeat: no-repeat;
@@ -486,7 +738,7 @@ a:hover {
 }
 #tabList {
   position: absolute;
-  top: 245px;
+  top: 300px;
   right : 0.5px;
   table-layout:fixed;
 }
@@ -499,7 +751,7 @@ a:hover {
 }
 #tabList2 {
   position: absolute;
-  top: 245px;
+  top: 300px;
   right : 0.5px;
   table-layout:fixed;
 }
@@ -512,7 +764,7 @@ a:hover {
 }
 #tabList3 {
   position: absolute;
-  top: 245px;
+  top: 300px;
   right : 0.5px;
   table-layout:fixed;
 }
