@@ -1,5 +1,36 @@
 <!DOCTYPE html>
 <html>
+  <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+    crossorigin="anonymous">
+    </script>
+    <script>
+      $(function(){ 
+        $("#alert-success").hide(); 
+        $("#alert-danger").hide(); 
+        $("input").keyup(function(){ 
+          var pwd1=$("#pwd").val(); 
+          var pwd2=$("#pwdCheck").val(); 
+          if(pwd1 != "" || pwd2 != ""){ 
+            if(pwd1 == pwd2){ 
+              $("#alert-success").show(); 
+              $("#alert-danger").hide(); 
+              $("#submit").removeAttr("disabled"); 
+            }else{ 
+              $("#alert-success").hide(); 
+              $("#alert-danger").show(); 
+              $("#submit").attr("disabled", "disabled"); 
+            } 
+          } 
+        }); 
+      });
+      function sign_up() {
+        var pwd1=$("#pwd").val(); 
+        var pwd2=$("#pwdCheck").val(); 
+        if(pwd1 != pwd2) {
+          alert("비밀번호가 다릅니다!");
+        }
+      }
+      </script>
   <head>
     <title>Check Movie</title>
   </head>
@@ -42,7 +73,11 @@
               <td><input id='pwdCheck' type='password' name='passwordc'/></td>
             </tr>
             <tr>
-              <td colspan="2"><input class="doSignup" type="submit" value="회원가입"></td>
+              <td class = "alert alert-success" id = "alert-success">비밀번호가 일치합니다.</td>
+              <td class = "alert alert-danger" id = "alert-danger">비밀번호가 일치하지 않습니다.</td>
+            </tr>
+            <tr>
+              <td colspan="2"><input class="doSignup" type="button" value="회원가입" onclick="sign_up()"></td>
             </tr>
           </table>
         </form>
@@ -231,5 +266,15 @@ td {
   background-image: url("./image/barcode.PNG");
   font-size: 0px;
   background-size: 300px 60px;
+}
+#alert-success{
+  position: relative;
+  color :blue;
+  left: 250px;
+}
+#alert-danger{
+  position: relative;
+  color : red;
+  left: 250px;
 }
 </style>

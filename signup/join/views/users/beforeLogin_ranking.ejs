@@ -17,113 +17,6 @@
       })
     })
     </script>
-
-    <script> //일간
-    var dt = new Date();
-    var m = dt.getMonth() + 1;
-    if (m < 10) {
-      var month = "0" + m;
-    } else {
-      var month = m + "";
-    }
-
-    var d = dt.getDate() - 1;
-    if (d < 10) {
-      var day = "0" + d;
-    } else {
-      var day = d + "";
-    }
-
-    var y = dt.getFullYear();
-    var year = y + "";
-
-    var result = year + month + day;
-    
-    $.ajax( {
-      method: "GET",
-      url: "http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=0c0a5e530eba657434be85f5e39f5f02&PerPage=2&targetDt="+result  
-    })
-    .done(function (msg) {
-      console.log(msg);
-      
-      $( "#tabList1" ).append( "<tr><td align = center width = 93 >순위</td><td width = 624 >영화 제목</td></tr>"+
-                               "<tr><td align = center>"+ 1 + "</td><td>"+ msg.boxOfficeResult.dailyBoxOfficeList[0].movieNm+"</td></tr>"+
-                               "<tr><td align = center>"+ 2 + "</td><td>"+ msg.boxOfficeResult.dailyBoxOfficeList[1].movieNm+"</td></tr>"+
-                               "<tr><td align = center>"+ 3 + "</td><td>"+ msg.boxOfficeResult.dailyBoxOfficeList[2].movieNm+"</td></tr>"+
-                               "<tr><td align = center>"+ 4 + "</td><td>"+ msg.boxOfficeResult.dailyBoxOfficeList[3].movieNm+"</td></tr>"+
-                               "<tr><td align = center>"+ 5 + "</td><td>"+ msg.boxOfficeResult.dailyBoxOfficeList[4].movieNm+"</td></tr>"+
-                               "<tr><td align = center>"+ 6 + "</td><td>"+ msg.boxOfficeResult.dailyBoxOfficeList[5].movieNm+"</td></tr>"+
-                               "<tr><td align = center>"+ 7 + "</td><td>"+ msg.boxOfficeResult.dailyBoxOfficeList[6].movieNm+"</td></tr>"+
-                               "<tr><td align = center>"+ 8 + "</td><td>"+ msg.boxOfficeResult.dailyBoxOfficeList[7].movieNm+"</td></tr>"+
-                               "<tr><td align = center>"+ 9 + "</td><td>"+ msg.boxOfficeResult.dailyBoxOfficeList[8].movieNm+"</td></tr>"+
-                               "<tr><td align = center>"+ 10 + "</td><td>"+ msg.boxOfficeResult.dailyBoxOfficeList[9].movieNm+"</td></tr>");
-                              
-                                
-                                
-    });
-    </script>
-
-    <script>
-    var dt = new Date();
-    var m = dt.getMonth() + 1;
-    if (m < 10) {
-      var month = "0" + m;
-    } else {
-      var month = m + "";
-    }
-
-    var d = dt.getDate() - 7;
-    if (d < 10) {
-      var day = "0" + d;
-    } else {
-      var day = d + "";
-    }
-
-    var y = dt.getFullYear();
-    var year = y + "";
-
-    var result2 = year + month + day;
-    $.ajax({ 
-    method: "GET",
-    url: "http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchWeeklyBoxOfficeList.json?key=0c0a5e530eba657434be85f5e39f5f02&weekGb=0&targetDt="+result2
-    })
-    .done(function (msg) {
-      console.log(msg);
-      
-      $( "#tabList2" ).append( "<tr><td align = center width = 93>순위</td><td width = 624>영화 제목</td></tr>"+
-                               "<tr><td align = center>"+ 1 + "</td><td>"+ msg.boxOfficeResult.weeklyBoxOfficeList[0].movieNm+"</td></tr>"+
-                               "<tr><td align = center>"+ 2 + "</td><td>"+ msg.boxOfficeResult.weeklyBoxOfficeList[1].movieNm+"</td></tr>"+
-                               "<tr><td align = center>"+ 3 + "</td><td>"+ msg.boxOfficeResult.weeklyBoxOfficeList[2].movieNm+"</td></tr>"+
-                               "<tr><td align = center>"+ 4 + "</td><td>"+ msg.boxOfficeResult.weeklyBoxOfficeList[3].movieNm+"</td></tr>"+
-                               "<tr><td align = center>"+ 5 + "</td><td>"+ msg.boxOfficeResult.weeklyBoxOfficeList[4].movieNm+"</td></tr>"+
-                               "<tr><td align = center>"+ 6 + "</td><td>"+ msg.boxOfficeResult.weeklyBoxOfficeList[5].movieNm+"</td></tr>"+
-                               "<tr><td align = center>"+ 7 + "</td><td>"+ msg.boxOfficeResult.weeklyBoxOfficeList[6].movieNm+"</td></tr>"+
-                               "<tr><td align = center>"+ 8 + "</td><td>"+ msg.boxOfficeResult.weeklyBoxOfficeList[7].movieNm+"</td></tr>"+
-                               "<tr><td align = center>"+ 9 + "</td><td>"+ msg.boxOfficeResult.weeklyBoxOfficeList[8].movieNm+"</td></tr>"+
-                               "<tr><td align = center>"+ 10 + "</td><td>"+ msg.boxOfficeResult.weeklyBoxOfficeList[9].movieNm+"</td></tr>");
-    });
-  
-    $.ajax( {
-      method: "GET",
-      url: "http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchWeeklyBoxOfficeList.json?key=0c0a5e530eba657434be85f5e39f5f02&weekGb=1&targetDt="+result2
-    })
-  
-    .done(function (msg) {
-      console.log(msg);
-      $( "#tabList3" ).append("<tr><td align = center width = 93>순위</td><td width = 624>영화 제목</td></tr>"+
-                               "<tr><td align = center>"+ 1 + "</td><td>"+ msg.boxOfficeResult.weeklyBoxOfficeList[0].movieNm+"</td></tr>"+
-                               "<tr><td align = center>"+ 2 + "</td><td>"+ msg.boxOfficeResult.weeklyBoxOfficeList[1].movieNm+"</td></tr>"+
-                               "<tr><td align = center>"+ 3 + "</td><td>"+ msg.boxOfficeResult.weeklyBoxOfficeList[2].movieNm+"</td></tr>"+
-                               "<tr><td align = center>"+ 4 + "</td><td>"+ msg.boxOfficeResult.weeklyBoxOfficeList[3].movieNm+"</td></tr>"+
-                               "<tr><td align = center>"+ 5 + "</td><td>"+ msg.boxOfficeResult.weeklyBoxOfficeList[4].movieNm+"</td></tr>"+
-                               "<tr><td align = center>"+ 6 + "</td><td>"+ msg.boxOfficeResult.weeklyBoxOfficeList[5].movieNm+"</td></tr>"+
-                               "<tr><td align = center>"+ 7 + "</td><td>"+ msg.boxOfficeResult.weeklyBoxOfficeList[6].movieNm+"</td></tr>"+
-                               "<tr><td align = center>"+ 8 + "</td><td>"+ msg.boxOfficeResult.weeklyBoxOfficeList[7].movieNm+"</td></tr>"+
-                               "<tr><td align = center>"+ 9 + "</td><td>"+ msg.boxOfficeResult.weeklyBoxOfficeList[8].movieNm+"</td></tr>"+
-                               "<tr><td align = center>"+ 10 + "</td><td>"+ msg.boxOfficeResult.weeklyBoxOfficeList[9].movieNm+"</td></tr>"
-                               );
-    });
-    </script>
   </head>
   <body>
     <div id="top">
@@ -147,26 +40,56 @@
         <li class="tab-link" data-tab="tab-3">주말</li>
         <li class="tab-link" data-tab="tab-4">찜 한 영화</li>
       </ul>
-      <hr id="ar">
-     
 
-      <div id="tab-1" class="tab-content current">
-         <table id = tabList1>
+      
+        <!-- <div id="ranking_poster">
+          <img src="./image/ranking_poster.png" style="width: 900px; height: 200px;">
+        </div> -->
+      <div>
+        <table style="width: 100%;">
+          <tr id="ranking_poster">
+            <td style="padding-left: 6px;">poster1</td>
+            <td>poster2</td>
+            <td>poster3</td>
+            <td>poster4</td>
+            <td>poster5</td>
+          </tr>
+          <tr style="text-align: center;">
+            <td style="padding-top: 20px;">제목</td>
+            <td style="padding-top: 20px;">제목</td>
+            <td style="padding-top: 20px;">제목</td>
+            <td style="padding-top: 20px;">제목</td>
+            <td style="padding-top: 20px;">제목</td>
+          </tr>
         </table>
       </div>
-      <div id="tab-2" class="tab-content">
-        <table id = tabList2>
-        </table> 
+
+      <div id="flim">
+        <img src="./image/flim.png" style="width: 500px; height: 200px;">
       </div>
-      <div id="tab-3" class="tab-content">
-        <table id = tabList3>
-        </table> 
+
+      <div id="popcon">
+        <img src="./image/popcon_ranking.png" style="width: 200px; height: 180px;">
       </div>
-      <div id="tab-4" class="tab-content">
-    
-      </div>
-      
      
+      <div style="margin-top: -170px;">
+        <table style="width: 100%;">
+          <tr id="ranking_poster">
+            <td style="padding-left: 6px;">poster1</td>
+            <td>poster2</td>
+            <td>poster3</td>
+            <td>poster4</td>
+            <td>poster5</td>
+          </tr>
+          <tr style="text-align: center;">
+            <td style="padding-top: 20px;">제목</td>
+            <td style="padding-top: 20px;">제목</td>
+            <td style="padding-top: 20px;">제목</td>
+            <td style="padding-top: 20px;">제목</td>
+            <td style="padding-top: 20px;">제목</td>
+          </tr>
+        </table>
+      </div>
     </div>
     </div>
   </body>
@@ -208,11 +131,11 @@ input {
   margin-left: -100px;
   cursor: pointer;
 }
-img {
+/* img {
   height: 100px;
   position: absolute;
   left: 39%;
-}
+} */
 #login {
   margin-top: 200px;
   float: right;
@@ -275,7 +198,7 @@ button {
   background-size: cover;
 }
 ul.tabs {
-  margin:0px 60px 10px 60px;
+  margin:0px 60px 30px 60px;
   padding: 0px;
   list-style : none;
   display: flex;
@@ -307,16 +230,17 @@ ul.tabs li.current {
   position: absolute;
   min-width: 600px;
   top: 300px;
-  left: 18%;
+  left: 15%;
   height: 900px;
-  width: 65%;
+  width: 70%;
+  min-width: 750px;
 }
 #rankTitle {
   margin: 0px 60px 10px 60px;
   display: flex;
   justify-content: space-between;
 }
-#tabList1{
+/* #tabList1{
   position: absolute;
   top: 65px;
   left : 53px;
@@ -377,5 +301,23 @@ ul.tabs li.current {
   padding-left: 10px;
 }
 #tabList3 tr:first-child{
+} */
+
+#ranking_poster {
+  background-image: url('../users/image/ranking_poster.png'); 
+  background-repeat: no-repeat;
+  background-size: contain; 
+  height: 200px;
+}
+#flim {
+  position: relative;
+  top: 10px;
+  left: -100px;
+}
+#popcon {
+  position: relative;
+  top: -230px;
+  right: -800px;
+  width: 100px;
 }
 </style>
