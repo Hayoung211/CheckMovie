@@ -16,11 +16,9 @@
       genre = document.getElementById('genre').value;
     }
     
-    
     $(document).ready(function(){
         $('#genre_get').submit(function(){
           movie_title = document.getElementById("movie_title").value;
-          alert(movie_title);
       });
     });
 
@@ -41,9 +39,6 @@
     }
     function next_button() {
       data_start += 10;
-      console.log(genre);
-      console.log(data_start);
-      console.log(data_total);
       
       if(data_start > data_total) {
         alert("마지막 페이지 입니다!");
@@ -147,8 +142,12 @@
           <% } %>
           </form>
         </table>
-        <button class="pre" onclick="prev_button()">이전</button>
-        <button class="next" onclick="next_button()">다음</button>
+        <form action="/users/search/movie/prev" method="GET">
+          <button class="pre" onclick="prev_button()">이전</button>
+        </form>
+        <form action="/users/search/movie/next" method="GET">
+          <button class="next" onclick="next_button()">다음</button>
+        </form>
       </div>
     </div>
   </div>

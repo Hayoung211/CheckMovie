@@ -3,12 +3,54 @@
   <head>
     <title>Check Movie</title>
   </head>
+  <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+    crossorigin="anonymous">
+  </script>
+  <script>
+    var data_start;
+    var data_total;
+    var genre;
+    var movie_title;
+
+    function genreChange() {
+      genre = document.getElementById('genre').value;
+    }
+    
+    $(document).ready(function(){
+        $('#genre_get').submit(function(){
+          movie_title = document.getElementById("movie_title").value;
+      });
+    });
+
+    $.ajax({
+      async: false, // This will make call synchronous
+      url: "./result/result.json",
+      dataType: "json",
+      success: function(json) {
+        data_start = json.start;
+        data_total = json.total;
+      }
+    });
+
+    function prev_button() {
+      if(data_start == 1) {
+        alert("첫 페이지 입니다");
+      }
+    }
+    function next_button() {
+      data_start += 10;
+      
+      if(data_start > data_total) {
+        alert("마지막 페이지 입니다!");
+      }
+    }
+  </script>
   <body>
     <div id="top">
       <div id="topLocation">
         <input type="button" class="img-button" onclick="location.href='./afterLogin_main.html'">
         <button id="logout" onclick="location.href='./beforeLogin_main.html'">로그아웃</button>
-        <button id="myList" onclick="location.href='./myList.html'">My 보관함</button>
+          <button id="myList" onclick="location.href='./myList.html'">My 보관함</button>
         <div>
           <button id="movieRank" onclick="location.href='./afterLogin_ranking.html'">영화랭킹</button>
           <button id="naver" onclick="location.href='./afterLogin_naver_genre.html'">네이버</button>
@@ -19,182 +61,93 @@
     <div id="container">
     <div id="naverPos">
       <div id="naverTitle">
-        <p id="moreNaver">네이버 장르별</p>
+        <p id="moreNaver">네이버</p>
       </div>
       <div id="naverGenre">
-        <table style="width: 94%; margin-left:3.5%; border:1px solid #BDECB6;">
-          <tr style="border: 1px solid #BDECB6;">
+        <table style="width: 94%; margin-left:9%;">
+          <tr>
             <tr>
-              <td style="color: rgb(95, 136, 101); text-align: center;"> 영화 검색용 버튼, 검색 input 자리 </a></td>
+              <td>
+                <form action="/users/search/movie" method="GET" id="genre_get">
+                  <select id="genre" name="genre" onchange="genreChange()">
+                    <option value=1>드라마</option>
+                    <option value=2>판타지</option>
+                    <option value=3>서부</option>
+                    <option value=4>공포</option>
+                    <option value=5>로맨스</option>
+                    <option value=6>모험</option>
+                    <option value=7>스릴러</option>
+                    <option value=8>느와르</option>
+                    <option value=9>컬트</option>
+                    <option value=10>다큐멘터리</option>
+                    <option value=11>코미디</option>
+                    <option value=12>가족</option>
+                    <option value=13>미스터리</option>
+                    <option value=14>전쟁</option>
+                    <option value=15>애니메이션</option>
+                    <option value=16>범죄</option>
+                    <option value=17>뮤지컬</option>
+                    <option value=18>SF</option>
+                    <option value=19>액션</option>
+                    <option value=20>무협</option>
+                    <option value=21>에로</option>
+                    <option value=22>서스펜스</option>
+                    <option value=23>서사</option>
+                    <option value=24>블랙코미디</option>
+                    <option value=25>실험</option>
+                    <option value=26>영화카툰</option>
+                    <option value=27>영화음악</option>
+                    <option value=28>영화패러디포스터</option>
+                </select>
+                <input type='text' id="movie_title" name="query">
+                <input type='submit' value ='검색'>
+              </form>
+            </td>
             </tr>
-        </table>
-        <table style="width: 94%; margin-left: 3.5%; margin-top: 100px; border:1px solid #BDECB6;">
+          </table>
+        <table style="width: 94%; margin-left: 3.5%; margin-top: 80px;">
           <colgroup>
             <col width="30%"/>
             <col width="60%"/>
             <col width="10%"/>
           </colgroup>
-          <tr style="border: 1px solid #BDECB6;">
-            <tr>
-              <td rowspan="4" style="color: rgb(95, 136, 101); text-align: center;"> 영화 포스터 </a></td>
-              <td style="color: rgb(95, 136, 101);"> 영화제목 </a></td>
-              <td rowspan="4" style="color: rgb(95, 136, 101); text-align: center;"> ♡ </a></td>
-            </tr>
-            <tr>
-              <td style="color: rgb(95, 136, 101);"> 출연배우 </a></td>
-            </tr>
-            <tr>
-              <td style="color: rgb(95, 136, 101);"> 감독 </a></td>
-            </tr>
-            <tr>
-              <td style="color: rgb(95, 136, 101);"> 평점 </a></td>
-            </tr>
-          </tr>
+          <form action="/mylist" method="POST">
+          <% for(var i=0; i < data.display; i++) { %>
+            <% var poster = new Array(); %>
+            <% var post = "poster" %>
+            <% poster[i] = post.concat(String(i)) %>
+            <% var title = new Array(); %>
+            <% var titl = "title" %>
+            <% title[i] = titl.concat(String(i)) %>
           <tr>
             <tr>
-              <td rowspan="4" style="color: rgb(95, 136, 101); text-align: center;"> 영화 포스터 </a></td>
-              <td style="color: rgb(95, 136, 101);"> 영화제목 </a></td>
-              <td rowspan="4" style="color: rgb(95, 136, 101); text-align: center;"> ♡ </a></td>
+              <td rowspan="4"><a href=<%- data.items[i].link %>><img src = <%- data.items[i].image %>> </a></td>
+              <td><a href=<%- data.items[i].link %>> <%- data.items[i].title %> </a></td>
+              <td rowspan="4" style="text-align: center;"> </a></td>
+              <td><input type="hidden" name = <%- poster[i] %> value = <%- data.items[i].image %>> </td>
+              <td><input type="hidden" name = <%- title[i] %> value = <%- data.items[i].title %>> </td>
+              <td><input type="hidden" name = "display" value = <%- data.display %>> </td>
+              <td><input type="hidden" name = "check" value = <%- i %>> </td>
             </tr>
             <tr>
-              <td style="color: rgb(95, 136, 101);"> 출연배우 </a></td>
+              <td> <%- data.items[i].actor %> </a></td>
             </tr>
             <tr>
-              <td style="color: rgb(95, 136, 101);"> 감독 </a></td>
+              <td> <%= data.items[i].director %> </a></td>
             </tr>
             <tr>
-              <td style="color: rgb(95, 136, 101);"> 평점 </a></td>
+              <td> <%= data.items[i].userRating %> </a></td>
             </tr>
           </tr>
-          <tr>
-            <tr>
-              <td rowspan="4" style="color: rgb(95, 136, 101); text-align: center;"> 영화 포스터 </a></td>
-              <td style="color: rgb(95, 136, 101);"> 영화제목 </a></td>
-              <td rowspan="4" style="color: rgb(95, 136, 101); text-align: center;"> ♡ </a></td>
-            </tr>
-            <tr>
-              <td style="color: rgb(95, 136, 101);"> 출연배우 </a></td>
-            </tr>
-            <tr>
-              <td style="color: rgb(95, 136, 101);"> 감독 </a></td>
-            </tr>
-            <tr>
-              <td style="color: rgb(95, 136, 101);"> 평점 </a></td>
-            </tr>
-          </tr>
-          <tr>
-            <tr>
-              <td rowspan="4" style="color: rgb(95, 136, 101); text-align: center;"> 영화 포스터 </a></td>
-              <td style="color: rgb(95, 136, 101);"> 영화제목 </a></td>
-              <td rowspan="4" style="color: rgb(95, 136, 101); text-align: center;"> ♡ </a></td>
-            </tr>
-            <tr>
-              <td style="color: rgb(95, 136, 101);"> 출연배우 </a></td>
-            </tr>
-            <tr>
-              <td style="color: rgb(95, 136, 101);"> 감독 </a></td>
-            </tr>
-            <tr>
-              <td style="color: rgb(95, 136, 101);"> 평점 </a></td>
-            </tr>
-          </tr>
-          <tr>
-            <tr>
-              <td rowspan="4" style="color: rgb(95, 136, 101); text-align: center;"> 영화 포스터 </a></td>
-              <td style="color: rgb(95, 136, 101);"> 영화제목 </a></td>
-              <td rowspan="4" style="color: rgb(95, 136, 101); text-align: center;"> ♡ </a></td>
-            </tr>
-            <tr>
-              <td style="color: rgb(95, 136, 101);"> 출연배우 </a></td>
-            </tr>
-            <tr>
-              <td style="color: rgb(95, 136, 101);"> 감독 </a></td>
-            </tr>
-            <tr>
-              <td style="color: rgb(95, 136, 101);"> 평점 </a></td>
-            </tr>
-          </tr>
-          <tr>
-            <tr>
-              <td rowspan="4" style="color: rgb(95, 136, 101); text-align: center;"> 영화 포스터 </a></td>
-              <td style="color: rgb(95, 136, 101);"> 영화제목 </a></td>
-              <td rowspan="4" style="color: rgb(95, 136, 101); text-align: center;"> ♡ </a></td>
-            </tr>
-            <tr>
-              <td style="color: rgb(95, 136, 101);"> 출연배우 </a></td>
-            </tr>
-            <tr>
-              <td style="color: rgb(95, 136, 101);"> 감독 </a></td>
-            </tr>
-            <tr>
-              <td style="color: rgb(95, 136, 101);"> 평점 </a></td>
-            </tr>
-          </tr>
-          <tr>
-            <tr>
-              <td rowspan="4" style="color: rgb(95, 136, 101); text-align: center;"> 영화 포스터 </a></td>
-              <td style="color: rgb(95, 136, 101);"> 영화제목 </a></td>
-              <td rowspan="4" style="color: rgb(95, 136, 101); text-align: center;"> ♡ </a></td>
-            </tr>
-            <tr>
-              <td style="color: rgb(95, 136, 101);"> 출연배우 </a></td>
-            </tr>
-            <tr>
-              <td style="color: rgb(95, 136, 101);"> 감독 </a></td>
-            </tr>
-            <tr>
-              <td style="color: rgb(95, 136, 101);"> 평점 </a></td>
-            </tr>
-          </tr>
-          <tr>
-            <tr>
-              <td rowspan="4" style="color: rgb(95, 136, 101); text-align: center;"> 영화 포스터 </a></td>
-              <td style="color: rgb(95, 136, 101);"> 영화제목 </a></td>
-              <td rowspan="4" style="color: rgb(95, 136, 101); text-align: center;"> ♡ </a></td>
-            </tr>
-            <tr>
-              <td style="color: rgb(95, 136, 101);"> 출연배우 </a></td>
-            </tr>
-            <tr>
-              <td style="color: rgb(95, 136, 101);"> 감독 </a></td>
-            </tr>
-            <tr>
-              <td style="color: rgb(95, 136, 101);"> 평점 </a></td>
-            </tr>
-          </tr>
-          <tr>
-            <tr>
-              <td rowspan="4" style="color: rgb(95, 136, 101); text-align: center;"> 영화 포스터 </a></td>
-              <td style="color: rgb(95, 136, 101);"> 영화제목 </a></td>
-              <td rowspan="4" style="color: rgb(95, 136, 101); text-align: center;"> ♡ </a></td>
-            </tr>
-            <tr>
-              <td style="color: rgb(95, 136, 101);"> 출연배우 </a></td>
-            </tr>
-            <tr>
-              <td style="color: rgb(95, 136, 101);"> 감독 </a></td>
-            </tr>
-            <tr>
-              <td style="color: rgb(95, 136, 101);"> 평점 </a></td>
-            </tr>
-          </tr>
-          <tr>
-            <tr>
-              <td rowspan="4" style="color: rgb(95, 136, 101); text-align: center;"> 영화 포스터 </a></td>
-              <td style="color: rgb(95, 136, 101);"> 영화제목 </a></td>
-              <td rowspan="4" style="color: rgb(95, 136, 101); text-align: center;"> ♡ </a></td>
-            </tr>
-            <tr>
-              <td style="color: rgb(95, 136, 101);"> 출연배우 </a></td>
-            </tr>
-            <tr>
-              <td style="color: rgb(95, 136, 101);"> 감독 </a></td>
-            </tr>
-            <tr>
-              <td style="color: rgb(95, 136, 101);"> 평점 </a></td>
-            </tr>
-          </tr>
+          <% } %>
+          </form>
         </table>
+        <form action="/users/search/movie/prev" method="GET">
+          <button class="pre" onclick="prev_button()">이전</button>
+        </form>
+        <form action="/users/search/movie/next" method="GET">
+          <button class="next" onclick="next_button()">다음</button>
+        </form>
       </div>
     </div>
   </div>
@@ -208,12 +161,6 @@ body {
   min-width: 1000px;
   margin: -9px 0px -9px 0px;
   /* overflow-x: hidden; */
-}
-button:focus {
-  outline: 0 !important;
-}
-input:focus {
-  outline: 0 !important;
 }
 #top {
   margin-top: -30px;
@@ -237,11 +184,20 @@ input {
   height: 200px;
   margin-left: -100px;
   cursor: pointer;
+  outline: none;
 }
 img {
-  height: 100px;
+  height: 110px;
   position: absolute;
-  left: 39%;
+  margin-top: -45px;
+  max-width: 150px;
+  width: 90px;
+  text-align: center;
+  margin-left: 5%;
+  padding: 10px;
+}
+img:hover {
+  cursor:auto;
 }
 #logout {
   margin-top: 200px;
@@ -301,7 +257,7 @@ button {
 }
 #container {
   background-image: url("./image/main_div_background.png");
-  height: 1700px;
+  height: 1750px;
   background-size: cover;
 }
 #naverPos {
@@ -309,9 +265,11 @@ button {
   min-width: 600px;
   top: 200px;
   left: 18%;
-  height: 755px;
+  height: 1690px;
   width: 850px;
-  margin-bottom: 100px;
+  margin-bottom: 50px;
+  background-image: url("./image/background_img.png");
+  background-size: 100% 1690px;
 }
 #naverGenreTable {
   margin-top: 100px;
@@ -324,7 +282,7 @@ button {
   color: #FE9B86;
 }
 #naverTitle {
-  margin: 2px 60px -4px 10px;
+  margin: 4px 60px -4px 10px;
   display: flex;
   justify-content: space-between;
 }
@@ -349,13 +307,42 @@ td {
   text-decoration: none;
   font-size: 15px;
 }
-td:hover {
-  color: rgb(255, 100, 149);
-  cursor: pointer;
-}
 a {
-  color: rgb(95, 136, 101);
   text-decoration: none;
   font-size: 15px;
+  color:black;
+}
+a:hover {
+  color: #FE9B86;
+}
+.pre {
+  position: absolute;
+  left: 360px;
+  top: 1600px;
+  font-size: 15px;
+  background-color: #FFFFFF;
+  border: none;
+}
+.pre:hover {
+  cursor: pointer;
+  font-size: 17px;
+}
+.pre:focus {
+  outline: none;
+}
+.next {
+  position: absolute;
+  left: 450px;
+  top: 1600px;
+  font-size: 15px;
+  background-color: #FFFFFF;
+  border: none;
+}
+.next:hover {
+  cursor: pointer;
+  font-size: 17px;
+}
+.next:focus {
+  outline: none;
 }
 </style>
