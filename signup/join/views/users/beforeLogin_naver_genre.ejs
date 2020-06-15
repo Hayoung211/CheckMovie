@@ -22,55 +22,56 @@
         <p id="moreNaver">네이버</p>
       </div>
       <div id="naverGenre">
-        <table id="naverGenreTable">
-          <tr>
-            <td onclick="location.href='./beforeLogin_naver_genre_show.html'">- 드라마</td>
-            <td onclick="location.href='./beforeLogin_naver_genre_show.html'">- 판타지</td>
-            <td onclick="location.href='./beforeLogin_naver_genre_show.html'">- 서부</td>
-          </tr>
-          <tr>
-            <td onclick="location.href='./beforeLogin_naver_genre_show.html'">- 공포</td>
-            <td onclick="location.href='./beforeLogin_naver_genre_show.html'">- 로맨스</td>
-            <td onclick="location.href='./beforeLogin_naver_genre_show.html'">- 모험</td>
-          </tr>
-          <tr>
-            <td onclick="location.href='./beforeLogin_naver_genre_show.html'">- 스릴러</td>
-            <td onclick="location.href='./beforeLogin_naver_genre_show.html'">- 느와르</td>
-            <td onclick="location.href='./beforeLogin_naver_genre_show.html'">- 컬트</td>
-          </tr>
-          <tr>
-            <td onclick="location.href='./beforeLogin_naver_genre_show.html'">- 다큐멘터리</td>
-            <td onclick="location.href='./beforeLogin_naver_genre_show.html'">- 코미디</td>
-            <td onclick="location.href='./beforeLogin_naver_genre_show.html'">- 가족</td>
-          </tr>
-          <tr>
-            <td onclick="location.href='./beforeLogin_naver_genre_show.html'">- 미스터리</td>
-            <td onclick="location.href='./beforeLogin_naver_genre_show.html'">- 전쟁</td>
-            <td onclick="location.href='./beforeLogin_naver_genre_show.html'">- 애니메이션</td>
-          </tr>
-          <tr>
-            <td onclick="location.href='./beforeLogin_naver_genre_show.html'">- 범죄</td>
-            <td onclick="location.href='./beforeLogin_naver_genre_show.html'">- 뮤지컬</td>
-            <td onclick="location.href='./beforeLogin_naver_genre_show.html'">- SF</td>
-          </tr>
-          <tr>
-            <td onclick="location.href='./beforeLogin_naver_genre_show.html'">- 액션</td>
-            <td onclick="location.href='./beforeLogin_naver_genre_show.html'">- 무협</td>
-            <td onclick="location.href='./beforeLogin_naver_genre_show.html'">- 에로</td>
-          </tr>
-          <tr>
-            <td onclick="location.href='./beforeLogin_naver_genre_show.html'">- 서스펜스</td>
-            <td onclick="location.href='./beforeLogin_naver_genre_show.html'">- 서사</td>
-            <td onclick="location.href='./beforeLogin_naver_genre_show.html'">- 블랙코미디</td>
-          </tr>
-          <tr>
-            <td onclick="location.href='./beforeLogin_naver_genre_show.html'">- 실험</td>
-            <td onclick="location.href='./beforeLogin_naver_genre_show.html'">- 영화카툰</td>
-            <td onclick="location.href='./beforeLogin_naver_genre_show.html'">- 영화음악</td>
-          </tr>
-          <tr>
-            <td onclick="location.href='./beforeLogin_naver_genre_show.html'">- 영화패러디포스터</td>
-          </tr>
+        <form action="/users/search/movie" method="GET">
+            <table id="naverGenreTable">
+              <tr>
+                <td><input type='submit' name = "genre" value='-드라마' style="background-color:transparent;  border:0px transparent solid;"></td>
+                <td><input type='submit' name = "genre" value='-판타지' style="background-color:transparent;  border:0px transparent solid;"></td>
+                <td><input type='submit' name = "genre" value='-서부' style="background-color:transparent;  border:0px transparent solid;"></td>
+              </tr>
+              <tr>
+                <td><input type='submit' name = "genre" value='-공포' style="background-color:transparent;  border:0px transparent solid;"></td>
+                <td><input type='submit' name = "genre" value='-로맨스' style="background-color:transparent;  border:0px transparent solid;"></td>
+                <td><input type='submit' name = "genre" value='-모험' style="background-color:transparent;  border:0px transparent solid;"></td>
+              </tr>
+              <tr>
+                <td><input type='submit' name = "genre" value='-스릴러' style="background-color:transparent;  border:0px transparent solid;"></td>
+                <td><input type='submit' name = "genre" value='-느와르' style="background-color:transparent;  border:0px transparent solid;"></td>
+                <td><input type='submit' name = "genre" value='-컬트' style="background-color:transparent;  border:0px transparent solid;"></td>
+              </tr>
+              <tr>
+                <td><input type='submit' name = "genre" value='-다큐멘터리' style="background-color:transparent;  border:0px transparent solid;"></td>
+                <td><input type='submit' name = "genre" value='-코미디' style="background-color:transparent;  border:0px transparent solid;"></td>
+                <td><input type='submit' name = "genre" value='-가족' style="background-color:transparent;  border:0px transparent solid;"></td>
+              </tr>
+              <tr>
+                <td><input type='submit' name = "genre" value='-미스터리' style="background-color:transparent;  border:0px transparent solid;"></td>
+                <td><input type='submit' name = "genre" value='-전쟁' style="background-color:transparent;  border:0px transparent solid;"></td>
+                <td><input type='submit' name = "genre" value='-애니메이션' style="background-color:transparent;  border:0px transparent solid;"></td>
+              </tr>
+              <tr>
+                <td><input type='submit' name = "genre" value='-범죄' style="background-color:transparent;  border:0px transparent solid;"></td>
+                <td><input type='submit' name = "genre" value='-뮤지컬' style="background-color:transparent;  border:0px transparent solid;"></td>
+                <td><input type='submit' name = "genre" value='-SF' style="background-color:transparent;  border:0px transparent solid;"></td>
+              </tr>
+              <tr>
+                <td><input type='submit' name = "genre" value='-액션' style="background-color:transparent;  border:0px transparent solid;"></td>
+                <td><input type='submit' name = "genre" value='-무협' style="background-color:transparent;  border:0px transparent solid;"></td>
+                <td><input type='submit' name = "genre" value='-에로' style="background-color:transparent;  border:0px transparent solid;"></td>
+              </tr>
+              <tr>
+                <td><input type='submit' name = "genre" value='-서스펜스' style="background-color:transparent;  border:0px transparent solid;"></td>
+                <td><input type='submit' name = "genre" value='-서사' style="background-color:transparent;  border:0px transparent solid;"></td>
+                <td><input type='submit' name = "genre" value='-블랙코미디' style="background-color:transparent;  border:0px transparent solid;"></td>
+              </tr>
+              <tr>
+                <td><input type='submit' name = "genre" value='-실험' style="background-color:transparent;  border:0px transparent solid;"></td>
+                <td><input type='submit' name = "genre" value='-영화카툰' style="background-color:transparent;  border:0px transparent solid;"></td>
+                <td><input type='submit' name = "genre" value='-영화음악' style="background-color:transparent;  border:0px transparent solid;"></td>
+              </tr>
+              <tr>
+                <td><input type='submit' name = "genre" value='-영화패러디포스터' style="background-color:transparent;  border:0px transparent solid;"></td>
+              </tr>
         </table>
         <div>
           <img id="ticket" src="image/ticket.png">
@@ -111,14 +112,15 @@ input:focus {
 input {
   vertical-align: middle;
   position: relative;
-  left: 40%;
+  left: 20%;
+  font-size: 15px;
 }
 .img-button {
   background: url( "./image/movie_logo.PNG" ) no-repeat;
   border: none;
   width: 450px;
   height: 200px;
-  margin-left: -100px;
+  margin-left: 152.5px;
   cursor: pointer;
 }
 img {
@@ -201,8 +203,8 @@ button {
 }
 #naverGenreTable {
   margin-top: 100px;
-  padding-left: 160px;
-  width: 700px;
+  width: 600px;
+  left: 120px;
 }
 #moreNaver {
   margin: 190px 0px 10px 160px;
@@ -221,10 +223,9 @@ table {
   table-layout:fixed;
 }
 tr {
-  height: 15px;
+  height: 22px;
 }
 td {
-  padding-left: 10px;
   padding-bottom: 10px;
   text-align: left;
   width: 100%;
@@ -235,15 +236,15 @@ td {
   text-decoration: none;
   font-size: 15px;
 }
-td:hover {
-  color: rgb(255, 100, 149);
-  cursor: pointer;
-}
 #ticket {
   margin: -80px 0px 0px 300px;
 }
 #projection {
   margin: 380px 0px 0px -470px;
   height: 350px;
+}
+input:hover {
+  color: rgb(255, 100, 149);
+  cursor: pointer;
 }
 </style>

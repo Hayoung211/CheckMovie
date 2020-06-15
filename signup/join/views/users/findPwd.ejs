@@ -6,57 +6,17 @@
     crossorigin="anonymous">
     </script>
     <script>
+       $(document).ready(function(){
+        $('#do_login').submit(function(){
+
     
-      $(function(){ 
-       $('#pwd').keyup(function(){
-        $('#chkNotice').html('');
-        });
-        $('#pwdCheck').keyup(function(){
-
-        if($('#pwd').val() != $('#pwdCheck').val()){
-          $('#chkNotice').html('비밀번호 일치하지 않음');
-          $('#chkNotice').css("color", "red");
-        } else{
-          $('#chkNotice').html('비밀번호 일치함');
-          $('#chkNotice').css("color", "blue");
-         
-        }
-
-       });
-     });
-    </script>
-    <script>
-      $(document).ready(function(){
-        $('#sign_up').submit(function(){
-
-          var name = $('#userid').val();
-          var nameLen = name.length;
-          if(nameLen<1){
-            alert("아이디를 입력해주세요!");
-            return false;
-          }
           var useremail= $('#useremail').val();
           var emailLen = useremail.length;
           if(emailLen<1){
             alert("이메일을 입력해주세요!");
             return false;
           }
-          var pwd = $('#pwd').val();
-          var pwdLen = pwd.length;
-          if(pwdLen<1){
-            alert("패스워드를 입력해주세요!");
-            return false;
-          }
-          var pwdCheck = $('#pwdCheck').val();
-          var pwdCheckLen = pwdCheck.length;
-          if(pwdCheckLen<1){
-            alert("비밀번호 확인을 입력해주세요!");
-            return false;
-          }
-          if($('#pwd').val() != $('#pwdCheck').val()){
-            alert('비밀번호가 다릅니다! 다시 입력해주세요!');
-            return false;
-          }
+       
           
           
         });
@@ -68,6 +28,7 @@
       <div id="topLocation">
         <input type="button" class="img-button" onclick="location.href='./beforeLogin_main.html'">
         <button id="login" onclick="location.href='./login.html'">로그인</button>
+        <button id="signup" onclick="location.href='./signup.html'">회원가입</button>
         <div>
           <button id="movieRank" onclick="location.href='./beforeLogin_ranking.html'">영화랭킹</button>
           <button id="naver" onclick="location.href='./beforeLogin_naver_genre.html'">네이버</button>
@@ -76,36 +37,21 @@
       </div>
     </div>
     <div id="container">
-    <div id="signupPos">
+    <div id="loginPos">
       <div style="margin: -10px 0px 20px 0px;">
-        <p id="mini">전체연령 이용가</p>
+        <p id="mini">CheckMovie 회원 이용가</p>
       </div>
-      <p id="signupTitle">간편 회원가입</p>
+      <p id="loginTitle">비밀번호 찾기</p>
       <hr id="hr">
       <div>
-        <form action="/users/sign_up" method="post" id ="sign_up">
+        <form action="/users/findPwd" method="post" id = "do_login">
           <table>
             <tr>
-              <td><p id="idPw">아이디</p></td>
-              <td id="idPwPos"><input id='userid' type='text' name='name'/></td>
-            </tr>
-            <tr>
-             <td><p id="idPw">이메일</p></td>
+              <td><p id="idPw">이메일</p></td>
               <td id="idPwPos"><input id='useremail' type='text' name='email'/></td>
             </tr>
             <tr>
-              <td><p id="idPw">비밀번호</p></td>
-              <td><input id='pwd' type='password' name='password'/></td>
-            </tr>
-            <tr>
-              <td><p id="idPw">비밀번호 확인</p></td>
-              <td><input id='pwdCheck' type='password' name='passwordc'/></td>
-            <tr>
-              <td><div id="chkNotice" size="2"></div></td>
-            </tr>
-            </tr>
-          
-              <td colspan="2"><input class="doSignup"type="submit" value="회원가입"></td>
+              <td colspan="2"><input class="doLogin" type="submit" value="비밀번호 찾기"></td>
             </tr>
           </table>
         </form>
@@ -133,6 +79,10 @@ body {
   margin: -9px 0px -9px 0px;
   /* overflow-x: hidden; */
 }
+#find{
+ margin-top:-23px;
+ margin-left:200px;
+}
 #top {
   margin-top: -30px;
   background-image: url("./image/Logo_background.png");
@@ -140,6 +90,7 @@ body {
   background-size:cover;
   height: 240px;
 }
+
 #topLocation {
   margin: 15px 0px 30px 0px; 
 }
@@ -222,21 +173,20 @@ button {
 }
 #container {
   background-image: url("./image/main_div_background.png");
-  height: 760px;
+  height: 670px;
   background-size: cover;
 }
-#signupPos {
+#loginPos {
   position: relative;
   top: 80px;
   left: 35%;
   background-color: white;
   border: 4px solid black;
-  height: 600px;
+  height: 300px;
   width: 35%;
   margin-bottom: 50px;
-  min-width: 370px;
 }
-#signupTitle {
+#loginTitle {
   font-size: 23px;
   color: black;
   padding: 10px 0px 10px 20px;
@@ -265,11 +215,6 @@ button {
 #pwd {
   margin-left: -120px;
   height: 30px;
-  
-}
-#pwdCheck {
-  margin-left: -120px;
-  height: 30px;
 }
 table {
   position: relative;
@@ -282,7 +227,7 @@ td {
   padding-bottom: 10px;
   text-align: left;
 }
-.doSignup {
+.doLogin {
   background-color: white;
   border: none;
   color: black;
@@ -294,18 +239,8 @@ td {
   margin-top: 10px;
   margin-left: -110px;
 }
-.doSignup:hover {
-  background-image: url("./image/barcode.PNG");
-  font-size: 0px;
-  background-size: 300px 60px;
+.doLogin:hover {
+  font-size: 22px;
+  color: plum;
 }
-#chkNotice{
-  position: relative;
-  top : -25px;
-  height: 10px;
-  left: 250px;
-  width : 200px;
-  
-}
-
 </style>

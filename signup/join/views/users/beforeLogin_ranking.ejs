@@ -17,6 +17,522 @@
       })
     })
     </script>
+
+    <script>
+    var dt = new Date();
+    var m = dt.getMonth() + 1;
+    if (m < 10) {
+      var month = "0" + m;
+    } else {
+      var month = m + "";
+    }
+
+    var d = dt.getDate() - 1;
+    if (d < 10) {
+      var day = "0" + d;
+    } else {
+      var day = d + "";
+    }
+
+    var y = dt.getFullYear();
+    var year = y + "";
+
+    var result = year + month + day;
+    $.ajax( {
+      method: "GET",
+      url: "http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=0c0a5e530eba657434be85f5e39f5f02&targetDt="+result  
+    })
+    .done(function (msg) {
+      console.log(msg);
+      $( "#tabList1" ).append("<tr><td>"+ msg.boxOfficeResult.dailyBoxOfficeList[0].movieNm+"</td><td>"+
+                                msg.boxOfficeResult.dailyBoxOfficeList[1].movieNm + "</td><td>"+
+                                msg.boxOfficeResult.dailyBoxOfficeList[2].movieNm+"</td><td>"+
+                                msg.boxOfficeResult.dailyBoxOfficeList[3].movieNm+"</td><td>"+
+                                msg.boxOfficeResult.dailyBoxOfficeList[4].movieNm+"</td></tr>");
+
+      $( "#tabList2" ).append("<tr><td>"+ msg.boxOfficeResult.dailyBoxOfficeList[5].movieNm+"</td><td>"+
+                                msg.boxOfficeResult.dailyBoxOfficeList[6].movieNm + "</td><td>"+
+                                msg.boxOfficeResult.dailyBoxOfficeList[7].movieNm+"</td><td>"+
+                                msg.boxOfficeResult.dailyBoxOfficeList[8].movieNm+"</td><td>"+
+                                msg.boxOfficeResult.dailyBoxOfficeList[9].movieNm+"</td></tr>");
+     $.ajax({
+        method: "GET",
+        url:"http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_xml2.jsp?collection=kmdb_new2&ServiceKey=BP9D99782743Q1LL8A07&title="+msg.boxOfficeResult.dailyBoxOfficeList[0].movieNm
+      
+      })
+      .done(function (msg2){
+        console.log(msg2);
+        var post = $(msg2).find('posters').text();
+        if(post) {
+          var list1 = post.split("|");
+        }
+       $("#post").append('<img src="'+list1[1]+'"/>');
+        
+      });
+      $.ajax({
+        method: "GET",
+        url:"http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_xml2.jsp?collection=kmdb_new2&ServiceKey=BP9D99782743Q1LL8A07&title="+msg.boxOfficeResult.dailyBoxOfficeList[1].movieNm
+      
+      })
+      .done(function (msg3){
+        console.log(msg3);
+        var post2 = $(msg3).find('posters').text();
+        if(post2) {
+          var list2 = post2.split("|");
+        }
+        $("#post2").append('<img src="'+list2[0]+'"/>');
+        
+      });
+      $.ajax({
+        method: "GET",
+        url:"http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_xml2.jsp?collection=kmdb_new2&ServiceKey=BP9D99782743Q1LL8A07&title="+msg.boxOfficeResult.dailyBoxOfficeList[2].movieNm
+      
+      })
+      .done(function (msg4){
+        console.log(msg4);
+        var post3 = $(msg4).find('posters').text();
+        if(post3) {
+          var list3 = post3.split("|");
+        }
+        $("#post3").append('<img src="'+list3[0]+'"/>');
+        
+      });
+      $.ajax({
+        method: "GET",
+        url:"http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_xml2.jsp?collection=kmdb_new2&ServiceKey=BP9D99782743Q1LL8A07&title="+msg.boxOfficeResult.dailyBoxOfficeList[3].movieNm
+      
+      })
+      .done(function (msg5){
+        console.log(msg5);
+        var post4 = $(msg5).find('posters').text();
+        if(post4) {
+          var list4 = post4.split("|");
+        }
+        $("#post4").append('<img src="'+list4[0]+'"/>');
+        
+      });
+      $.ajax({
+        method: "GET",
+        url:"http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_xml2.jsp?collection=kmdb_new2&ServiceKey=BP9D99782743Q1LL8A07&title="+msg.boxOfficeResult.dailyBoxOfficeList[4].movieNm
+      
+      })
+      .done(function (msg6){
+        console.log(msg6);
+        var post5 = $(msg6).find('posters').text();
+        if(post5) {
+          var list5 = post5.split("|");
+        }
+        $("#post5").append('<img src="'+list5[0]+'"/>');
+        
+      });
+      $.ajax({
+        method: "GET",
+        url:"http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_xml2.jsp?collection=kmdb_new2&ServiceKey=BP9D99782743Q1LL8A07&title="+msg.boxOfficeResult.dailyBoxOfficeList[5].movieNm
+      
+      })
+      .done(function (msg7){
+        console.log(msg7);
+        var post6 = $(msg7).find('posters').text();
+        if(post6) {
+          var list6 = post6.split("|");
+        }
+        $("#post6").append('<img src="'+list6[0]+'"/>');
+        
+      });
+      $.ajax({
+        method: "GET",
+        url:"http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_xml2.jsp?collection=kmdb_new2&ServiceKey=BP9D99782743Q1LL8A07&title="+msg.boxOfficeResult.dailyBoxOfficeList[6].movieNm
+      
+      })
+      .done(function (msg8){
+        console.log(msg8);
+        var post7 = $(msg8).find('posters').text();
+        if(post7) {
+          var list7 = post7.split("|");
+        }
+        $("#post7").append('<img src="'+list7[0]+'"/>');
+        
+      });
+      $.ajax({
+        method: "GET",
+        url:"http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_xml2.jsp?collection=kmdb_new2&ServiceKey=BP9D99782743Q1LL8A07&title="+msg.boxOfficeResult.dailyBoxOfficeList[7].movieNm
+      
+      })
+      .done(function (msg9){
+        console.log(msg9);
+        var post8 = $(msg9).find('posters').text();
+        if(post8) {
+          var list8 = post8.split("|");
+        }
+        $("#post8").append('<img src="'+list8[0]+'"/>');
+        
+      });
+      $.ajax({
+        method: "GET",
+        url:"http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_xml2.jsp?collection=kmdb_new2&ServiceKey=BP9D99782743Q1LL8A07&title="+msg.boxOfficeResult.dailyBoxOfficeList[8].movieNm
+      
+      })
+      .done(function (msg10){
+        console.log(msg10);
+        var post9 = $(msg10).find('posters').text();
+        if(post9) {
+          var list9 = post9.split("|");
+        }
+        $("#post9").append('<img src="'+list9[0]+'"/>');
+        
+      });
+      $.ajax({
+        method: "GET",
+        url:"http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_xml2.jsp?collection=kmdb_new2&ServiceKey=BP9D99782743Q1LL8A07&title="+msg.boxOfficeResult.dailyBoxOfficeList[9].movieNm
+      
+      })
+      .done(function (msg11){
+        console.log(msg11);
+        var post10 = $(msg11).find('posters').text();
+        if(post10) {
+          var list10 = post10.split("|");
+        }
+        $("#post10").append('<img src="'+list10[0]+'"/>');
+        
+      });
+
+    });
+    </script>
+
+    <script>
+    var nowDate = new Date();
+    var weekDate = nowDate.getTime() - (7*24*60*60*1000);
+    nowDate.setTime(weekDate);
+
+    var weekYear = nowDate.getFullYear();
+    var weekMonth = nowDate.getMonth() + 1;
+    var weekDay = nowDate.getDate();
+
+    if(weekMonth < 10) { weekMonth = "0" + weekMonth; }
+    if(weekDay < 10) { weekDay = "0" + weekDay; }
+
+    var result2 = weekYear + weekMonth + weekDay;
+    $.ajax({ 
+    method: "GET",
+    url: "http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchWeeklyBoxOfficeList.json?key=0c0a5e530eba657434be85f5e39f5f02&weekGb=0&targetDt="+result2
+    })
+    .done(function (msg) {
+      console.log(msg);
+      $( "#tabList3" ).append("<tr><td>"+ msg.boxOfficeResult.weeklyBoxOfficeList[0].movieNm+"</td><td>"+
+                                msg.boxOfficeResult.weeklyBoxOfficeList[1].movieNm + "</td><td>"+
+                                msg.boxOfficeResult.weeklyBoxOfficeList[2].movieNm+"</td><td>"+
+                                msg.boxOfficeResult.weeklyBoxOfficeList[3].movieNm+"</td><td>"+
+                                msg.boxOfficeResult.weeklyBoxOfficeList[4].movieNm+"</td></tr>");
+      $( "#tabList4" ).append("<tr><td>"+ msg.boxOfficeResult.weeklyBoxOfficeList[5].movieNm+"</td><td>"+
+                                msg.boxOfficeResult.weeklyBoxOfficeList[6].movieNm + "</td><td>"+
+                                msg.boxOfficeResult.weeklyBoxOfficeList[7].movieNm+"</td><td>"+
+                                msg.boxOfficeResult.weeklyBoxOfficeList[8].movieNm+"</td><td>"+
+                                msg.boxOfficeResult.weeklyBoxOfficeList[9].movieNm+"</td></tr>");
+      $.ajax({
+        method: "GET",
+        url:"http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_xml2.jsp?collection=kmdb_new2&ServiceKey=BP9D99782743Q1LL8A07&title="+msg.boxOfficeResult.weeklyBoxOfficeList[0].movieNm
+      
+      })
+      .done(function (msg2){
+        console.log(msg2);
+        var post = $(msg2).find('posters').text();
+        if(post) {
+          var list1 = post.split("|");
+        }
+       $("#post_week").append('<img src="'+list1[1]+'"/>');
+        
+      });
+      $.ajax({
+        method: "GET",
+        url:"http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_xml2.jsp?collection=kmdb_new2&ServiceKey=BP9D99782743Q1LL8A07&title="+msg.boxOfficeResult.weeklyBoxOfficeList[1].movieNm
+      
+      })
+      .done(function (msg3){
+        console.log(msg3);
+        var post2 = $(msg3).find('posters').text();
+        if(post2) {
+          var list2 = post2.split("|");
+        }
+        $("#post_week2").append('<img src="'+list2[0]+'"/>');
+        
+      });
+      $.ajax({
+        method: "GET",
+        url:"http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_xml2.jsp?collection=kmdb_new2&ServiceKey=BP9D99782743Q1LL8A07&title="+msg.boxOfficeResult.weeklyBoxOfficeList[2].movieNm
+      
+      })
+      .done(function (msg4){
+        console.log(msg4);
+        var post3 = $(msg4).find('posters').text();
+        if(post3) {
+          var list3 = post3.split("|");
+        }
+        $("#post_week3").append('<img src="'+list3[0]+'"/>');
+        
+      });
+      $.ajax({
+        method: "GET",
+        url:"http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_xml2.jsp?collection=kmdb_new2&ServiceKey=BP9D99782743Q1LL8A07&title="+msg.boxOfficeResult.weeklyBoxOfficeList[3].movieNm
+      
+      })
+      .done(function (msg5){
+        console.log(msg5);
+        var post4 = $(msg5).find('posters').text();
+        if(post4) {
+          var list4 = post4.split("|");
+        }
+        $("#post_week4").append('<img src="'+list4[0]+'"/>');
+        
+      });
+      $.ajax({
+        method: "GET",
+        url:"http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_xml2.jsp?collection=kmdb_new2&ServiceKey=BP9D99782743Q1LL8A07&title="+msg.boxOfficeResult.weeklyBoxOfficeList[4].movieNm
+      
+      })
+      .done(function (msg6){
+        console.log(msg6);
+        var post5 = $(msg6).find('posters').text();
+        if(post5) {
+          var list5 = post5.split("|");
+        }
+        $("#post_week5").append('<img src="'+list5[0]+'"/>');
+        
+      });
+      $.ajax({
+        method: "GET",
+        url:"http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_xml2.jsp?collection=kmdb_new2&ServiceKey=BP9D99782743Q1LL8A07&title="+msg.boxOfficeResult.weeklyBoxOfficeList[5].movieNm
+      
+      })
+      .done(function (msg7){
+        console.log(msg7);
+        var post6 = $(msg7).find('posters').text();
+        if(post6) {
+          var list6 = post6.split("|");
+        }
+        $("#post_week6").append('<img src="'+list6[0]+'"/>');
+        
+      });
+      $.ajax({
+        method: "GET",
+        url:"http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_xml2.jsp?collection=kmdb_new2&ServiceKey=BP9D99782743Q1LL8A07&title="+msg.boxOfficeResult.weeklyBoxOfficeList[6].movieNm
+      
+      })
+      .done(function (msg8){
+        console.log(msg8);
+        var post7 = $(msg8).find('posters').text();
+        if(post7) {
+          var list7 = post7.split("|");
+        }
+        $("#post_week7").append('<img src="'+list7[0]+'"/>');
+        
+      });
+      $.ajax({
+        method: "GET",
+        url:"http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_xml2.jsp?collection=kmdb_new2&ServiceKey=BP9D99782743Q1LL8A07&title="+msg.boxOfficeResult.weeklyBoxOfficeList[7].movieNm
+      
+      })
+      .done(function (msg9){
+        console.log(msg9);
+        var post8 = $(msg9).find('posters').text();
+        if(post8) {
+          var list8 = post8.split("|");
+        }
+        $("#post_week8").append('<img src="'+list8[0]+'"/>');
+        
+      });
+      $.ajax({
+        method: "GET",
+        url:"http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_xml2.jsp?collection=kmdb_new2&ServiceKey=BP9D99782743Q1LL8A07&title="+msg.boxOfficeResult.weeklyBoxOfficeList[8].movieNm
+      
+      })
+      .done(function (msg10){
+        console.log(msg10);
+        var post9 = $(msg10).find('posters').text();
+        if(post9) {
+          var list9 = post9.split("|");
+        }
+        $("#post_week9").append('<img src="'+list9[0]+'"/>');
+        
+      });
+      $.ajax({
+        method: "GET",
+        url:"http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_xml2.jsp?collection=kmdb_new2&ServiceKey=BP9D99782743Q1LL8A07&title="+msg.boxOfficeResult.weeklyBoxOfficeList[9].movieNm
+      
+      })
+      .done(function (msg11){
+        console.log(msg11);
+        var post10 = $(msg11).find('posters').text();
+        if(post10) {
+          var list10 = post10.split("|");
+        }
+        $("#post_week10").append('<img src="'+list10[0]+'"/>');
+        
+      });
+
+
+
+    });
+    $.ajax( {
+      method: "GET",
+      url: "http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchWeeklyBoxOfficeList.json?key=0c0a5e530eba657434be85f5e39f5f02&weekGb=1&targetDt="+result2
+    })
+  
+    .done(function (msg) {
+      console.log(msg);
+      $( "#tabList5" ).append("<tr><td>"+ msg.boxOfficeResult.weeklyBoxOfficeList[0].movieNm+"</td><td>"+
+                                msg.boxOfficeResult.weeklyBoxOfficeList[1].movieNm + "</td><td>"+
+                                msg.boxOfficeResult.weeklyBoxOfficeList[2].movieNm+"</td><td>"+
+                                msg.boxOfficeResult.weeklyBoxOfficeList[3].movieNm+"</td><td>"+
+                                msg.boxOfficeResult.weeklyBoxOfficeList[4].movieNm+"</td></tr>"
+                               );
+      $( "#tabList6" ).append("<tr><td>"+ msg.boxOfficeResult.weeklyBoxOfficeList[5].movieNm+"</td><td>"+
+                                msg.boxOfficeResult.weeklyBoxOfficeList[6].movieNm + "</td><td>"+
+                                msg.boxOfficeResult.weeklyBoxOfficeList[7].movieNm+"</td><td>"+
+                                msg.boxOfficeResult.weeklyBoxOfficeList[8].movieNm+"</td><td>"+
+                                msg.boxOfficeResult.weeklyBoxOfficeList[9].movieNm+"</td></tr>");
+
+      $.ajax({
+        method: "GET",
+        url:"http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_xml2.jsp?collection=kmdb_new2&ServiceKey=BP9D99782743Q1LL8A07&title="+msg.boxOfficeResult.weeklyBoxOfficeList[0].movieNm
+      
+      })
+      .done(function (msg2){
+        console.log(msg2);
+        var post = $(msg2).find('posters').text();
+        if(post) {
+          var list1 = post.split("|");
+        }
+       $("#post_week_week").append('<img src="'+list1[1]+'"/>');
+        
+      });
+      $.ajax({
+        method: "GET",
+        url:"http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_xml2.jsp?collection=kmdb_new2&ServiceKey=BP9D99782743Q1LL8A07&title="+msg.boxOfficeResult.weeklyBoxOfficeList[1].movieNm
+      
+      })
+      .done(function (msg3){
+        console.log(msg3);
+        var post2 = $(msg3).find('posters').text();
+        if(post2) {
+          var list2 = post2.split("|");
+        }
+        $("#post_week_week2").append('<img src="'+list2[0]+'"/>');
+        
+      });
+      $.ajax({
+        method: "GET",
+        url:"http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_xml2.jsp?collection=kmdb_new2&ServiceKey=BP9D99782743Q1LL8A07&title="+msg.boxOfficeResult.weeklyBoxOfficeList[2].movieNm
+      
+      })
+      .done(function (msg4){
+        console.log(msg4);
+        var post3 = $(msg4).find('posters').text();
+        if(post3) {
+          var list3 = post3.split("|");
+        }
+        $("#post_week_week3").append('<img src="'+list3[0]+'"/>');
+        
+      });
+      $.ajax({
+        method: "GET",
+        url:"http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_xml2.jsp?collection=kmdb_new2&ServiceKey=BP9D99782743Q1LL8A07&title="+msg.boxOfficeResult.weeklyBoxOfficeList[3].movieNm
+      
+      })
+      .done(function (msg5){
+        console.log(msg5);
+        var post4 = $(msg5).find('posters').text();
+        if(post4) {
+          var list4 = post4.split("|");
+        }
+        $("#post_week_week4").append('<img src="'+list4[0]+'"/>');
+        
+      });
+      $.ajax({
+        method: "GET",
+        url:"http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_xml2.jsp?collection=kmdb_new2&ServiceKey=BP9D99782743Q1LL8A07&title="+msg.boxOfficeResult.weeklyBoxOfficeList[4].movieNm
+      
+      })
+      .done(function (msg6){
+        console.log(msg6);
+        var post5 = $(msg6).find('posters').text();
+        if(post5) {
+          var list5 = post5.split("|");
+        }
+        $("#post_week_week5").append('<img src="'+list5[0]+'"/>');
+        
+      });
+      $.ajax({
+        method: "GET",
+        url:"http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_xml2.jsp?collection=kmdb_new2&ServiceKey=BP9D99782743Q1LL8A07&title="+msg.boxOfficeResult.weeklyBoxOfficeList[5].movieNm
+      
+      })
+      .done(function (msg7){
+        console.log(msg7);
+        var post6 = $(msg7).find('posters').text();
+        if(post6) {
+          var list6 = post6.split("|");
+        }
+        $("#post_week_week6").append('<img src="'+list6[0]+'"/>');
+        
+      });
+      $.ajax({
+        method: "GET",
+        url:"http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_xml2.jsp?collection=kmdb_new2&ServiceKey=BP9D99782743Q1LL8A07&title="+msg.boxOfficeResult.weeklyBoxOfficeList[6].movieNm
+      
+      })
+      .done(function (msg8){
+        console.log(msg8);
+        var post7 = $(msg8).find('posters').text();
+        if(post7) {
+          var list7 = post7.split("|");
+        }
+        $("#post_week_week7").append('<img src="'+list7[0]+'"/>');
+        
+      });
+      $.ajax({
+        method: "GET",
+        url:"http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_xml2.jsp?collection=kmdb_new2&ServiceKey=BP9D99782743Q1LL8A07&title="+msg.boxOfficeResult.weeklyBoxOfficeList[7].movieNm
+      
+      })
+      .done(function (msg9){
+        console.log(msg9);
+        var post8 = $(msg9).find('posters').text();
+        if(post8) {
+          var list8 = post8.split("|");
+        }
+        $("#post_week_week8").append('<img src="'+list8[0]+'"/>');
+        
+      });
+      $.ajax({
+        method: "GET",
+        url:"http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_xml2.jsp?collection=kmdb_new2&ServiceKey=BP9D99782743Q1LL8A07&title="+msg.boxOfficeResult.weeklyBoxOfficeList[8].movieNm
+      
+      })
+      .done(function (msg10){
+        console.log(msg10);
+        var post9 = $(msg10).find('posters').text();
+        if(post9) {
+          var list9 = post9.split("|");
+        }
+        $("#post_week_week9").append('<img src="'+list9[0]+'"/>');
+        
+      });
+      $.ajax({
+        method: "GET",
+        url:"http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_xml2.jsp?collection=kmdb_new2&ServiceKey=BP9D99782743Q1LL8A07&title="+msg.boxOfficeResult.weeklyBoxOfficeList[9].movieNm
+      
+      })
+      .done(function (msg11){
+        console.log(msg11);
+        var post10 = $(msg11).find('posters').text();
+        if(post10) {
+          var list10 = post10.split("|");
+        }
+        $("#post_week_week10").append('<img src="'+list10[0]+'"/>');
+        
+      });
+    });
+    </script>
   </head>
   <body>
     <div id="top">
@@ -33,65 +549,128 @@
     </div>
     <div id="container">
     <div id="rankPos">
-
       <ul class="tabs">
         <li class="tab-link current" data-tab="tab-1">일간</li>
         <li class="tab-link" data-tab="tab-2">주간</li>
         <li class="tab-link" data-tab="tab-3">주말</li>
         <li class="tab-link" data-tab="tab-4">찜 한 영화</li>
       </ul>
-
+      <div id="tab-1" class="tab-content current">
+        <table id = "poster_image1">
+          <tr>
+            <td id = "post"></td>
+            <td id = "post2"></td>
+            <td id = "post3"></td>
+            <td id = "post4"></td>
+            <td id = "post5"></td>
+          </tr>
+        </table>
+        
+        <table id = tabList1>
+        </table>
+        
+        <div id="flim">
+          <img src="./image/flim.png" style="width: 500px; height: 200px; left: -100px; top: 270px">
+        </div>
+  
+        <div id="popcon">
+          <img src="./image/popcon_ranking.png" style="width: 180px; height: 160px; left:660px; top: 320px;">
+        </div>
+        <table id = "poster_image2">
+          <tr>
+            <td id = "post6"></td>
+            <td id = "post7"></td>
+            <td id = "post8"></td>
+            <td id = "post9"></td>
+            <td id = "post10"></td>
+          </tr>
+        </table>
+        <table id = tabList2>
+        </table>
       
-        <!-- <div id="ranking_poster">
-          <img src="./image/ranking_poster.png" style="width: 900px; height: 200px;">
-        </div> -->
-      <div>
-        <table style="width: 100%;">
-          <tr id="ranking_poster">
-            <td style="padding-left: 6px;">poster1</td>
-            <td>poster2</td>
-            <td>poster3</td>
-            <td>poster4</td>
-            <td>poster5</td>
-          </tr>
-          <tr style="text-align: center;">
-            <td style="padding-top: 20px;">제목</td>
-            <td style="padding-top: 20px;">제목</td>
-            <td style="padding-top: 20px;">제목</td>
-            <td style="padding-top: 20px;">제목</td>
-            <td style="padding-top: 20px;">제목</td>
+      </div>
+      <div id="tab-2" class="tab-content">
+        <table id = "poster_image3">
+          <tr>
+            <td id = "post_week"></td>
+            <td id = "post_week2"></td>
+            <td id = "post_week3"></td>
+            <td id = "post_week4"></td>
+            <td id = "post_week5"></td>
           </tr>
         </table>
+        <table id = tabList3></table>
+        <div id="flim">
+          <img src="./image/flim.png" style="width: 500px; height: 200px; left: -100px; top: 270px">
+        </div>
+  
+        <div id="popcon">
+          <img src="./image/popcon_ranking.png" style="width: 180px; height: 160px; left:660px; top: 320px;">
+        </div>
+        <table id = "poster_image4">
+          <tr>
+            <td id = "post_week6"></td>
+            <td id = "post_week7"></td>
+            <td id = "post_week8"></td>
+            <td id = "post_week9"></td>
+            <td id = "post_week10"></td>
+          </tr>
+        </table>
+        <table id = "tabList4"></table>
       </div>
+      <div id="tab-3" class="tab-content">
+        <table id="poster5">
+          <tr>
+            <td id="posterPos1"></td>
+            <td id="posterPos2"></td>
+            <td id="posterPos3"></td>
+            <td id="posterPos4"></td>
+            <td id="posterPos5"></td>
+          </tr>
+        <table id = "poster_image5">
+          <tr>
+            <td id = "post_week_week"></td>
+            <td id = "post_week_week2"></td>
+            <td id = "post_week_week3"></td>
+            <td id = "post_week_week4"></td>
+            <td id = "post_week_week5"></td>
+          </tr>
+        </table>
+        <table id = tabList5></table>
+        <div id="flim">
+          <img src="./image/flim.png" style="width: 500px; height: 200px; left: -100px; top: 270px">
+        </div>
+  
+        <div id="popcon">
+          <img src="./image/popcon_ranking.png" style="width: 180px; height: 160px; left:660px; top: 320px;">
+        </div>
+        <table id="poster6">
+          <tr>
+            <td id="posterPos1"></td>
+            <td id="posterPos2"></td>
+            <td id="posterPos3"></td>
+            <td id="posterPos4"></td>
+            <td id="posterPos5"></td>
+          </tr>
+        <table id = "poster_image6">
+          <tr>
+            <td id = "post_week_week6"></td>
+            <td id = "post_week_week7"></td>
+            <td id = "post_week_week8"></td>
+            <td id = "post_week_week9"></td>
+            <td id = "post_week_week10"></td>
+          </tr>
+        </table>
+        <table id = "tabList6"></table>
+      </div>
+      <div id="tab-4" class="tab-content">
 
-      <div id="flim">
-        <img src="./image/flim.png" style="width: 500px; height: 200px;">
       </div>
-
-      <div id="popcon">
-        <img src="./image/popcon_ranking.png" style="width: 200px; height: 180px;">
-      </div>
+      
      
-      <div style="margin-top: -170px;">
-        <table style="width: 100%;">
-          <tr id="ranking_poster">
-            <td style="padding-left: 6px;">poster1</td>
-            <td>poster2</td>
-            <td>poster3</td>
-            <td>poster4</td>
-            <td>poster5</td>
-          </tr>
-          <tr style="text-align: center;">
-            <td style="padding-top: 20px;">제목</td>
-            <td style="padding-top: 20px;">제목</td>
-            <td style="padding-top: 20px;">제목</td>
-            <td style="padding-top: 20px;">제목</td>
-            <td style="padding-top: 20px;">제목</td>
-          </tr>
-        </table>
-      </div>
+    
     </div>
-    </div>
+  </div>
   </body>
 </html>
 <style type = "text/css">
@@ -131,11 +710,12 @@ input {
   margin-left: -100px;
   cursor: pointer;
 }
-/* img {
+img {
   height: 100px;
   position: absolute;
-  left: 39%;
-} */
+  left: 30%;
+  width: 70px;
+}
 #login {
   margin-top: 200px;
   float: right;
@@ -194,15 +774,16 @@ button {
 }
 #container {
   background-image: url("./image/main_div_background.png");
-  height: 1000px;
+  height: 900px;
   background-size: cover;
 }
 ul.tabs {
-  margin:0px 60px 30px 60px;
+  margin:0px 60px 10px 60px;
   padding: 0px;
   list-style : none;
   display: flex;
   justify-content: space-between;
+  min-width: 650px;
 }
 ul.tabs li {
   background: none;
@@ -230,94 +811,293 @@ ul.tabs li.current {
   position: absolute;
   min-width: 600px;
   top: 300px;
-  left: 15%;
-  height: 900px;
-  width: 70%;
-  min-width: 750px;
+  left: 18%;
+  height: 700px;
+  width: 65%;
+  margin-bottom: 100px;
 }
 #rankTitle {
   margin: 0px 60px 10px 60px;
   display: flex;
   justify-content: space-between;
 }
-/* #tabList1{
+#tabList1{
   position: absolute;
-  top: 65px;
-  left : 53px;
-  height: 75%;
+  top: 270px;
+  left : 35px;
   table-layout:fixed;
-  border-collapse: collapse; 
-
 }
 #tabList1 td{
+  width : 195px;
+  text-align: center;
   overflow : hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  font-size: 20px;
-  color: black ;
-  padding-right: 70px;
-  padding-left: 10px;
-  
 }
-#tabList1 tr:first-child{
-}
-
 #tabList2{
   position: absolute;
-  top: 65px;
-  left : 53px;
-  height: 75%;
+  top: 720px;
+  left : 4px;
   table-layout:fixed;
-  border-collapse: collapse; 
-
 }
 #tabList2 td{
+  width : 195px;
+  text-align: left;
   overflow : hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  font-size: 20px;
-  color: black ;
-  padding-right: 70px;
-  padding-left: 10px;
-}
-#tabList2 tr:first-child{
 }
 #tabList3{
   position: absolute;
-  top: 65px;
-  left : 53px;
-  height: 75%;
+  top: 270px;
+  left : 35px;
   table-layout:fixed;
-  border-collapse: collapse; 
-
 }
 #tabList3 td{
+  width : 195px;
+  text-align: center;
   overflow : hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  font-size: 20px;
-  color: black ;
-  padding-right: 70px;
-  padding-left: 10px;
 }
-#tabList3 tr:first-child{
-} */
+#tabList4{
+  position: absolute;
+  top: 720px;
+  left : 4px;
+  table-layout:fixed;
+}
+#tabList4 td{
+  width : 195px;
+  text-align: left;
+  overflow : hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;;
+}
+#tabList5{
+  position: absolute;
+  top: 270px;
+  left : 35px;
+  table-layout:fixed;
+}
+#tabList5 td{
+  width : 195px;
+  text-align: center;
+  overflow : hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+#tabList6{
+  position: absolute;
+  top: 720px;
+  left : 4px;
+  table-layout:fixed;
 
-#ranking_poster {
-  background-image: url('../users/image/ranking_poster.png'); 
+}
+#tabList6 td{
+  width : 195px;
+  text-align: left;
+  overflow : hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+#poster_image1 {
+  position: absolute;
+  top: 50px;
+  left : 30px;
+  height: 180px;
+  width : 91%;
+  table-layout:fixed;
+  background-image: url("./image/test.jpg");
+  background-size: 149px;
+}
+
+#poster_image2 {
+  position: absolute;
+  top: 500px;
+  left : 30px;
+  height: 180px;
+  width : 91%;
+  table-layout:fixed;
+  background-image: url("./image/test.jpg");
+  background-size: 149px;
+}
+#poster_image3 {
+  position: absolute;
+  top: 50px;
+  left : 30px;
+  height: 180px;
+  width : 91%;
+  table-layout:fixed;
+  background-image: url("./image/test.jpg");
+  background-size: 149px;
+}
+#poster_image4 {
+  position: absolute;
+  top: 500px;
+  left : 30px;
+  height: 180px;
+  width : 91%;
+  table-layout:fixed;
+  background-image: url("./image/test.jpg");
+  background-size: 149px;
+}
+#poster_image5 {
+  position: absolute;
+  top: 50px;
+  left : 30px;
+  height: 180px;
+  width : 91%;
+  table-layout:fixed;
+  background-image: url("./image/test.jpg");
+  background-size: 149px;
+}
+#poster_image6 {
+  position: absolute;
+  top: 500px;
+  left : 30px;
+  height: 180px;
+  width : 91%;
+  table-layout:fixed;
+  background-image: url("./image/test.jpg");
+  background-size: 149px;
+}
+#poster {
+  margin-left: 3.9%;
+  margin-top: 21px; 
+  height: 180px;
+}
+#posterPos1 {
+  background-image: url("./image/test.jpg");
   background-repeat: no-repeat;
-  background-size: contain; 
-  height: 200px;
 }
-#flim {
+
+#post{
   position: relative;
-  top: 10px;
-  left: -100px;
+  padding-bottom: 120px;
 }
-#popcon {
+#post2{
   position: relative;
-  top: -230px;
-  right: -800px;
-  width: 100px;
+  padding-bottom: 120px;
 }
+#post3{
+  position: relative;
+  padding-bottom: 120px;
+}
+#post4{
+  position: relative;
+  padding-bottom: 120px;
+}
+#post5{
+  position: relative;
+  padding-bottom: 120px;
+}
+#post6{
+  position: relative;
+  padding-bottom: 120px;
+}
+#post7{
+  position: relative;
+  padding-bottom: 120px;
+}
+#post8{
+  position: relative;
+  padding-bottom: 120px;
+}
+#post9{
+  position: relative;
+  padding-bottom: 120px;
+}
+#post10{
+  position: relative;
+  padding-bottom: 120px;
+}
+#post_week{
+  position: relative;
+  padding-bottom: 120px;
+}
+#post_week2{
+  position: relative;
+  padding-bottom: 120px;
+}
+#post_week3{
+  position: relative;
+  padding-bottom: 120px;
+}
+#post_week4{
+  position: relative;
+  padding-bottom: 120px;
+}
+#post_week5{
+  position: relative;
+  padding-bottom: 120px;
+}
+#post_week6{
+  position: relative;
+  padding-bottom: 120px;
+}
+#post_week7{
+  position: relative;
+  padding-bottom: 120px;
+}
+#post_week8{
+  position: relative;
+  padding-bottom: 120px;
+}
+#post_week9{
+  position: relative;
+  padding-bottom: 120px;
+}
+#post_week10{
+  position: relative;
+  padding-bottom: 120px;
+}
+
+#post_week_week{
+  position: relative;
+  padding-bottom: 120px;
+}
+#post_week_week2{
+  position: relative;
+  padding-bottom: 120px;
+}
+#post_week_week3{
+  position: relative;
+  padding-bottom: 120px;
+}
+#post_week_week4{
+  position: relative;
+  padding-bottom: 120px;
+}
+#post_week_week5{
+  position: relative;
+  padding-bottom: 120px;
+}
+#post_week_week6{
+  position: relative;
+  padding-bottom: 120px;
+}
+#post_week_week7{
+  position: relative;
+  padding-bottom: 120px;
+}
+#post_week_week8{
+  position: relative;
+  padding-bottom: 120px;
+}
+#post_week_week9{
+  position: relative;
+  padding-bottom: 120px;
+}
+#post_week_week10{
+  position: relative;
+  padding-bottom: 120px;
+}
+#tab-1 {
+  min-width: 700px;
+}
+#tab-2 {
+  min-width: 700px;
+}
+
+
 </style>

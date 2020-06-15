@@ -1,12 +1,37 @@
 <!DOCTYPE html>
 <html>
-  <!-- <script>
-    function login() {
-      alert("아니다 메롱");
-    }
-  </script> -->
   <head>
     <title>Check Movie</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+    crossorigin="anonymous">
+    </script>
+    <script>
+       $(document).ready(function(){
+        $('#do_login').submit(function(){
+
+          var name = $('#userid').val();
+          var nameLen = name.length;
+          if(nameLen<1){
+            alert("아이디를 입력해주세요!");
+            return false;
+          }
+          var useremail= $('#useremail').val();
+          var emailLen = useremail.length;
+          if(emailLen<1){
+            alert("이메일을 입력해주세요!");
+            return false;
+          }
+          var pwd = $('#pwd').val();
+          var pwdLen = pwd.length;
+          if(pwdLen<1){
+            alert("패스워드를 입력해주세요!");
+            return false;
+          }
+          
+          
+        });
+      });
+    </script>
   </head>
   <body>
     <div id="top">
@@ -29,7 +54,7 @@
       <p id="loginTitle">로그인</p>
       <hr id="hr">
       <div>
-        <form action="/users/login" method="post">
+        <form action="/users/login" method="post" id = "do_login">
           <table>
             <tr>
               <td><p id="idPw">아이디</p></td>
@@ -37,17 +62,21 @@
             </tr>
             <tr>
               <td><p id="idPw">이메일</p></td>
-              <td id="idPwPos"><input id='userid' type='text' name='email'/></td>
+              <td id="idPwPos"><input id='useremail' type='text' name='email'/></td>
             </tr>
             <tr>
               <td><p id="idPw">비밀번호</p></td>
               <td><input id='pwd' type='password' name='password'/></td>
             </tr>
             <tr>
-              <td colspan="2"><input class="doLogin" type="submit" value="로그인" onclick="login()"></td>
+              <td colspan="2"><input class="doLogin" type="submit" value="로그인"></td>
             </tr>
           </table>
         </form>
+      </div>
+      <div id = "find">
+        <button id="findId" onclick="location.href='./findId.html'">아이디 찾기</button>
+        <button id="findPwd" onclick="location.href='./findPwd.html'">비밀번호 찾기</button>
       </div>
     </div>
   </div>
@@ -72,6 +101,18 @@ body {
   margin: -9px 0px -9px 0px;
   /* overflow-x: hidden; */
 }
+#find{
+ margin-top:-23px;
+ margin-left:20px;
+ cursor: pointer;
+ text-align: center;
+}
+#findId{
+  cursor: pointer;
+}
+#findPwd{
+  cursor: pointer;
+}
 #top {
   margin-top: -30px;
   background-image: url("./image/Logo_background.png");
@@ -79,6 +120,7 @@ body {
   background-size:cover;
   height: 240px;
 }
+
 #topLocation {
   margin: 15px 0px 30px 0px; 
 }
@@ -193,6 +235,10 @@ button {
   padding-left: 15px;
 }
 #userid {
+  margin-left: -120px;
+  height: 30px;
+}
+#useremail {
   margin-left: -120px;
   height: 30px;
 }
