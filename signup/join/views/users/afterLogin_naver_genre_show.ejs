@@ -19,11 +19,6 @@
     $(document).ready(function(){
         $('#genre_get').submit(function(){
           movie_title = document.getElementById("movie_title").value;
-          var titleLen = movie_title.length;
-          if(titleLen<1) {
-            alert("검색어를 입력해주세요!");
-            return false;
-          }
       });
     });
 
@@ -40,6 +35,7 @@
     function prev_button() {
       if(data_start == 1) {
         alert("첫 페이지 입니다");
+        false;
       }
     }
     function next_button() {
@@ -75,6 +71,7 @@
               <td>
                 <form action="/users/search/movie" method="GET" id="genre_get">
                   <select id="genre" name="genre" onchange="genreChange()">
+                    <option value=0>장르(전체 검색)</option>
                     <option value=1>드라마</option>
                     <option value=2>판타지</option>
                     <option value=3>서부</option>
@@ -110,26 +107,29 @@
             </td>
             </tr>
           </table>
-        <table style="width: 94%; margin-left: 3.5%; margin-top: 80px;">
+        <table style="width: 94%; margin-left: 3.5%; margin-top: 60px;">
           <colgroup>
             <col width="30%"/>
             <col width="60%"/>
             <col width="10%"/>
           </colgroup>
           <% for(var i=0; i < data.display; i++) { %>
+          <% var check=0; %>
           <tr style="border: 1px solid #BDECB6;">
             <tr>
               <td rowspan="4" style="color: black;"><a href=<%- data.items[i].link %>><img src = <%- data.items[i].image %>> </a></td>
               <td style="color: black;"><a href=<%- data.items[i].link %>> <%- data.items[i].title %> </a></td>
-              <% if(mylist.length != 0) { %>
-                <% for(var j=0; j < mylist.length; j++) { %>
-                 <% if(data.items[i].title == mylist[j].title) { %>
+              <% for(var j=0; j < mylist.length; j++) { %>
+                <% if(data.items[i].title == mylist[j].title) { %>
+                   <% check =1; %>
+                   <% } %>
+                <% } %>
+                <% if(check == 1) { %>
                   <td rowspan="4" style="text-align: center;"><button id = <%- i %> onclick = "already_list()">♥</a></td></button>
                  <% }else{ %>
                   <td rowspan="4" style="text-align: center;"><button id = <%- i %> onclick = "add_list(this.id)">♡</a></td></button>
                  <% } %>
-                <% } %>
-              <% }else{ %>
+                 <% if(mylist.length==0) { %>
                 <td rowspan="4" style="text-align: center;"><button id = <%- i %> onclick = "add_list(this.id)">♡</a></td></button>
               <% } %>  
             </tr>
@@ -145,10 +145,10 @@
           </tr>
           <% } %>
         </table>
-        <form action="/users/search/movie/prev" method="GET">
+        <form action="/users/search/movie/prev/after" method="GET">
             <button class="pre" onclick="prev_button()">이전</button>
         </form>
-        <form action="/users/search/movie/next" method="GET">
+        <form action="/users/search/movie/next/after" method="GET">
             <button class="next" onclick="next_button()">다음</button>
         </form>
       </div>

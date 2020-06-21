@@ -255,7 +255,7 @@ router.post("/login", async function(req,res,next){
   
   if(dbPassword === hashPassword){
     console.log("비밀번호 일치");
-    req.session.email = body.userEmail;
+    req.session.email = result.dataValues.email;
     res.redirect("/users/afterLogin_main.html");
     console.log(req.session.email);
   }
@@ -440,7 +440,7 @@ router.get('/search/movie', function (req, res) {
 });
 
 
-router.get('/search/movie/next', function (req, res) {
+router.get('/search/movie/next/before', function (req, res) {
   var api_url = 'https://openapi.naver.com/v1/search/movie?query=' + encodeURI(query);
   console.log(genre); //값 확인용
 
@@ -572,7 +572,7 @@ router.get('/search/movie/next', function (req, res) {
   });
 });
 
-router.get('/search/movie/prev', function (req, res) {
+router.get('/search/movie/prev/before', function (req, res) {
   var api_url = 'https://openapi.naver.com/v1/search/movie?query=' + encodeURI(query);
   console.log(genre); //값 확인용
 
@@ -694,6 +694,269 @@ router.get('/search/movie/prev', function (req, res) {
     if (!error && response.statusCode == 200) {
       fs.writeFileSync('views/users/result/result.json',result2);
       res.redirect("/users/beforeLogin_naver_genre_show.html");
+      res.end(body);
+    }
+      else {
+      res.status(response.statusCode).end();
+      console.log('error = ' + response.statusCode);
+    }
+  });
+});
+
+router.get('/search/movie/next/after', function (req, res) {
+  var api_url = 'https://openapi.naver.com/v1/search/movie?query=' + encodeURI(query);
+  console.log(genre); //값 확인용
+
+  console.log(query);
+  start+=10;
+  console.log(start);
+  
+  if(query == null) {
+    if(genre=='-드라마') {
+      api_url = 'https://openapi.naver.com/v1/search/movie?query='+ encodeURI('가&genre=1');
+    }
+    else if(genre=='-판타지') {
+      api_url = 'https://openapi.naver.com/v1/search/movie?query='+ encodeURI('가&genre=2');
+    }
+    else if(genre=='-서부') {
+      api_url = 'https://openapi.naver.com/v1/search/movie?query='+ encodeURI('가')+"&genre=3";
+    }
+    else if(req.query.genre=='-공포') {
+      api_url = 'https://openapi.naver.com/v1/search/movie?query='+ encodeURI('가')+"&genre=4";
+    }
+    else if(req.query.genre=='-로맨스') {
+      api_url = 'https://openapi.naver.com/v1/search/movie?query='+ encodeURI('가')+"&genre=5";
+    }
+    else if(req.query.genre=='-모험') {
+      api_url = 'https://openapi.naver.com/v1/search/movie?query='+ encodeURI('가')+"&genre=6";
+    }
+    else if(req.query.genre=='-스릴러') {
+      api_url = 'https://openapi.naver.com/v1/search/movie?query='+ encodeURI('가')+"&genre=7";
+    }
+    else if(req.query.genre=='-느와르') {
+      api_url = 'https://openapi.naver.com/v1/search/movie?query='+ encodeURI('가')+"&genre=8";
+    }
+    else if(req.query.genre=='-컬트') {
+      api_url = 'https://openapi.naver.com/v1/search/movie?query='+ encodeURI('가')+"&genre=9";
+    }
+    else if(req.query.genre=='-다큐멘터리') {
+      api_url = 'https://openapi.naver.com/v1/search/movie?query='+ encodeURI('가')+"&genre=10";
+    }
+    else if(req.query.genre=='-코미디') {
+      api_url = 'https://openapi.naver.com/v1/search/movie?query='+ encodeURI('가')+"&genre=11";
+    }
+    else if(req.query.genre=='-가족') {
+      api_url = 'https://openapi.naver.com/v1/search/movie?query='+ encodeURI('가')+"&genre=12";
+    }
+    else if(req.query.genre=='-미스터리') {
+      api_url = 'https://openapi.naver.com/v1/search/movie?query='+ encodeURI('가')+"&genre=13";
+    }
+    else if(req.query.genre=='-전쟁') {
+      api_url = 'https://openapi.naver.com/v1/search/movie?query='+ encodeURI('가')+"&genre=14";
+    }
+    else if(req.query.genre=='-애니메이션') {
+      api_url = 'https://openapi.naver.com/v1/search/movie?query='+ encodeURI('가')+"&genre=15";
+    }
+    else if(req.query.genre=='-범죄') {
+      api_url = 'https://openapi.naver.com/v1/search/movie?query='+ encodeURI('가')+"&genre=16";
+    }
+    else if(req.query.genre=='-뮤지컬') {
+      api_url = 'https://openapi.naver.com/v1/search/movie?query='+ encodeURI('가')+"&genre=17";
+    }
+    else if(req.query.genre=='-SF') {
+      api_url = 'https://openapi.naver.com/v1/search/movie?query='+ encodeURI('가')+"&genre=18";
+    }
+    else if(req.query.genre=='-액션') {
+      api_url = 'https://openapi.naver.com/v1/search/movie?query='+ encodeURI('가')+"&genre=19";
+    }
+    else if(req.query.genre=='-무협') {
+      api_url = 'https://openapi.naver.com/v1/search/movie?query='+ encodeURI('가')+"&genre=20";
+    }
+    else if(req.query.genre=='-에로') {
+      api_url = 'https://openapi.naver.com/v1/search/movie?query='+ encodeURI('가')+"&genre=21";
+    }
+    else if(req.query.genre=='-서스펜스') {
+      api_url = 'https://openapi.naver.com/v1/search/movie?query='+ encodeURI('가')+"&genre=22";
+    }
+    else if(req.query.genre=='-서사') {
+      api_url = 'https://openapi.naver.com/v1/search/movie?query='+ encodeURI('가')+"&genre=23";
+    }
+    else if(req.query.genre=='-블랙코미디') {
+      api_url = 'https://openapi.naver.com/v1/search/movie?query='+ encodeURI('가')+"&genre=24";
+    }
+    else if(req.query.genre=='-실험') {
+      api_url = 'https://openapi.naver.com/v1/search/movie?query='+ encodeURI('가')+"&genre=25";
+    }
+    else if(req.query.genre=='-영화카툰') {
+      api_url = 'https://openapi.naver.com/v1/search/movie?query='+ encodeURI('가')+"&genre=26";
+    }
+    else if(req.query.genre=='-영화음악') {
+      api_url = 'https://openapi.naver.com/v1/search/movie?query='+ encodeURI('가')+"&genre=27";
+    }
+    else if(req.query.genre=='-영화패러디포스터') {
+      api_url = 'https://openapi.naver.com/v1/search/movie?query='+ encodeURI('가&genre=28');
+    }
+    api_url = api_url + "&start=" + start + "&display=10";
+  } else {
+    api_url = api_url + "&genre=" + genre  + "&start=" + start + "&display=10";
+    console.log(api_url);
+  }
+  var request = require('request');
+  var options = {
+    url: api_url,
+    headers: {'X-Naver-Client-Id':client_id, 'X-Naver-Client-Secret': client_secret}
+  };
+   request.get(options, function (error, response, body) {
+    var result = JSON.parse(body);
+    //검색결과 제목에 <b> </b> 태그 제거.
+    for(var i=0; i<result.display; i++) {
+      var op = result.items[i].title.replace('<b>', '')
+      op = op.replace('</b>', '');
+      result.items[i].title = op;
+      var ap = result.items[i].actor.replace('<b>', '')
+      ap = ap.replace('</b>', '');
+      result.items[i].actor = ap;
+      var sp = result.items[i].director.replace('<b>', '')
+      sp = sp.replace('</b>', '');
+      result.items[i].director = sp;
+      console.log(op)
+    }
+     
+    var result2=JSON.stringify(result)
+    if (!error && response.statusCode == 200) {
+      fs.writeFileSync('views/users/result/result.json',result2);
+      res.redirect("/users/afterLogin_naver_genre_show.html");
+      res.end(body);
+    }
+      else {
+      res.status(response.statusCode).end();
+      console.log('error = ' + response.statusCode);
+    }
+  });
+});
+
+router.get('/search/movie/prev/after', function (req, res) {
+  var api_url = 'https://openapi.naver.com/v1/search/movie?query=' + encodeURI(query);
+  console.log(genre); //값 확인용
+
+  console.log(query);
+  start-=10;
+  console.log(start);
+  if(query == null) {
+    if(genre=='-드라마') {
+      api_url = 'https://openapi.naver.com/v1/search/movie?query='+ encodeURI('가&genre=1');
+    }
+    else if(genre=='-판타지') {
+      api_url = 'https://openapi.naver.com/v1/search/movie?query='+ encodeURI('가&genre=2');
+    }
+    else if(genre=='-서부') {
+      api_url = 'https://openapi.naver.com/v1/search/movie?query='+ encodeURI('가')+"&genre=3";
+    }
+    else if(req.query.genre=='-공포') {
+      api_url = 'https://openapi.naver.com/v1/search/movie?query='+ encodeURI('가')+"&genre=4";
+    }
+    else if(req.query.genre=='-로맨스') {
+      api_url = 'https://openapi.naver.com/v1/search/movie?query='+ encodeURI('가')+"&genre=5";
+    }
+    else if(req.query.genre=='-모험') {
+      api_url = 'https://openapi.naver.com/v1/search/movie?query='+ encodeURI('가')+"&genre=6";
+    }
+    else if(req.query.genre=='-스릴러') {
+      api_url = 'https://openapi.naver.com/v1/search/movie?query='+ encodeURI('가')+"&genre=7";
+    }
+    else if(req.query.genre=='-느와르') {
+      api_url = 'https://openapi.naver.com/v1/search/movie?query='+ encodeURI('가')+"&genre=8";
+    }
+    else if(req.query.genre=='-컬트') {
+      api_url = 'https://openapi.naver.com/v1/search/movie?query='+ encodeURI('가')+"&genre=9";
+    }
+    else if(req.query.genre=='-다큐멘터리') {
+      api_url = 'https://openapi.naver.com/v1/search/movie?query='+ encodeURI('가')+"&genre=10";
+    }
+    else if(req.query.genre=='-코미디') {
+      api_url = 'https://openapi.naver.com/v1/search/movie?query='+ encodeURI('가')+"&genre=11";
+    }
+    else if(req.query.genre=='-가족') {
+      api_url = 'https://openapi.naver.com/v1/search/movie?query='+ encodeURI('가')+"&genre=12";
+    }
+    else if(req.query.genre=='-미스터리') {
+      api_url = 'https://openapi.naver.com/v1/search/movie?query='+ encodeURI('가')+"&genre=13";
+    }
+    else if(req.query.genre=='-전쟁') {
+      api_url = 'https://openapi.naver.com/v1/search/movie?query='+ encodeURI('가')+"&genre=14";
+    }
+    else if(req.query.genre=='-애니메이션') {
+      api_url = 'https://openapi.naver.com/v1/search/movie?query='+ encodeURI('가')+"&genre=15";
+    }
+    else if(req.query.genre=='-범죄') {
+      api_url = 'https://openapi.naver.com/v1/search/movie?query='+ encodeURI('가')+"&genre=16";
+    }
+    else if(req.query.genre=='-뮤지컬') {
+      api_url = 'https://openapi.naver.com/v1/search/movie?query='+ encodeURI('가')+"&genre=17";
+    }
+    else if(req.query.genre=='-SF') {
+      api_url = 'https://openapi.naver.com/v1/search/movie?query='+ encodeURI('가')+"&genre=18";
+    }
+    else if(req.query.genre=='-액션') {
+      api_url = 'https://openapi.naver.com/v1/search/movie?query='+ encodeURI('가')+"&genre=19";
+    }
+    else if(req.query.genre=='-무협') {
+      api_url = 'https://openapi.naver.com/v1/search/movie?query='+ encodeURI('가')+"&genre=20";
+    }
+    else if(req.query.genre=='-에로') {
+      api_url = 'https://openapi.naver.com/v1/search/movie?query='+ encodeURI('가')+"&genre=21";
+    }
+    else if(req.query.genre=='-서스펜스') {
+      api_url = 'https://openapi.naver.com/v1/search/movie?query='+ encodeURI('가')+"&genre=22";
+    }
+    else if(req.query.genre=='-서사') {
+      api_url = 'https://openapi.naver.com/v1/search/movie?query='+ encodeURI('가')+"&genre=23";
+    }
+    else if(req.query.genre=='-블랙코미디') {
+      api_url = 'https://openapi.naver.com/v1/search/movie?query='+ encodeURI('가')+"&genre=24";
+    }
+    else if(req.query.genre=='-실험') {
+      api_url = 'https://openapi.naver.com/v1/search/movie?query='+ encodeURI('가')+"&genre=25";
+    }
+    else if(req.query.genre=='-영화카툰') {
+      api_url = 'https://openapi.naver.com/v1/search/movie?query='+ encodeURI('가')+"&genre=26";
+    }
+    else if(req.query.genre=='-영화음악') {
+      api_url = 'https://openapi.naver.com/v1/search/movie?query='+ encodeURI('가')+"&genre=27";
+    }
+    else if(req.query.genre=='-영화패러디포스터') {
+      api_url = 'https://openapi.naver.com/v1/search/movie?query='+ encodeURI('가&genre=28');
+    }
+    api_url = api_url + "&start=" + start + "&display=10";
+  } else {
+    api_url = api_url + "&genre=" + genre  + "&start=" + start + "&display=10";
+    console.log(api_url);
+  }
+  var request = require('request');
+  var options = {
+      url: api_url,
+      headers: {'X-Naver-Client-Id':client_id, 'X-Naver-Client-Secret': client_secret}
+   };
+   request.get(options, function (error, response, body) {
+    var result = JSON.parse(body);
+    //검색결과 제목에 <b> </b> 태그 제거.
+    for(var i=0; i<result.display; i++) {
+      var op = result.items[i].title.replace('<b>', '')
+      op = op.replace('</b>', '');
+      result.items[i].title = op;
+      var ap = result.items[i].actor.replace('<b>', '')
+      ap = ap.replace('</b>', '');
+      result.items[i].actor = ap;
+      var sp = result.items[i].director.replace('<b>', '')
+      sp = sp.replace('</b>', '');
+      result.items[i].director = sp;
+      console.log(op)
+    }
+     
+    var result2=JSON.stringify(result)
+    if (!error && response.statusCode == 200) {
+      fs.writeFileSync('views/users/result/result.json',result2);
+      res.redirect("/users/afterLogin_naver_genre_show.html");
       res.end(body);
     }
       else {
