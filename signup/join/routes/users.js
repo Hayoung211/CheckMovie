@@ -22,7 +22,6 @@ router.get('/beforeLogin_naver_genre_show.html', function(req, res, next) {
     const qq=fs.readFileSync('views/users/result/result.json','utf-8');
     const ww=JSON.parse(qq)
     res.render("users/beforeLogin_naver_genre_show", {data : ww});
-  
   });
 //로그인전 넷플릭스페이지 불러오기
 router.get('/beforeLogin_netflix_genre.html', function(req, res, next) {
@@ -417,9 +416,9 @@ router.get('/search/movie', function (req, res) {
     var result2=JSON.stringify(result)
     if (!error && response.statusCode == 200) {
         fs.writeFileSync('views/users/result/result.json',result2);
-        if(current_url=="http://localhost:3000/users/beforeLogin_naver_genre.html" || current_url=="http://localhost:3000/users/beforeLogin_naver_genre_show.html") {
+        if(current_url=="http://localhost:3000/users/beforeLogin_main.html" || current_url=="http://localhost:3000/users/beforeLogin_naver_genre.html" || current_url=="http://localhost:3000/users/beforeLogin_naver_genre_show.html") {
           res.redirect("/users/beforeLogin_naver_genre_show.html");
-        }
+        } 
         else {
           res.redirect("/users/afterLogin_naver_genre_show.html");
         }
@@ -427,7 +426,7 @@ router.get('/search/movie', function (req, res) {
     }
       else {
         console.log(current_url)
-        if(current_url=="http://localhost:3000/users/beforeLogin_naver_genre.html" || current_url=="http://localhost:3000/users/beforeLogin_naver_genre_show.html") {
+        if(current_url=="http://localhost:3000/users/beforeLogin_main.html" || current_url=="http://localhost:3000/users/beforeLogin_naver_genre.html" || current_url=="http://localhost:3000/users/beforeLogin_naver_genre_show.html") {
           res.writeHead(200, {'Content-Type': 'text/html;charset=UTF-8'});
           res.write('<script type = "text/javascript" charset="utf-8">alert("검색창이 비어 있습니다. 다시 검색해주세요."); location.href="/users/beforeLogin_naver_genre_show.html"; </script>');
         }

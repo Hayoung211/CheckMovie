@@ -350,28 +350,29 @@
       <!-- 문제. 아직 api를 받지 못해서 작성 못함 -->
       <button id="more" onclick="location.href='./beforeLogin_naver_genre.html'">더보기</button>
       <div id="naverGenre">
-        <table id="naverGenreTable">
-          <tr>
-            <td id="naverGenre" onclick="location.href='./afterLogin_naver_genre_show.html'">- 드라마</td>
-            <td id="naverGenre" onclick="location.href='./afterLogin_naver_genre_show.html'">- 판타지</td>
-            <td id="naverGenre" onclick="location.href='./afterLogin_naver_genre_show.html'">- 서부</td>
-          </tr>
-          <tr>
-            <td id="naverGenre" onclick="location.href='./afterLogin_naver_genre_show.html'">- 공포</td>
-            <td id="naverGenre" onclick="location.href='./afterLogin_naver_genre_show.html'">- 로맨스</td>
-            <td id="naverGenre" onclick="location.href='./afterLogin_naver_genre_show.html'">- 모험</td>
-          </tr>
-          <tr>
-            <td id="naverGenre" onclick="location.href='./afterLogin_naver_genre_show.html'">- 스릴러</td>
-            <td id="naverGenre" onclick="location.href='./afterLogin_naver_genre_show.html'">- 느와르</td>
-            <td id="naverGenre" onclick="location.href='./afterLogin_naver_genre_show.html'">- 컬트</td>
-          </tr>
-          <tr>
-            <td id="naverGenre" onclick="location.href='./afterLogin_naver_genre_show.html'">- 다큐멘터리</td>
-            <td id="naverGenre" onclick="location.href='./afterLogin_naver_genre_show.html'">- 코미디</td>
-            <td id="naverGenre" onclick="location.href='./afterLogin_naver_genre_show.html'">- 가족</td>
-          </tr>
-        </table>
+        <form action="/users/search/movie" method="GET">
+          <table id="naverGenreTable">
+            <tr>
+              <td><input type='submit' name = "genre" value='-드라마' style="background-color:transparent;  border:0px transparent solid;"></td>
+              <td><input type='submit' name = "genre" value='-판타지' style="background-color:transparent;  border:0px transparent solid;"></td>
+              <td><input type='submit' name = "genre" value='-서부' style="background-color:transparent;  border:0px transparent solid;"></td>
+            </tr>
+            <tr>
+              <td><input type='submit' name = "genre" value='-공포' style="background-color:transparent;  border:0px transparent solid;"></td>
+              <td><input type='submit' name = "genre" value='-로맨스' style="background-color:transparent;  border:0px transparent solid;"></td>
+              <td><input type='submit' name = "genre" value='-모험' style="background-color:transparent;  border:0px transparent solid;"></td>
+            </tr>
+            <tr>
+              <td><input type='submit' name = "genre" value='-스릴러' style="background-color:transparent;  border:0px transparent solid;"></td>
+              <td><input type='submit' name = "genre" value='-느와르' style="background-color:transparent;  border:0px transparent solid;"></td>
+              <td><input type='submit' name = "genre" value='-컬트' style="background-color:transparent;  border:0px transparent solid;"></td>
+            </tr>
+            <tr>
+              <td><input type='submit' name = "genre" value='-다큐멘터리' style="background-color:transparent;  border:0px transparent solid;"></td>
+              <td><input type='submit' name = "genre" value='-코미디' style="background-color:transparent;  border:0px transparent solid;"></td>
+              <td><input type='submit' name = "genre" value='-가족' style="background-color:transparent;  border:0px transparent solid;"></td>
+            </tr>
+      </table>
       </div>
       <div id="beam1">
         <img src="./image/beam_project.png">
@@ -384,24 +385,24 @@
       <div id="netflixGenre">
         <table id="netflixGenreTable">
           <tr>
-            <td><a href="http://www.netflix.com/browse/genre/5685">- 한국 영화</a></td>
-            <td><a href="http://www.netflix.com/browse/genre/6548">- 코미디</a></td>
-            <td><a href="http://www.netflix.com/browse/genre/5475">- 로맨틱 코미디</a></td>
+            <td><a href="http://www.netflix.com/browse/genre/5685">-한국 영화</a></td>
+            <td><a href="http://www.netflix.com/browse/genre/6548">-코미디</a></td>
+            <td><a href="http://www.netflix.com/browse/genre/5475">-로맨틱 코미디</a></td>
           </tr>
           <tr>
-            <td><a href="http://www.netflix.com/browse/genre/8933">- 스릴러</a></td>
-            <td><a href="http://www.netflix.com/browse/genre/7424">- 일본애니메이션</a></td>
-            <td><a href="http://www.netflix.com/browse/genre/10118">- 코믹북 & 슈퍼히어로</a></td>
+            <td><a href="http://www.netflix.com/browse/genre/8933">-스릴러</a></td>
+            <td><a href="http://www.netflix.com/browse/genre/7424">-일본애니메이션</a></td>
+            <td><a href="http://www.netflix.com/browse/genre/10118">-코믹북 & 슈퍼히어로</a></td>
           </tr>
           <tr>
-            <td><a href="http://www.netflix.com/browse/genre/4370">- 스포츠 영화</a></td>
-            <td><a href="http://www.netflix.com/browse/genre/8883">- 로맨스 영화</a></td>
-            <td><a href="http://www.netflix.com/browse/genre/1365">- 액션 & 어드벤쳐</a></td>
+            <td><a href="http://www.netflix.com/browse/genre/4370">-스포츠 영화</a></td>
+            <td><a href="http://www.netflix.com/browse/genre/8883">-로맨스 영화</a></td>
+            <td><a href="http://www.netflix.com/browse/genre/1365">-액션 & 어드벤쳐</a></td>
           </tr>
           <tr>
-            <td><a href="http://www.netflix.com/browse/genre/3327">- 외계인 SF</a></td>
-            <td><a href="http://www.netflix.com/browse/genre/4370">- 스포츠 영화</a></td>
-            <td><a href="http://www.netflix.com/browse/genre/31574">- 클래식 영화</a></td>
+            <td><a href="http://www.netflix.com/browse/genre/3327">-외계인 SF</a></td>
+            <td><a href="http://www.netflix.com/browse/genre/4370">-스포츠 영화</a></td>
+            <td><a href="http://www.netflix.com/browse/genre/31574">-클래식 영화</a></td>
           </tr>
         </table>
       </div>
@@ -448,7 +449,7 @@ input {
   border: none;
   width: 450px;
   height: 200px;
-  margin-left: -100px;
+  margin-left: 405px;
   cursor: pointer;
 }
 img {
@@ -729,7 +730,7 @@ a:hover {
 }
 #naverGenreTable {
   margin-top: 30px;
-  margin-left: 50px;
+  margin-left: 45px;
   width: 300px;
 }
 #netflixGenreTable {
@@ -785,5 +786,18 @@ a:hover {
   position: relative;
   top: 180px;
   left: -17px;
+}
+input:hover {
+  color: rgb(255, 100, 149);
+  cursor: pointer;
+}
+input:focus {
+  outline: 0 !important;
+}
+input {
+  vertical-align: middle;
+  position: relative;
+  left: 0%;
+  font-size: 15px;
 }
 </style>
