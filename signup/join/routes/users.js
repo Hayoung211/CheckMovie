@@ -3,7 +3,10 @@ const nodemailer = require('nodemailer');
 const router = express.Router();
 const models = require("../models");
 const crypto = require('crypto');
-const fs = require('fs')
+const fs = require('fs');
+const sequelize = require("sequelize");
+const Op = sequelize.Op;
+
 
 //로그인전 메인페이지 불러오기
 router.get('/beforeLogin_main.html', function(req, res, next) {
@@ -39,8 +42,21 @@ router.get('/afterLogin_naver_genre.html', function(req, res, next) {
 });
 //로그인후 네이버장르페이지리스트 불러오기
 router.get('/afterLogin_naver_genre_show.html', function(req, res, next) {
-  res.render("users/afterLogin_naver_genre_show");
+  const qq=fs.readFileSync('views/users/result/result.json','utf-8');
+  const ww=JSON.parse(qq)
+  models.list.findAll({
+    where :{
+      user_email :{
+        [Op.like] : req.session.email
+      }
+    }
+  })
+    .then(result => {
+      console.log(result.length)
+      res.render("users/afterLogin_naver_genre_show", {mylist : result, data : ww});
+    })
 });
+
 //로그인후 넷플릭스장르페이지 불러오기
 router.get('/afterLogin_netflix_genre.html', function(req, res, next) {
   res.render("users/afterLogin_netflix_genre");
@@ -51,7 +67,16 @@ router.get('/afterLogin_ranking.html', function(req, res, next) {
 });
 //나만의 리스트 페이지 불러오기
 router.get('/myList.html', function(req, res, next) {
-  res.render("users/mylist");
+  models.list.findAll({
+    where :{
+      user_email :{
+        [Op.like] : req.session.email
+      }
+    }
+  })
+    .then(result => {
+      res.render("users/mylist", {mylist : result});
+    })
 });
 //회원가입 페이지 불러오기
 router.get('/signup.html', function(req, res, next) {
@@ -258,16 +283,18 @@ var genre;
 var query;
 var start;
 router.get('/search/movie', function (req, res) {
+  var referer = req.headers.referer.split(',')
+  var current_url = referer[0];
+  console.log(current_url)
   var api_url = 'https://openapi.naver.com/v1/search/movie?query=' + encodeURI(req.query.query);
   genre = req.query.genre;
-  console.log(req.query); //값 확인용
-  
   start = 1;
-  console.log(req.query.genre);
+  console.log(req.query.genre)
   if(query = undefined) {
     query = 'a';
   } else {
     query = req.query.query;
+
   }
   //네이버 장르 검색 디폴트값 ->'가'
   if(req.query.genre=='-드라마') {
@@ -389,16 +416,29 @@ router.get('/search/movie', function (req, res) {
      
     var result2=JSON.stringify(result)
     if (!error && response.statusCode == 200) {
-      fs.writeFileSync('views/users/result/result.json',result2);
-      res.redirect("/users/beforeLogin_naver_genre_show.html");
-      res.end(body);
+        fs.writeFileSync('views/users/result/result.json',result2);
+        if(current_url=="http://localhost:3000/users/beforeLogin_naver_genre.html" || current_url=="http://localhost:3000/users/beforeLogin_naver_genre_show.html") {
+          res.redirect("/users/beforeLogin_naver_genre_show.html");
+        }
+        else {
+          res.redirect("/users/afterLogin_naver_genre_show.html");
+        }
+        res.end(body);      
     }
       else {
-      res.status(response.statusCode).end();
-      console.log('error = ' + response.statusCode);
-    }
+        console.log(current_url)
+        if(current_url=="http://localhost:3000/users/beforeLogin_naver_genre.html" || current_url=="http://localhost:3000/users/beforeLogin_naver_genre_show.html") {
+          res.writeHead(200, {'Content-Type': 'text/html;charset=UTF-8'});
+          res.write('<script type = "text/javascript" charset="utf-8">alert("검색창이 비어 있습니다. 다시 검색해주세요."); location.href="/users/beforeLogin_naver_genre_show.html"; </script>');
+        }
+        else {
+          res.writeHead(200, {'Content-Type': 'text/html;charset=UTF-8'});
+          res.write('<script type = "text/javascript" charset="utf-8">alert("검색창이 비어 있습니다. 다시 검색해주세요."); location.href="/users/afterLogin_naver_genre_show.html"; </script>');
+        }
+      }
   });
 });
+
 
 router.get('/search/movie/next', function (req, res) {
   var api_url = 'https://openapi.naver.com/v1/search/movie?query=' + encodeURI(query);
@@ -661,6 +701,36 @@ router.get('/search/movie/prev', function (req, res) {
       console.log('error = ' + response.statusCode);
     }
   });
+});
+
+router.post("/mylist",async function(req,res,next) {
+  var referer = req.headers.referer.split(',')
+  var current_url = referer[0];
+
+  var email=req.session.email
+  var c_num = req.body.c_num;
+  var result2 = fs.readFileSync('views/users/result/result.json','utf-8');
+  var result = JSON.parse(result2);
+  var poster = result.items[c_num].image;
+  var title = result.items[c_num].title;
+  var id;
+
+  id = Math.floor((Math.random())*1000000); 
+  let input = models.list.create({
+    id : id,
+    user_email: email,
+    poster : poster,
+    title : title,
+    heart : 1
+  });
+  if(current_url=="http://localhost:3000/users/beforeLogin_naver_genre.html" || current_url=="http://localhost:3000/users/beforeLogin_naver_genre_show.html") {
+    res.writeHead(200, {'Content-Type': 'text/html;charset=UTF-8'});
+    res.write('<script type = "text/javascript" charset="utf-8">alert("나만의 보관함에 추가하였습니다."); location.href="/users/beforeLogin_naver_genre_show.html"; </script>');
+  }
+  else {
+    res.writeHead(200, {'Content-Type': 'text/html;charset=UTF-8'});
+    res.write('<script type = "text/javascript" charset="utf-8">alert("나만의 보관함에 추가하였습니다."); location.href="/users/afterLogin_naver_genre_show.html"; </script>');
+  }
 });
 
 

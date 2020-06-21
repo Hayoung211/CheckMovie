@@ -19,6 +19,11 @@
     $(document).ready(function(){
         $('#genre_get').submit(function(){
           movie_title = document.getElementById("movie_title").value;
+          var titleLen = movie_title.length;
+          if(titleLen<1) {
+            alert("검색어를 입력해주세요!");
+            return false;
+          }
       });
     });
 
@@ -34,13 +39,14 @@
 
     function prev_button() {
       if(data_start == 1) {
+        console.log(data_start);
         alert("첫 페이지 입니다");
       }
     }
     function next_button() {
       data_start += 10;
-      
       if(data_start > data_total) {
+        console.log(data_start);
         alert("마지막 페이지 입니다!");
       }
     }

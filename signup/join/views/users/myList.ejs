@@ -17,25 +17,26 @@
       </div>
     </div>
     <div id="container">
-    <div id="myListPos">
-      <div id="myListTitle">
-        <p id="moreMyList">My 보관함</p>
-      </div>
-      <hr>
-      <!-- jsp로 찜 누른것마다 넣어주기 -->
-      <div id="netflixGenre">
-        <table>
-          <tr>
-            <td style="width: 10%; color: red; font-size: 30px;"> ♥ </a></td>
-            <td style="width: 25%; color: rgb(95, 136, 101); font-weight: 400; font-size: 20px;"> 포스터 위치 </a></td>
-            <td style="width: 75%; color: rgb(95, 136, 101); font-weight: 400; font-size: 30px;"> - 영화이름 </a></td>
-          </tr>
-        </table>
+      <div id="myListPos">
+        <div id="myListTitle">
+          <p id="moreMyList">My 보관함</p>
+        </div>
+        <!-- jsp로 찜 누른것마다 넣어주기 -->
+        <div id="netflixGenre">
+          <table>
+            <% for(var i=0; i < mylist.length; i++ ) { %>
+            <tr>
+              <td style="width: 10%; color: red; font-size: 30px;"> ♥ </a></td>
+              <td style="width: 25%; color: black; font-weight: 400; font-size: 20px;"><img src =  <%- mylist[i].poster %>> </a></td>
+              <td style="width: 75%; color: black; font-weight: 400; font-size: 30px;"> - <%- mylist[i].title %> </a></td>
+            </tr>
+            <% } %>
+          </table>
+        </div>
       </div>
     </div>
-  </div>
-  </body>
-</html>
+    </body>
+  </html>  
 <style type = "text/css">
 @import url(//fonts.googleapis.com/earlyaccess/jejuhallasan.css);
 * {font-family: 'Jeju Hallasan', cursive}
@@ -44,12 +45,6 @@ body {
   min-width: 1000px;
   margin: -9px 0px -9px 0px;
   /* overflow-x: hidden; */
-}
-button:focus {
-  outline: 0 !important;
-}
-input:focus {
-  outline: 0 !important;
 }
 #top {
   margin-top: -30px;
@@ -73,11 +68,20 @@ input {
   height: 200px;
   margin-left: -100px;
   cursor: pointer;
+  outline: none;
 }
 img {
-  height: 100px;
+  height: 110px;
   position: absolute;
-  left: 39%;
+  margin-top: -45px;
+  max-width: 150px;
+  width: 90px;
+  text-align: center;
+  margin-left: 5%;
+  padding: 10px;
+}
+img:hover {
+  cursor:auto;
 }
 #logout {
   margin-top: 200px;
@@ -137,27 +141,78 @@ button {
 }
 #container {
   background-image: url("./image/main_div_background.png");
-  height: 830px;
+  height: 1750px;
+  background-size: cover;
+}
+#myList {
+  margin-top: 200px;
+  float: right;
+  cursor: pointer;
+  background-color: transparent !important;
+}
+button {
+  margin-right: 10px;
+  border: none;
+  color: black;
+  padding: 3px 6px 3px 6px;
+  background-color: transparent !important;
+}
+#left {
+  width: 200px;
+  margin: 30px 0px 40px 40px;
+  text-align: center;
+}
+#movieRank {
+  border: none;
+  font-size: 15px;
+  cursor: pointer;
+  float: left;
+  margin-left: 100px;
+}
+#movieRank:hover {
+  color: rgb(163, 136, 114);
+  font-size: 16px;
+}
+#naver {
+  border: none;
+  font-size: 15px;
+  cursor: pointer;
+  float: left;
+}
+#naver:hover {
+  color: rgb(163, 136, 114);
+  font-size: 16px;
+}
+#netflix {
+  border: none;
+  font-size: 15px;
+  cursor: pointer;
+  float: left;
+}
+#netflix:hover {
+  color: rgb(163, 136, 114);
+  font-size: 16px;
+}
+#container {
+  background-image: url("./image/main_div_background.png");
+  height: 1750px;
   background-size: cover;
 }
 #myListPos {
   position: absolute;
   min-width: 600px;
-  top: 300px;
+  top: 200px;
   left: 18%;
-  background-color: #FFFFDD;
-  height: 330px;
-  width: 65%;
-  margin-bottom: 100px;
+  height: 1690px;
+  width: 850px;
+  margin-bottom: 50px;
+  background-image: url("./image/background_img.png");
+  background-size: 100% 1690px;
 }
-#moreNetflix {
-  margin: 10px 0px 10px 20px;
-  font-size: 23px;
-  background-color: #FFFFDD;
-  color: rgb(95, 136, 101);
-}
-hr {
-  border: 1px solid #BDECB6;
+#moreMyList {
+  margin: 85px 0px 10px 30px;
+  font-size: 26px;
+  color: #FE9B86;
 }
 #myListTitle {
   margin: 0.5px 60px -4px 10px;
